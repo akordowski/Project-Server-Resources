@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the PortfolioAnalyses web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" />
+      <s:element name="ReadOptimizerSolutionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="analysisUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOptimizerSolutionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadOptimizerSolutionListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOptimizerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="solutionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOptimizerSolutionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadOptimizerSolutionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteOptimizerSolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solutionUids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueueDeleteOptimizerSolutionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueCreateOptimizerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="analysisUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="solutionDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCreateOptimizerSolutionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="analysisUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAnalysisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAnalysisResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAnalysisList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAnalysisListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAnalysisListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDependency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dependencyDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDependencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateDependencyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDependency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dependencyUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDependencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDependencyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDependencies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dependencyUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDependenciesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateDependency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dependencyDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDependencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDependencyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDependencyList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadDependencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDependencyListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPlannerSolutionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="parentSolutionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPlannerSolutionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPlannerSolutionListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPlannerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="solutionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPlannerSolutionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPlannerSolutionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeletePlannerSolutions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solutionUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeletePlannerSolutionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueCreatePlannerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plannerSolutionDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCreatePlannerSolutionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueDeleteAnalyses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analysesUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteAnalysesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueCreateAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analysisDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCreateAnalysisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueUpdateAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analysisDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="forceRefreshPlannerData" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateAnalysisResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CommitOptimizerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="solutionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommitOptimizerSolutionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CommitPlannerSolution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="solutionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommitPlannerSolutionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/AnalysisDataSet/" id="AnalysisDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="AnalysisDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Analysis">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element name="ANALYSIS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="ANALYSIS_DESCRIPTION" type="xs:string" />
+                  <xs:element name="ANALYSIS_TYPE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="DEPARTMENT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DEPARTMENT_NAME" type="xs:string" />
+                  <xs:element name="PRIORITIZATION_TYPE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PRIORITIZATION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROJECT_IMPACT_CF_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJECT_IMPACT_CF_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="HARD_CONSTRAINT_CF_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="HARD_CONSTRAINT_CF_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="HORIZON_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="HORIZON_END_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ROLE_CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element default="0" name="TIME_SCALE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" default="false" name="FILTER_RESOURCES_BY_DEP" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="FILTER_RESOURCES_BY_RBS" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FILTER_RESOURCES_RBS_VAL" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="FILTER_RESOURCES_RBS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="USE_ALT_PROJ_DATES_FOR_RES_PLAN" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ALT_PROJ_START_DATE_CF_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ALT_PROJ_END_DATE_CF_UID" type="xs:string" />
+                  <xs:element default="0" name="BOOKING_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FORCE_IN_ALIAS_LT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FORCE_OUT_ALIAS_LT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisProjects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PRIORITY" type="xs:double" />
+                  <xs:element minOccurs="0" name="ABSOLUTE_PRIORITY" type="xs:double" />
+                  <xs:element minOccurs="0" name="ORIGINAL_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ORIGINAL_END_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="START_DATE" type="xs:dateTime" />
+                  <xs:element default="0" name="DURATION" type="xs:int" />
+                  <xs:element minOccurs="0" name="SNET" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="FNLT" type="xs:dateTime" />
+                  <xs:element default="0" name="LOCKED" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisPriorityData">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element name="WEIGHT" type="xs:double" />
+                  <xs:element minOccurs="0" name="MIN_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="MAX_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisProjectImpact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LT_STRUCT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisOptimizerSolutions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="SOLUTION_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="SOLUTION_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="OPT_USE_DEPENDENCIES" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisPlannerSolutions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="OPTIMIZER_SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="SOLUTION_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="SOLUTION_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="CONSTRAINT_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" name="CONSTRAINT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="HIRING_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" name="OPT_ENF_SCHEDULING_CONS" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" name="OPT_ENF_PROJ_DEP" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" name="RATE_TABLE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" default="1" name="ALLOCATION_THRESHOLD" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisRemainingCapacityByRole">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="START_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" name="END_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" default="0" name="REM_CAPACITY" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="REM_CAPACITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisRoleRates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element default="0" name="STANDARD_RATE" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" name="RATE_TABLE" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AnalysisProjectRequirementsByRole">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="START_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" default="0" name="PROJECT_REQUIREMENT" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="REQUIREMENT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:Analysis" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisProjects_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjects" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisPriorityData_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisPriorityData" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisProjectImpact_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjectImpact" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisOptimizerSolutions_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisOptimizerSolutions" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisPlannerSolutions_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisPlannerSolutions" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisRemainingCapacityByRole_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisRemainingCapacityByRole" />
+          <xs:field xpath="mstns:REM_CAPACITY_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisRoleRates_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisRoleRates" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+          <xs:field xpath="mstns:RATE_TABLE" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="AnalysisProjectRequirementsByRole_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjectRequirementsByRole" />
+          <xs:field xpath="mstns:REQUIREMENT_UID" />
+        </xs:unique>
+        <xs:keyref msdata:ConstraintOnly="true" msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_AnalysisProjects_AnalysisProjectRequirementsByRole" refer="mstns:AnalysisProjects_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjectRequirementsByRole" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:ConstraintOnly="true" msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisRoleRates" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisRoleRates" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:ConstraintOnly="true" msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisRemainingCapacityByRole" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisRemainingCapacityByRole" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisPlannerSolutions" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisPlannerSolutions" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisOptimizerSolutions" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisOptimizerSolutions" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_AnalysisProjects_AnalysisProjectImpact" refer="mstns:AnalysisProjects_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjectImpact" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisPriorityData" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisPriorityData" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Analysis_AnalysisProjects" refer="mstns:Analysis_Constraint1">
+          <xs:selector xpath=".//mstns:AnalysisProjects" />
+          <xs:field xpath="mstns:ANALYSIS_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerDependencyDataSet/" id="OptimizerDependencyDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="OptimizerDependencyDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="OptimizerDependencies">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DEPENDENCY_UID" type="xs:string" />
+                  <xs:element name="DEPENDENCY_NAME" type="xs:string" />
+                  <xs:element name="DEPENDENCY_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" name="DEPENDENCY_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="OptimizerDependencyDetails">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DEPENDENCY_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="POSITION" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:OptimizerDependencies" />
+          <xs:field xpath="mstns:DEPENDENCY_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="OptimizerDependencyDetails_Constraint1">
+          <xs:selector xpath=".//mstns:OptimizerDependencyDetails" />
+          <xs:field xpath="mstns:DEPENDENCY_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_OptimizerDependencies_OptimizerDependencyDetails" refer="mstns:Constraint1">
+          <xs:selector xpath=".//mstns:OptimizerDependencyDetails" />
+          <xs:field xpath="mstns:DEPENDENCY_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/PlannerSolutionDataSet" id="PlannerSolutionDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="PlannerSolutionDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Solutions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="OPTIMIZER_SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element name="SOLUTION_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="SOLUTION_DESCRIPTION" type="xs:string" />
+                  <xs:element name="CONSTRAINT_TYPE" type="xs:unsignedByte" />
+                  <xs:element name="CONSTRAINT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element name="HIRING_TYPE" type="xs:unsignedByte" />
+                  <xs:element name="OPT_ENF_SCHEDULING_CONS" type="xs:boolean" />
+                  <xs:element name="OPT_ENF_PROJ_DEP" type="xs:boolean" />
+                  <xs:element name="RATE_TABLE" type="xs:unsignedByte" />
+                  <xs:element default="1" name="ALLOCATION_THRESHOLD" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ANALYSIS_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="OPTIMIZER_SOLUTION_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TOTAL_PRIORITY_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionResHired">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="START_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" name="DURATION" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="RESOURCE_COST" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" name="RESOURCE_WORK" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="RES_HIRE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ROLE_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionProjects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element name="NEW_START_DATE" type="xs:dateTime" />
+                  <xs:element name="FORCE_STATUS" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="STATUS" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="RESOURCE_COST" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="RESOURCE_WORK" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PRIORITY" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ABSOLUTE_PRIORITY" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DURATION" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="SNET" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="FNLT" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" default="0" name="LOCKED" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FORCE_ALIAS_LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="FORCE_ALIAS_LT_VALUE_FULL" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionProjectRequirementsByRole">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="START_DATE" type="xs:dateTime" />
+                  <xs:element name="ADDITIONAL_WORK" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="REQUIREMENT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ROLE_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionEfficientFrontier">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="POINT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="X_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" name="Y_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="PK_Solutions">
+          <xs:selector xpath=".//mstns:Solutions" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionResHired">
+          <xs:selector xpath=".//mstns:SolutionResHired" />
+          <xs:field xpath="mstns:RES_HIRE_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionProjects">
+          <xs:selector xpath=".//mstns:SolutionProjects" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionProjectRequirementsByRole">
+          <xs:selector xpath=".//mstns:SolutionProjectRequirementsByRole" />
+          <xs:field xpath="mstns:REQUIREMENT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionEfficientFrontier">
+          <xs:selector xpath=".//mstns:SolutionEfficientFrontier" />
+          <xs:field xpath="mstns:POINT_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solutions_SolutionProjectRequirementsByRole" refer="mstns:PK_Solutions">
+          <xs:selector xpath=".//mstns:SolutionProjectRequirementsByRole" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solutions_SolutionProjects" refer="mstns:PK_Solutions">
+          <xs:selector xpath=".//mstns:SolutionProjects" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solutions_SolutionResHired" refer="mstns:PK_Solutions">
+          <xs:selector xpath=".//mstns:SolutionResHired" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+      </xs:element>
+      <xs:annotation>
+        <xs:appinfo>
+          <msdata:Relationship name="FK_Solutions_SolutionEfficientFrontier" msdata:parent="Solutions" msdata:child="SolutionEfficientFrontier" msdata:parentkey="FRONTIER_UID" msdata:childkey="FRONTIER_UID" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/OptimizerSolutionDataSet/" id="OptimizerSolutionDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="OptimizerSolutionDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Solution">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element name="SOLUTION_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="SOLUTION_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="HARD_CONSTRAINT_CF_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="HARD_CONSTRAINT_CF_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element default="true" name="OPT_USE_DEPENDENCIES" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ANALYSIS_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TOTAL_HARD_CONSTRAINT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TOTAL_PRIORITY_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionConstraints">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element name="MD_PROP_POS" type="xs:int" />
+                  <xs:element name="MAX_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionConstraintValues">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element name="NUM_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionProjects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PRIORITY" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ABSOLUTE_PRIORITY" type="xs:double" />
+                  <xs:element minOccurs="0" name="STATUS" type="xs:unsignedByte" />
+                  <xs:element default="2" name="FORCE_STATUS" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="FORCE_ALIAS_LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="FORCE_ALIAS_LT_VALUE_FULL" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionStrategicAlignment">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="SOLUTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="DRIVER_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="DRIVER_PRIORITY" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" name="REVERSE_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SolutionEfficientFrontier">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="FRONTIER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="ANALYSIS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="POINT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="X_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" name="Y_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="PK_Solution">
+          <xs:selector xpath=".//mstns:Solution" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionConstraints">
+          <xs:selector xpath=".//mstns:SolutionConstraints" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionConstraintValues">
+          <xs:selector xpath=".//mstns:SolutionConstraintValues" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionProjects">
+          <xs:selector xpath=".//mstns:SolutionProjects" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:SolutionStrategicAlignment" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PK_SolutionEfficientFrontier">
+          <xs:selector xpath=".//mstns:SolutionEfficientFrontier" />
+          <xs:field xpath="mstns:POINT_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solution_SolutionStrategicAlignment" refer="mstns:PK_Solution">
+          <xs:selector xpath=".//mstns:SolutionStrategicAlignment" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solution_SolutionProjects" refer="mstns:PK_Solution">
+          <xs:selector xpath=".//mstns:SolutionProjects" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_SolutionProjects_SolutionConstraintValues" refer="mstns:PK_SolutionProjects">
+          <xs:selector xpath=".//mstns:SolutionConstraintValues" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_SolutionConstraints_SolutionConstraintValues" refer="mstns:PK_SolutionConstraints">
+          <xs:selector xpath=".//mstns:SolutionConstraintValues" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Solution_SolutionConstraints" refer="mstns:PK_Solution">
+          <xs:selector xpath=".//mstns:SolutionConstraints" />
+          <xs:field xpath="mstns:SOLUTION_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadOptimizerSolutionListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOptimizerSolutionList" />
+  </wsdl:message>
+  <wsdl:message name="ReadOptimizerSolutionListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOptimizerSolutionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOptimizerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOptimizerSolution" />
+  </wsdl:message>
+  <wsdl:message name="ReadOptimizerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOptimizerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteOptimizerSolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeleteOptimizerSolutions" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteOptimizerSolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeleteOptimizerSolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateOptimizerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCreateOptimizerSolution" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateOptimizerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCreateOptimizerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="ReadAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAnalysisListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAnalysisList" />
+  </wsdl:message>
+  <wsdl:message name="ReadAnalysisListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAnalysisListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDependencySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDependency" />
+  </wsdl:message>
+  <wsdl:message name="CreateDependencySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDependencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDependencySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDependency" />
+  </wsdl:message>
+  <wsdl:message name="ReadDependencySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDependencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDependenciesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDependencies" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDependenciesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDependenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDependencySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDependency" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDependencySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDependencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDependencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDependencyList" />
+  </wsdl:message>
+  <wsdl:message name="ReadDependencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDependencyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPlannerSolutionListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPlannerSolutionList" />
+  </wsdl:message>
+  <wsdl:message name="ReadPlannerSolutionListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPlannerSolutionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPlannerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPlannerSolution" />
+  </wsdl:message>
+  <wsdl:message name="ReadPlannerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPlannerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeletePlannerSolutionsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeletePlannerSolutions" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeletePlannerSolutionsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeletePlannerSolutionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreatePlannerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCreatePlannerSolution" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreatePlannerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCreatePlannerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteAnalysesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeleteAnalyses" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteAnalysesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeleteAnalysesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCreateAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCreateAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueUpdateAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueUpdateAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitOptimizerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:CommitOptimizerSolution" />
+  </wsdl:message>
+  <wsdl:message name="CommitOptimizerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:CommitOptimizerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitPlannerSolutionSoapIn">
+    <wsdl:part name="parameters" element="tns:CommitPlannerSolution" />
+  </wsdl:message>
+  <wsdl:message name="CommitPlannerSolutionSoapOut">
+    <wsdl:part name="parameters" element="tns:CommitPlannerSolutionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PortfolioAnalysesSoap">
+    <wsdl:operation name="ReadOptimizerSolutionList">
+      <wsdl:input message="tns:ReadOptimizerSolutionListSoapIn" />
+      <wsdl:output message="tns:ReadOptimizerSolutionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOptimizerSolution">
+      <wsdl:input message="tns:ReadOptimizerSolutionSoapIn" />
+      <wsdl:output message="tns:ReadOptimizerSolutionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteOptimizerSolutions">
+      <wsdl:input message="tns:QueueDeleteOptimizerSolutionsSoapIn" />
+      <wsdl:output message="tns:QueueDeleteOptimizerSolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateOptimizerSolution">
+      <wsdl:input message="tns:QueueCreateOptimizerSolutionSoapIn" />
+      <wsdl:output message="tns:QueueCreateOptimizerSolutionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysis">
+      <wsdl:input message="tns:ReadAnalysisSoapIn" />
+      <wsdl:output message="tns:ReadAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysisList">
+      <wsdl:input message="tns:ReadAnalysisListSoapIn" />
+      <wsdl:output message="tns:ReadAnalysisListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDependency">
+      <wsdl:input message="tns:CreateDependencySoapIn" />
+      <wsdl:output message="tns:CreateDependencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependency">
+      <wsdl:input message="tns:ReadDependencySoapIn" />
+      <wsdl:output message="tns:ReadDependencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDependencies">
+      <wsdl:input message="tns:DeleteDependenciesSoapIn" />
+      <wsdl:output message="tns:DeleteDependenciesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDependency">
+      <wsdl:input message="tns:UpdateDependencySoapIn" />
+      <wsdl:output message="tns:UpdateDependencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependencyList">
+      <wsdl:input message="tns:ReadDependencyListSoapIn" />
+      <wsdl:output message="tns:ReadDependencyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolutionList">
+      <wsdl:input message="tns:ReadPlannerSolutionListSoapIn" />
+      <wsdl:output message="tns:ReadPlannerSolutionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolution">
+      <wsdl:input message="tns:ReadPlannerSolutionSoapIn" />
+      <wsdl:output message="tns:ReadPlannerSolutionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeletePlannerSolutions">
+      <wsdl:input message="tns:QueueDeletePlannerSolutionsSoapIn" />
+      <wsdl:output message="tns:QueueDeletePlannerSolutionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreatePlannerSolution">
+      <wsdl:input message="tns:QueueCreatePlannerSolutionSoapIn" />
+      <wsdl:output message="tns:QueueCreatePlannerSolutionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteAnalyses">
+      <wsdl:input message="tns:QueueDeleteAnalysesSoapIn" />
+      <wsdl:output message="tns:QueueDeleteAnalysesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateAnalysis">
+      <wsdl:input message="tns:QueueCreateAnalysisSoapIn" />
+      <wsdl:output message="tns:QueueCreateAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateAnalysis">
+      <wsdl:input message="tns:QueueUpdateAnalysisSoapIn" />
+      <wsdl:output message="tns:QueueUpdateAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitOptimizerSolution">
+      <wsdl:input message="tns:CommitOptimizerSolutionSoapIn" />
+      <wsdl:output message="tns:CommitOptimizerSolutionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlannerSolution">
+      <wsdl:input message="tns:CommitPlannerSolutionSoapIn" />
+      <wsdl:output message="tns:CommitPlannerSolutionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortfolioAnalysesSoap" type="tns:PortfolioAnalysesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadOptimizerSolutionList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadOptimizerSolutionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOptimizerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteOptimizerSolutions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeleteOptimizerSolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateOptimizerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreateOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysis">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysisList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadAnalysisList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDependency">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CreateDependency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependency">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadDependency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDependencies">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/DeleteDependencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDependency">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/UpdateDependency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependencyList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadDependencyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolutionList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadPlannerSolutionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadPlannerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeletePlannerSolutions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeletePlannerSolutions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreatePlannerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreatePlannerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteAnalyses">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeleteAnalyses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateAnalysis">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreateAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateAnalysis">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueUpdateAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitOptimizerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CommitOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlannerSolution">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CommitPlannerSolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PortfolioAnalysesSoap12" type="tns:PortfolioAnalysesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadOptimizerSolutionList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadOptimizerSolutionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOptimizerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteOptimizerSolutions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeleteOptimizerSolutions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateOptimizerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreateOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysis">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAnalysisList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadAnalysisList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDependency">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CreateDependency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependency">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadDependency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDependencies">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/DeleteDependencies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDependency">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/UpdateDependency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDependencyList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadDependencyList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolutionList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadPlannerSolutionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPlannerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/ReadPlannerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeletePlannerSolutions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeletePlannerSolutions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreatePlannerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreatePlannerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteAnalyses">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueDeleteAnalyses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateAnalysis">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueCreateAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateAnalysis">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/QueueUpdateAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitOptimizerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CommitOptimizerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlannerSolution">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/PortfolioAnalyses/CommitPlannerSolution" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PortfolioAnalyses">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the PortfolioAnalyses web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="PortfolioAnalysesSoap" binding="tns:PortfolioAnalysesSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/PortfolioAnalyses.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PortfolioAnalysesSoap12" binding="tns:PortfolioAnalysesSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/PortfolioAnalyses.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

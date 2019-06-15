@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the QueueSystem web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" />
+      <s:element name="CancelJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="cancelCorrelationJobs" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="cancelSendIncompleteJobs" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJobResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelJobSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJobSimpleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelCorrelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="correlationUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="cancelSendIncompleteJobs" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelCorrelationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetJobCompletionState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobCompletionStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJobCompletionStateResult" type="tns:JobState" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="JobState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="ReadyForProcessing" />
+          <s:enumeration value="SendIncomplete" />
+          <s:enumeration value="Processing" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="FailedNotBlocking" />
+          <s:enumeration value="ProcessingDeferred" />
+          <s:enumeration value="CorrelationBlocked" />
+          <s:enumeration value="Canceled" />
+          <s:enumeration value="OnHold" />
+          <s:enumeration value="Sleeping" />
+          <s:enumeration value="ReadyForLaunch" />
+          <s:enumeration value="LastState" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UnblockCorrelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="correlationGUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnblockCorrelationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetryJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JobGUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetryJobResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetryCorrelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="correlationGUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetryCorrelationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueuePurgeArchivedJobs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="queueId" type="tns:QueueID" />
+            <s:element minOccurs="1" maxOccurs="1" name="correlationUID" nillable="true" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="messageType" nillable="true" type="tns:QueueMsgType" />
+            <s:element minOccurs="1" maxOccurs="1" name="hoursHistory" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="QueueID">
+        <s:restriction base="s:string">
+          <s:enumeration value="UnknownQ" />
+          <s:enumeration value="ProjectQ" />
+          <s:enumeration value="TimesheetQ" />
+          <s:enumeration value="EndQList" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="QueueMsgType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="ACProjectSave" />
+          <s:enumeration value="AdSyncERP" />
+          <s:enumeration value="AdSyncGroup" />
+          <s:enumeration value="ArchiveCategories" />
+          <s:enumeration value="ArchiveCustomFields" />
+          <s:enumeration value="ArchiveGlobalProject" />
+          <s:enumeration value="ArchiveResources" />
+          <s:enumeration value="ArchiveSystemSettings" />
+          <s:enumeration value="ArchiveViews" />
+          <s:enumeration value="BumpPriority" />
+          <s:enumeration value="CBSProjRendezvous" />
+          <s:enumeration value="CBSRequest" />
+          <s:enumeration value="CBSTsRendezvous" />
+          <s:enumeration value="CreateProposalProject" />
+          <s:enumeration value="CreateWssSite" />
+          <s:enumeration value="DeleteWssSite" />
+          <s:enumeration value="LWPUpgradeToProject" />
+          <s:enumeration value="NotificationMessage" />
+          <s:enumeration value="ProjectArchive" />
+          <s:enumeration value="ProjectArchiveRetentionDelete" />
+          <s:enumeration value="ProjectCheckIn" />
+          <s:enumeration value="ProjectCreate" />
+          <s:enumeration value="ProjectDelete" />
+          <s:enumeration value="ProjectPublish" />
+          <s:enumeration value="ProjectRename" />
+          <s:enumeration value="ProjectRestore" />
+          <s:enumeration value="ProjectReversePublish" />
+          <s:enumeration value="ProjectUpdate" />
+          <s:enumeration value="ProjectUpdateTeam" />
+          <s:enumeration value="PublishNotifications" />
+          <s:enumeration value="QueueCleanup" />
+          <s:enumeration value="ReportingAttributeCubeSettingsSync" />
+          <s:enumeration value="ReportingBaseCalendarSync" />
+          <s:enumeration value="ReportingCustomFieldMetadataSync" />
+          <s:enumeration value="ReportingEntityUserViewRefresh" />
+          <s:enumeration value="ReportingFiscalPeriodsSync" />
+          <s:enumeration value="ReportingLookupTableSync" />
+          <s:enumeration value="ReportingProjectDelete" />
+          <s:enumeration value="ReportingProjectPublish" />
+          <s:enumeration value="ReportingResourcesCapacityRangeSync" />
+          <s:enumeration value="ReportingResourceSync" />
+          <s:enumeration value="ReportingTimesheetAdjust" />
+          <s:enumeration value="ReportingTimesheetClassSync" />
+          <s:enumeration value="ReportingTimesheetDelete" />
+          <s:enumeration value="ReportingTimesheetPeriodDelete" />
+          <s:enumeration value="ReportingTimesheetPeriodSync" />
+          <s:enumeration value="ReportingTimesheetSave" />
+          <s:enumeration value="ReportingTimesheetStatusSync" />
+          <s:enumeration value="ReportingWSSSync" />
+          <s:enumeration value="ResourcePlanCheckIn" />
+          <s:enumeration value="ResourcePlanDelete" />
+          <s:enumeration value="ResourcePlanPublish" />
+          <s:enumeration value="ResourcePlanSave" />
+          <s:enumeration value="RestoreCategories" />
+          <s:enumeration value="RestoreCustomFields" />
+          <s:enumeration value="RestoreGlobalProject" />
+          <s:enumeration value="RestoreResources" />
+          <s:enumeration value="RestoreSystemSettings" />
+          <s:enumeration value="RestoreViews" />
+          <s:enumeration value="RulesProcessAll" />
+          <s:enumeration value="RulesProcessAllAutoForManager" />
+          <s:enumeration value="RulesProcessAllForManager" />
+          <s:enumeration value="RulesProcessSingleForManager" />
+          <s:enumeration value="StatusApproval" />
+          <s:enumeration value="Timer1" />
+          <s:enumeration value="Timer10" />
+          <s:enumeration value="Timer2" />
+          <s:enumeration value="Timer3" />
+          <s:enumeration value="Timer4" />
+          <s:enumeration value="Timer5" />
+          <s:enumeration value="Timer6" />
+          <s:enumeration value="Timer7" />
+          <s:enumeration value="Timer8" />
+          <s:enumeration value="Timer9" />
+          <s:enumeration value="TimerMessage" />
+          <s:enumeration value="TimerRzNotify" />
+          <s:enumeration value="TimerRzProj" />
+          <s:enumeration value="TimerRzTS" />
+          <s:enumeration value="TimesheetMessage" />
+          <s:enumeration value="TimesheetDelete" />
+          <s:enumeration value="TimesheetRecall" />
+          <s:enumeration value="TimesheetReview" />
+          <s:enumeration value="TimesheetSubmit" />
+          <s:enumeration value="TimesheetUpdate" />
+          <s:enumeration value="ReportingSyncGlobalData" />
+          <s:enumeration value="SynchronizeMembershipForWssSite" />
+          <s:enumeration value="SynchronizeSingleUserMembershipInWss" />
+          <s:enumeration value="ReportingRefresh" />
+          <s:enumeration value="UpdateScheduledProject" />
+          <s:enumeration value="WorkflowStartWorkflow" />
+          <s:enumeration value="AnalysisDelete" />
+          <s:enumeration value="AnalysisCreate" />
+          <s:enumeration value="AnalysisUpdate" />
+          <s:enumeration value="PlannerSolutionCreate" />
+          <s:enumeration value="PlannerSolutionDelete" />
+          <s:enumeration value="OptimizerSolutionCreate" />
+          <s:enumeration value="OptimizerSolutionDelete" />
+          <s:enumeration value="TimesheetLineApproval" />
+          <s:enumeration value="PeriodicTasks" />
+          <s:enumeration value="PDPUpdateProjectImpacts" />
+          <s:enumeration value="ExchangeSyncTasks" />
+          <s:enumeration value="ReportingAttributeCubeDepartmentSync" />
+          <s:enumeration value="ReportingTimesheetProjectAggregation" />
+          <s:enumeration value="ReportingTimesheetAssignmentsUpgrade" />
+          <s:enumeration value="WorkflowCheckinNotify" />
+          <s:enumeration value="WorkflowChangeWorkflow" />
+          <s:enumeration value="ProjectPublishSummary" />
+          <s:enumeration value="ReportingOlapDatabaseSettingsSync" />
+          <s:enumeration value="ReportingWorkflowMetadataSync" />
+          <s:enumeration value="ReportWorkflowProjectDataSync" />
+          <s:enumeration value="ReportEptSync" />
+          <s:enumeration value="ReportingSummaryPublish" />
+          <s:enumeration value="ReportingSolutionCommitedDecisionSync" />
+          <s:enumeration value="WorkflowCommitNotify" />
+          <s:enumeration value="ReportingTimesheetAssignmentsRefresh" />
+          <s:enumeration value="UpdateProjectSitePath" />
+          <s:enumeration value="AddSingleUserMembershipInWss" />
+          <s:enumeration value="DeleteSingleUserMembershipInWss" />
+          <s:enumeration value="TimeSheetUpdateResourceNonWorkingTime" />
+          <s:enumeration value="SyncProjectEnterpriseEntities" />
+          <s:enumeration value="LastMessage" />
+          <s:enumeration value="ExchangeCalOofSync" />
+          <s:enumeration value="PreparePSPermissionSynchronization" />
+          <s:enumeration value="PSPermissionSynchronizePWASite" />
+          <s:enumeration value="PSPermissionSynchronizeProjectSite" />
+          <s:enumeration value="PreparePSProjectPermissionSynchronization" />
+          <s:enumeration value="ScheduleWebPartSave" />
+          <s:enumeration value="ProjectImportTaskList" />
+          <s:enumeration value="TimesheetUpdateSRAForResource" />
+          <s:enumeration value="ActiveMonitorCheck" />
+          <s:enumeration value="ManagedModeTaskSynchronization" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="QueuePurgeArchivedJobsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProposedJobWaitTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="correlationUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="messageType" type="tns:QueueMsgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProposedJobWaitTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetProposedJobWaitTimeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobGroupWaitTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="trackingID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="messageType" type="tns:QueueMsgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobGroupWaitTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJobGroupWaitTimeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobGroupWaitTimeSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="trackingID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobGroupWaitTimeSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJobGroupWaitTimeSimpleResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobWaitTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobWaitTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJobWaitTimeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAllJobStatusSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortColumn" type="tns:SortColumn" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SortColumn">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="CorrelationGUID" />
+          <s:enumeration value="CorrelationPriority" />
+          <s:enumeration value="GroupPriority" />
+          <s:enumeration value="JobCompletionState" />
+          <s:enumeration value="JobGUID" />
+          <s:enumeration value="JobGroupGUID" />
+          <s:enumeration value="JobInfoGUID" />
+          <s:enumeration value="LastAdminAction" />
+          <s:enumeration value="MachineName" />
+          <s:enumeration value="MessageType" />
+          <s:enumeration value="PercentComplete" />
+          <s:enumeration value="QueueCompletedTime" />
+          <s:enumeration value="QueueEntryTime" />
+          <s:enumeration value="QueueId" />
+          <s:enumeration value="QueuePosition" />
+          <s:enumeration value="QueueProcessingTime" />
+          <s:enumeration value="QueueWakeupTime" />
+          <s:enumeration value="ResourceGUID" />
+          <s:enumeration value="ServiceName" />
+          <s:enumeration value="LastColumn" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SortOrder">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Ascending" />
+          <s:enumeration value="Descending" />
+          <s:enumeration value="LastOrder" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadAllJobStatusSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAllJobStatusSimpleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAllJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jobStates" type="tns:ArrayOfJobState" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortColumn" type="tns:SortColumn" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfJobState">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="JobState" type="tns:JobState" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfQueueMsgType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="QueueMsgType" type="tns:QueueMsgType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadAllJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAllJobStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectGUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobCompletionStates" type="tns:ArrayOfJobState" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortColumn" type="tns:SortColumn" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadProjectJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectJobStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMyJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobCompletionState" type="tns:ArrayOfJobState" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortColumn" type="tns:SortColumn" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadMyJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadMyJobStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyJobCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobCompletionState" type="tns:ArrayOfJobState" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyJobCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMyJobCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="qsrDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortColumn" type="tns:SortColumn" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrder" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadJobStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadJobStatusSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jobUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeWaitTime" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadJobStatusSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadJobStatusSimpleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CorrelationGUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobStates" type="tns:ArrayOfJobState" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetJobCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetJobCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadQueueConfiguration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="queueId" type="tns:QueueID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadQueueConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadQueueConfigurationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetQueueConfiguration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="queueId" type="tns:QueueID" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetQueueConfigurationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PurgeQueueStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageTypes" type="tns:ArrayOfQueueMsgType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeQueueStatisticsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelJobAndCorrelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="cancelSendIncompleteJobs" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJobAndCorrelationResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusRequestDataSet/" id="QueueStatusRequestDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="QueueStatusRequestDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="StatusRequest">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="JobGroupGUID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="JobGUID" type="xs:string" />
+                  <xs:element default="-1" name="MessageType" type="xs:int" />
+                  <xs:element default="-1" name="JobCompletionState" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/QueueStatusDataSet/" id="QueueStatusDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="QueueStatusDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Status">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="QueueID" type="xs:int" />
+                  <xs:element name="MessageType" type="xs:int" />
+                  <xs:element name="JobCompletionState" type="xs:int" />
+                  <xs:element name="QueuePosition" type="xs:int" />
+                  <xs:element name="LastAdminAction" type="xs:int" />
+                  <xs:element minOccurs="0" name="ErrorInfo" type="xs:string" />
+                  <xs:element name="PercentComplete" type="xs:int" />
+                  <xs:element name="QueueEntryTime" type="xs:dateTime" />
+                  <xs:element name="QueueProcessingTime" type="xs:dateTime" />
+                  <xs:element name="QueueCompletedTime" type="xs:dateTime" />
+                  <xs:element name="QueueWakeupTime" type="xs:dateTime" />
+                  <xs:element name="WaitTime" type="xs:int" />
+                  <xs:element name="GroupPriority" type="xs:int" />
+                  <xs:element name="CorrelationPriority" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CorrelationGUID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="JobGUID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="JobGroupGUID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="JobInfoGUID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ResourceGUID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MachineName" type="xs:string" />
+                  <xs:element minOccurs="0" name="ServiceName" type="xs:string" />
+                  <xs:element minOccurs="0" name="QueueLocalStorage" type="xs:base64Binary" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ServerId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CancelJobSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelJob" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelJobSimple" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelJobSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelCorrelationSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelCorrelation" />
+  </wsdl:message>
+  <wsdl:message name="CancelCorrelationSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelCorrelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobCompletionStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobCompletionState" />
+  </wsdl:message>
+  <wsdl:message name="GetJobCompletionStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobCompletionStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnblockCorrelationSoapIn">
+    <wsdl:part name="parameters" element="tns:UnblockCorrelation" />
+  </wsdl:message>
+  <wsdl:message name="UnblockCorrelationSoapOut">
+    <wsdl:part name="parameters" element="tns:UnblockCorrelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetryJobSoapIn">
+    <wsdl:part name="parameters" element="tns:RetryJob" />
+  </wsdl:message>
+  <wsdl:message name="RetryJobSoapOut">
+    <wsdl:part name="parameters" element="tns:RetryJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetryCorrelationSoapIn">
+    <wsdl:part name="parameters" element="tns:RetryCorrelation" />
+  </wsdl:message>
+  <wsdl:message name="RetryCorrelationSoapOut">
+    <wsdl:part name="parameters" element="tns:RetryCorrelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueuePurgeArchivedJobsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueuePurgeArchivedJobs" />
+  </wsdl:message>
+  <wsdl:message name="QueuePurgeArchivedJobsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueuePurgeArchivedJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProposedJobWaitTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProposedJobWaitTime" />
+  </wsdl:message>
+  <wsdl:message name="GetProposedJobWaitTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProposedJobWaitTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobGroupWaitTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobGroupWaitTime" />
+  </wsdl:message>
+  <wsdl:message name="GetJobGroupWaitTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobGroupWaitTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobGroupWaitTimeSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobGroupWaitTimeSimple" />
+  </wsdl:message>
+  <wsdl:message name="GetJobGroupWaitTimeSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobGroupWaitTimeSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobWaitTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobWaitTime" />
+  </wsdl:message>
+  <wsdl:message name="GetJobWaitTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobWaitTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAllJobStatusSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAllJobStatusSimple" />
+  </wsdl:message>
+  <wsdl:message name="ReadAllJobStatusSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAllJobStatusSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAllJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAllJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadAllJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAllJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadMyJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadMyJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadMyJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadMyJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyJobCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyJobCount" />
+  </wsdl:message>
+  <wsdl:message name="GetMyJobCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyJobCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadJobStatusSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadJobStatusSimple" />
+  </wsdl:message>
+  <wsdl:message name="ReadJobStatusSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadJobStatusSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetJobCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetJobCount" />
+  </wsdl:message>
+  <wsdl:message name="GetJobCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetJobCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadQueueConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadQueueConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="ReadQueueConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadQueueConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetQueueConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetQueueConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="SetQueueConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetQueueConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeQueueStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeQueueStatistics" />
+  </wsdl:message>
+  <wsdl:message name="PurgeQueueStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeQueueStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobAndCorrelationSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelJobAndCorrelation" />
+  </wsdl:message>
+  <wsdl:message name="CancelJobAndCorrelationSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelJobAndCorrelationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="QueueSystemSoap">
+    <wsdl:operation name="CancelJob">
+      <wsdl:input message="tns:CancelJobSoapIn" />
+      <wsdl:output message="tns:CancelJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobSimple">
+      <wsdl:input message="tns:CancelJobSimpleSoapIn" />
+      <wsdl:output message="tns:CancelJobSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelCorrelation">
+      <wsdl:input message="tns:CancelCorrelationSoapIn" />
+      <wsdl:output message="tns:CancelCorrelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCompletionState">
+      <wsdl:input message="tns:GetJobCompletionStateSoapIn" />
+      <wsdl:output message="tns:GetJobCompletionStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnblockCorrelation">
+      <wsdl:input message="tns:UnblockCorrelationSoapIn" />
+      <wsdl:output message="tns:UnblockCorrelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetryJob">
+      <wsdl:input message="tns:RetryJobSoapIn" />
+      <wsdl:output message="tns:RetryJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetryCorrelation">
+      <wsdl:input message="tns:RetryCorrelationSoapIn" />
+      <wsdl:output message="tns:RetryCorrelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueuePurgeArchivedJobs">
+      <wsdl:input message="tns:QueuePurgeArchivedJobsSoapIn" />
+      <wsdl:output message="tns:QueuePurgeArchivedJobsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProposedJobWaitTime">
+      <wsdl:input message="tns:GetProposedJobWaitTimeSoapIn" />
+      <wsdl:output message="tns:GetProposedJobWaitTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTime">
+      <wsdl:input message="tns:GetJobGroupWaitTimeSoapIn" />
+      <wsdl:output message="tns:GetJobGroupWaitTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTimeSimple">
+      <wsdl:input message="tns:GetJobGroupWaitTimeSimpleSoapIn" />
+      <wsdl:output message="tns:GetJobGroupWaitTimeSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobWaitTime">
+      <wsdl:input message="tns:GetJobWaitTimeSoapIn" />
+      <wsdl:output message="tns:GetJobWaitTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatusSimple">
+      <wsdl:input message="tns:ReadAllJobStatusSimpleSoapIn" />
+      <wsdl:output message="tns:ReadAllJobStatusSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatus">
+      <wsdl:input message="tns:ReadAllJobStatusSoapIn" />
+      <wsdl:output message="tns:ReadAllJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectJobStatus">
+      <wsdl:input message="tns:ReadProjectJobStatusSoapIn" />
+      <wsdl:output message="tns:ReadProjectJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadMyJobStatus">
+      <wsdl:input message="tns:ReadMyJobStatusSoapIn" />
+      <wsdl:output message="tns:ReadMyJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyJobCount">
+      <wsdl:input message="tns:GetMyJobCountSoapIn" />
+      <wsdl:output message="tns:GetMyJobCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatus">
+      <wsdl:input message="tns:ReadJobStatusSoapIn" />
+      <wsdl:output message="tns:ReadJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatusSimple">
+      <wsdl:input message="tns:ReadJobStatusSimpleSoapIn" />
+      <wsdl:output message="tns:ReadJobStatusSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCount">
+      <wsdl:input message="tns:GetJobCountSoapIn" />
+      <wsdl:output message="tns:GetJobCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadQueueConfiguration">
+      <wsdl:input message="tns:ReadQueueConfigurationSoapIn" />
+      <wsdl:output message="tns:ReadQueueConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetQueueConfiguration">
+      <wsdl:input message="tns:SetQueueConfigurationSoapIn" />
+      <wsdl:output message="tns:SetQueueConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeQueueStatistics">
+      <wsdl:input message="tns:PurgeQueueStatisticsSoapIn" />
+      <wsdl:output message="tns:PurgeQueueStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobAndCorrelation">
+      <wsdl:input message="tns:CancelJobAndCorrelationSoapIn" />
+      <wsdl:output message="tns:CancelJobAndCorrelationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QueueSystemSoap" type="tns:QueueSystemSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelJob">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobSimple">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJobSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCorrelation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelCorrelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCompletionState">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobCompletionState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnblockCorrelation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/UnblockCorrelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryJob">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/RetryJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryCorrelation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/RetryCorrelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueuePurgeArchivedJobs">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/QueuePurgeArchivedJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProposedJobWaitTime">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetProposedJobWaitTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTime">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobGroupWaitTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTimeSimple">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobGroupWaitTimeSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobWaitTime">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobWaitTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatusSimple">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadAllJobStatusSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadAllJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectJobStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadProjectJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMyJobStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadMyJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyJobCount">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetMyJobCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatusSimple">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadJobStatusSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCount">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadQueueConfiguration">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadQueueConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetQueueConfiguration">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/SetQueueConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeQueueStatistics">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/PurgeQueueStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobAndCorrelation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJobAndCorrelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="QueueSystemSoap12" type="tns:QueueSystemSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelJob">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobSimple">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJobSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCorrelation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelCorrelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCompletionState">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobCompletionState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnblockCorrelation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/UnblockCorrelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryJob">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/RetryJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryCorrelation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/RetryCorrelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueuePurgeArchivedJobs">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/QueuePurgeArchivedJobs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProposedJobWaitTime">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetProposedJobWaitTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTime">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobGroupWaitTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobGroupWaitTimeSimple">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobGroupWaitTimeSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobWaitTime">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobWaitTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatusSimple">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadAllJobStatusSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAllJobStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadAllJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectJobStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadProjectJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadMyJobStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadMyJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyJobCount">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetMyJobCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadJobStatusSimple">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadJobStatusSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobCount">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/GetJobCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadQueueConfiguration">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/ReadQueueConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetQueueConfiguration">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/SetQueueConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeQueueStatistics">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/PurgeQueueStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelJobAndCorrelation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/QueueSystem/CancelJobAndCorrelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QueueSystem">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the QueueSystem web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="QueueSystemSoap" binding="tns:QueueSystemSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/QueueSystem.asmx" />
+    </wsdl:port>
+    <wsdl:port name="QueueSystemSoap12" binding="tns:QueueSystemSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/QueueSystem.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Workflow/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Workflow/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Workflow web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Workflow/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+      <s:element name="ReadWorkflowPhaseList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflowPhaseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowPhaseListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowPhase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workflowPhaseUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowPhaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowPhaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflowPhase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflowPhaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateWorkflowPhase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWorkflowPhaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWorkflowPhaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWorkflowPhases">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowPhaseUid" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteWorkflowPhasesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflowStageList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflowStageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowStageListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowStage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workflowStageUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowStageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowStageResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflowStage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflowStageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateWorkflowStage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWorkflowStageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWorkflowStageResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWorkflowStages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowStageUid" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWorkflowStagesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RunProjectWorkflow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunProjectWorkflowResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflows">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflowsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="readAllStagesAndPhases" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWorkflowProxyUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWorkflowProxyUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWorkflowProxyUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWorkflowProxyUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWorkflowProxyUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadEnterpriseProjectTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadEnterpriseProjectTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEnterpriseProjectTypeListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEnterpriseProjectTypeListByDepartment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="departmentUid" nillable="true" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEnterpriseProjectTypeListByDepartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEnterpriseProjectTypeListByDepartmentResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEnterpriseProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enterpriseProjectTypeUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEnterpriseProjectTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEnterpriseProjectTypeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEnterpriseProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEnterpriseProjectTypeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateEnterpriseProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="workflowDS">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEnterpriseProjectTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEnterpriseProjectTypeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEnterpriseProjectTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="enterpriseProjectTypeUid" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEnterpriseProjectTypesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetWorkflowStageStatusInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="workflowStageUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="statusInformation" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="stageStatusValue" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="append" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetWorkflowStageStatusInformationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateProjectWorkflow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="enterpriseProjectTypeUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectWorkflowResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadStrategicImpactBehaviorForCurrentWorkflowStage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadStrategicImpactBehaviorForCurrentWorkflowStageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadStrategicImpactBehaviorForCurrentWorkflowStageResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateProjectWorkflows">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsWorkflow">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateProjectWorkflowsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAvailableEnterpriseProjectTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAvailableEnterpriseProjectTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAvailableEnterpriseProjectTypesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" id="ResourceDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ResourceDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Resources">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="-1" name="RES_ID" type="xs:int" />
+                  <xs:element default="2" name="RES_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" default="false" name="RES_HAS_NOTES" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="true" name="RES_CAN_LEVEL" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_ACCRUE_AT" type="xs:short" />
+                  <xs:element minOccurs="0" name="RES_BOOKING_TYPE" type="xs:int" />
+                  <xs:element name="RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_INITIALS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_PHONETICS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_MATERIAL_LABEL" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_RTF_NOTES" type="xs:base64Binary" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WRES_ACCOUNT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_IS_WINDOWS_USER" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL" type="xs:string" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL_LANGUAGE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_FRIENDLY_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_SUB_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_CODE" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_GROUP" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_EXTERNAL_ID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_DEF_ASSN_OWNER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HIRE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_TERMINATION_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="false" name="RES_IS_TEAM" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="RES_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_EXCHANGE_EWS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="RES_CAL_OOF_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_COST_CENTER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NOTES" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="BaseCalendarUniqueId" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CalendarExceptions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element name="Name" type="xs:string" />
+                  <xs:element name="Start" type="xs:dateTime" />
+                  <xs:element name="Finish" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="Shift1Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift1Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Finish" type="xs:int" />
+                  <xs:element name="RecurrenceType" type="xs:int" />
+                  <xs:element name="RecurrenceFrequency" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceDays" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonthDay" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonth" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrencePosition" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceRates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="0" name="RES_RATE_TABLE" type="xs:int" />
+                  <xs:element minOccurs="0" name="RES_RATE_EFFECTIVE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="0" name="RES_STD_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_OVT_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_COST_PER_USE" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceAvailabilities">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_FROM" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_TO" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_UNITS" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:Resources" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey3">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+        </xs:unique>
+        <xs:keyref name="ResourcesResourceAvailabilities" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceAvailabilities" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceRates" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceRates" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesCalendarExceptions" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:CalendarExceptions" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceCustomFields" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/WorkflowDataSet/" id="WorkflowDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="WorkflowDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="WorkflowPhase">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PHASE_UID" type="xs:string" />
+                  <xs:element name="PHASE_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PHASE_DESCRIPTION" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowStage">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="STAGE_UID" type="xs:string" />
+                  <xs:element name="STAGE_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PHASE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PHASE_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="STAGE_DESCRIPTION" type="xs:string" />
+                  <xs:element default="false" name="CHECKIN_REQUIRED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="STAGE_SUBMIT_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="STATUS_PDP_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowStageCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="STAGE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" default="" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element default="false" name="REQUIRED" type="xs:boolean" />
+                  <xs:element default="false" name="READ_ONLY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowStageStrategicImpact">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="STAGE_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="BEHAVIOR" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowStagePDPs">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="STAGE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="MD_PROP_UID" name="PDP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="0" name="PDP_ID" type="xs:int" />
+                  <xs:element name="PDP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PDP_POSITION" type="xs:int" />
+                  <xs:element minOccurs="0" name="PDP_STAGE_DESCRIPTION" type="xs:string" />
+                  <xs:element default="false" name="PDP_REQUIRES_ATTENTION" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowInstance">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WORKFLOW_INSTANCE_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WORKFLOW_ENGINE_VERSION" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTERPRISE_PROJECT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="ENTERPRISE_PROJECT_TYPE_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowAssociation">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WORKFLOW_ASSOCIATION_UID" type="xs:string" />
+                  <xs:element name="WORKFLOW_ASSOCIATION_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WORKFLOW_ASSOCIATION_DESCRIPTION" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WorkflowStatus">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WORKFLOW_INSTANCE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="STAGE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="STAGE_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="PHASE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PHASE_NAME" type="xs:string" />
+                  <xs:element name="STAGE_STATUS" type="xs:int" />
+                  <xs:element minOccurs="0" name="STAGE_INFO" type="xs:string" />
+                  <xs:element msdata:Caption="STATUS_ORDER" minOccurs="0" name="STAGE_ORDER" type="xs:int" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="STAGE_ENTRY_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="STAGE_COMPLETION_DATE" type="xs:dateTime" />
+                  <xs:element msprop:Generator_UserColumnName="WORKFLOW_MOD_DATE" msprop:Generator_ColumnPropNameInTable="WORKFLOW_MOD_DATE" minOccurs="0" name="WORKFLOW_MOD_DATE" type="xs:dateTime" />
+                  <xs:element msprop:Generator_UserColumnName="SUBMITTED_DATE" msprop:Generator_ColumnPropNameInTable="SUBMITTED_DATE" minOccurs="0" name="SUBMITTED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="NEXT_STAGE1" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="NEXT_STAGE2" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="EnterpriseProjectType">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTERPRISE_PROJECT_TYPE_UID" type="xs:string" />
+                  <xs:element name="ENTERPRISE_PROJECT_TYPE_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="ENTERPRISE_PROJECT_TYPE_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WORKFLOW_ASSOCIATION_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WORKFLOW_ASSOCIATION_NAME" type="xs:string" />
+                  <xs:element default="false" name="IS_DEFAULT_PROJECT_TYPE" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ENTERPRISE_PROJECT_PLAN_TEMPLATE_UID" type="xs:string" />
+                  <xs:element name="ENTERPRISE_PROJECT_WORKSPACE_TEMPLATE_NAME" type="xs:string" />
+                  <xs:element default="0" name="ENTERPRISE_PROJECT_TYPE_ORDER" type="xs:int" />
+                  <xs:element minOccurs="0" name="ENTERPRISE_PROJECT_TYPE_IMAGE_URL" type="xs:string" />
+                  <xs:element minOccurs="0" default="true" name="IS_MANAGED_PROJECT" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="EnterpriseProjectTypeDepartments">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTERPRISE_PROJECT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DEPARTMENT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="EnterpriseProjectTypePDPs">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTERPRISE_PROJECT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PDP_UID" type="xs:string" />
+                  <xs:element default="0" name="PDP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="PDP_NAME" type="xs:string" />
+                  <xs:element default="true" name="IS_CREATE_PDP" type="xs:boolean" />
+                  <xs:element default="0" name="PDP_POSITION" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateProjectWorkflows">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="JOB_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTERPRISE_PROJECT_TYPE_UID" type="xs:string" />
+                  <xs:element name="SKIP_TO_CURRENT_STAGE" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="STAGE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowPhase" />
+          <xs:field xpath="mstns:PHASE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowStage_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStage" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowStageCustomFields_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStageCustomFields" />
+          <xs:field xpath="mstns:STAGE_UID" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowStageStrategicImpact_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStageStrategicImpact" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowStagePDPs_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStagePDPs" />
+          <xs:field xpath="mstns:STAGE_UID" />
+          <xs:field xpath="mstns:PDP_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowInstance_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowInstance" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowAssociation_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowAssociation" />
+          <xs:field xpath="mstns:WORKFLOW_ASSOCIATION_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="WorkflowStatus_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStatus" />
+          <xs:field xpath="mstns:WORKFLOW_INSTANCE_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="EnterpriseProjectType_Constraint1">
+          <xs:selector xpath=".//mstns:EnterpriseProjectType" />
+          <xs:field xpath="mstns:ENTERPRISE_PROJECT_TYPE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="EnterpriseProjectTypeDepartments_Constraint1">
+          <xs:selector xpath=".//mstns:EnterpriseProjectTypeDepartments" />
+          <xs:field xpath="mstns:ENTERPRISE_PROJECT_TYPE_UID" />
+          <xs:field xpath="mstns:DEPARTMENT_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="EnterpriseProjectTypePDPs_Constraint1">
+          <xs:selector xpath=".//mstns:EnterpriseProjectTypePDPs" />
+          <xs:field xpath="mstns:ENTERPRISE_PROJECT_TYPE_UID" />
+          <xs:field xpath="mstns:PDP_UID" />
+          <xs:field xpath="mstns:IS_CREATE_PDP" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="UpdateProjectWorkflows_Constraint1">
+          <xs:selector xpath=".//mstns:UpdateProjectWorkflows" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_EnterpriseProjectType_EnterpriseProjectTypePDPs" refer="mstns:EnterpriseProjectType_Constraint1">
+          <xs:selector xpath=".//mstns:EnterpriseProjectTypePDPs" />
+          <xs:field xpath="mstns:ENTERPRISE_PROJECT_TYPE_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="EnterpriseProjectType_EnterpriseProjectTypeDepartments" refer="mstns:EnterpriseProjectType_Constraint1">
+          <xs:selector xpath=".//mstns:EnterpriseProjectTypeDepartments" />
+          <xs:field xpath="mstns:ENTERPRISE_PROJECT_TYPE_UID" />
+        </xs:keyref>
+        <xs:keyref name="FK_WorkflowStage_WorkflowStageEDPs" refer="mstns:WorkflowStage_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStagePDPs" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_WorkflowStage_WorkflowStageStrategicImpact" refer="mstns:WorkflowStage_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStageStrategicImpact" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_WorkflowStage_WorkflowStageCustomFields" refer="mstns:WorkflowStage_Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStageCustomFields" />
+          <xs:field xpath="mstns:STAGE_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_WorkflowPhase_WorkflowStage" refer="mstns:Constraint1">
+          <xs:selector xpath=".//mstns:WorkflowStage" />
+          <xs:field xpath="mstns:PHASE_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadWorkflowPhaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowPhaseList" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowPhaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowPhaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowPhaseSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowPhase" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowPhaseSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowPhaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWorkflowPhaseSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWorkflowPhase" />
+  </wsdl:message>
+  <wsdl:message name="CreateWorkflowPhaseSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWorkflowPhaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowPhaseSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowPhase" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowPhaseSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowPhaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWorkflowPhasesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflowPhases" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWorkflowPhasesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflowPhasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStageListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStageList" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStageListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStageSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStage" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStageSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStageResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWorkflowStageSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWorkflowStage" />
+  </wsdl:message>
+  <wsdl:message name="CreateWorkflowStageSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWorkflowStageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowStageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowStage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowStageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowStageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWorkflowStagesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflowStages" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWorkflowStagesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflowStagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunProjectWorkflowSoapIn">
+    <wsdl:part name="parameters" element="tns:RunProjectWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="RunProjectWorkflowSoapOut">
+    <wsdl:part name="parameters" element="tns:RunProjectWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflows" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowProxyUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowProxyUser" />
+  </wsdl:message>
+  <wsdl:message name="ReadWorkflowProxyUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWorkflowProxyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowProxyUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowProxyUser" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWorkflowProxyUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowProxyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectTypeList" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeListByDepartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectTypeListByDepartment" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeListByDepartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectTypeListByDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectType" />
+  </wsdl:message>
+  <wsdl:message name="ReadEnterpriseProjectTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEnterpriseProjectTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEnterpriseProjectTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEnterpriseProjectType" />
+  </wsdl:message>
+  <wsdl:message name="CreateEnterpriseProjectTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEnterpriseProjectTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEnterpriseProjectTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEnterpriseProjectType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEnterpriseProjectTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEnterpriseProjectTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnterpriseProjectTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEnterpriseProjectTypes" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEnterpriseProjectTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEnterpriseProjectTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetWorkflowStageStatusInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetWorkflowStageStatusInformation" />
+  </wsdl:message>
+  <wsdl:message name="SetWorkflowStageStatusInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetWorkflowStageStatusInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectWorkflowSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProjectWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectWorkflowSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProjectWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadStrategicImpactBehaviorForCurrentWorkflowStageSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadStrategicImpactBehaviorForCurrentWorkflowStage" />
+  </wsdl:message>
+  <wsdl:message name="ReadStrategicImpactBehaviorForCurrentWorkflowStageSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadStrategicImpactBehaviorForCurrentWorkflowStageResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateProjectWorkflowsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueUpdateProjectWorkflows" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateProjectWorkflowsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueUpdateProjectWorkflowsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAvailableEnterpriseProjectTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAvailableEnterpriseProjectTypes" />
+  </wsdl:message>
+  <wsdl:message name="ReadAvailableEnterpriseProjectTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAvailableEnterpriseProjectTypesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WorkflowSoap">
+    <wsdl:operation name="ReadWorkflowPhaseList">
+      <wsdl:input message="tns:ReadWorkflowPhaseListSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowPhaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowPhase">
+      <wsdl:input message="tns:ReadWorkflowPhaseSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowPhaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowPhase">
+      <wsdl:input message="tns:CreateWorkflowPhaseSoapIn" />
+      <wsdl:output message="tns:CreateWorkflowPhaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowPhase">
+      <wsdl:input message="tns:UpdateWorkflowPhaseSoapIn" />
+      <wsdl:output message="tns:UpdateWorkflowPhaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowPhases">
+      <wsdl:input message="tns:DeleteWorkflowPhasesSoapIn" />
+      <wsdl:output message="tns:DeleteWorkflowPhasesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStageList">
+      <wsdl:input message="tns:ReadWorkflowStageListSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowStageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStage">
+      <wsdl:input message="tns:ReadWorkflowStageSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowStageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowStage">
+      <wsdl:input message="tns:CreateWorkflowStageSoapIn" />
+      <wsdl:output message="tns:CreateWorkflowStageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowStage">
+      <wsdl:input message="tns:UpdateWorkflowStageSoapIn" />
+      <wsdl:output message="tns:UpdateWorkflowStageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowStages">
+      <wsdl:input message="tns:DeleteWorkflowStagesSoapIn" />
+      <wsdl:output message="tns:DeleteWorkflowStagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunProjectWorkflow">
+      <wsdl:input message="tns:RunProjectWorkflowSoapIn" />
+      <wsdl:output message="tns:RunProjectWorkflowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflows">
+      <wsdl:input message="tns:ReadWorkflowsSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStatus">
+      <wsdl:input message="tns:ReadWorkflowStatusSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowProxyUser">
+      <wsdl:input message="tns:ReadWorkflowProxyUserSoapIn" />
+      <wsdl:output message="tns:ReadWorkflowProxyUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowProxyUser">
+      <wsdl:input message="tns:UpdateWorkflowProxyUserSoapIn" />
+      <wsdl:output message="tns:UpdateWorkflowProxyUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeList">
+      <wsdl:input message="tns:ReadEnterpriseProjectTypeListSoapIn" />
+      <wsdl:output message="tns:ReadEnterpriseProjectTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeListByDepartment">
+      <wsdl:input message="tns:ReadEnterpriseProjectTypeListByDepartmentSoapIn" />
+      <wsdl:output message="tns:ReadEnterpriseProjectTypeListByDepartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectType">
+      <wsdl:input message="tns:ReadEnterpriseProjectTypeSoapIn" />
+      <wsdl:output message="tns:ReadEnterpriseProjectTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnterpriseProjectType">
+      <wsdl:input message="tns:CreateEnterpriseProjectTypeSoapIn" />
+      <wsdl:output message="tns:CreateEnterpriseProjectTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEnterpriseProjectType">
+      <wsdl:input message="tns:UpdateEnterpriseProjectTypeSoapIn" />
+      <wsdl:output message="tns:UpdateEnterpriseProjectTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnterpriseProjectTypes">
+      <wsdl:input message="tns:DeleteEnterpriseProjectTypesSoapIn" />
+      <wsdl:output message="tns:DeleteEnterpriseProjectTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetWorkflowStageStatusInformation">
+      <wsdl:input message="tns:SetWorkflowStageStatusInformationSoapIn" />
+      <wsdl:output message="tns:SetWorkflowStageStatusInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectWorkflow">
+      <wsdl:input message="tns:UpdateProjectWorkflowSoapIn" />
+      <wsdl:output message="tns:UpdateProjectWorkflowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadStrategicImpactBehaviorForCurrentWorkflowStage">
+      <wsdl:input message="tns:ReadStrategicImpactBehaviorForCurrentWorkflowStageSoapIn" />
+      <wsdl:output message="tns:ReadStrategicImpactBehaviorForCurrentWorkflowStageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateProjectWorkflows">
+      <wsdl:input message="tns:QueueUpdateProjectWorkflowsSoapIn" />
+      <wsdl:output message="tns:QueueUpdateProjectWorkflowsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAvailableEnterpriseProjectTypes">
+      <wsdl:input message="tns:ReadAvailableEnterpriseProjectTypesSoapIn" />
+      <wsdl:output message="tns:ReadAvailableEnterpriseProjectTypesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WorkflowSoap" type="tns:WorkflowSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadWorkflowPhaseList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowPhaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowPhase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowPhase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowPhase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowPhases">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteWorkflowPhases" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStageList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStage">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowStage">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowStage">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowStages">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteWorkflowStages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunProjectWorkflow">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/RunProjectWorkflow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflows">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflows" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowProxyUser">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowProxyUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowProxyUser">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowProxyUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeListByDepartment">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectTypeListByDepartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectType">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnterpriseProjectType">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEnterpriseProjectType">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnterpriseProjectTypes">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteEnterpriseProjectTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWorkflowStageStatusInformation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/SetWorkflowStageStatusInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectWorkflow">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateProjectWorkflow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadStrategicImpactBehaviorForCurrentWorkflowStage">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadStrategicImpactBehaviorForCurrentWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateProjectWorkflows">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/QueueUpdateProjectWorkflows" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAvailableEnterpriseProjectTypes">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadAvailableEnterpriseProjectTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WorkflowSoap12" type="tns:WorkflowSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadWorkflowPhaseList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowPhaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowPhase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowPhase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowPhase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowPhase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowPhases">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteWorkflowPhases" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStageList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStage">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWorkflowStage">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowStage">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflowStages">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteWorkflowStages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunProjectWorkflow">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/RunProjectWorkflow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflows">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflows" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWorkflowProxyUser">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadWorkflowProxyUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowProxyUser">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateWorkflowProxyUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectTypeListByDepartment">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectTypeListByDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEnterpriseProjectType">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEnterpriseProjectType">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/CreateEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEnterpriseProjectType">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateEnterpriseProjectType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnterpriseProjectTypes">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/DeleteEnterpriseProjectTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWorkflowStageStatusInformation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/SetWorkflowStageStatusInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectWorkflow">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/UpdateProjectWorkflow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadStrategicImpactBehaviorForCurrentWorkflowStage">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadStrategicImpactBehaviorForCurrentWorkflowStage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateProjectWorkflows">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/QueueUpdateProjectWorkflows" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAvailableEnterpriseProjectTypes">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Workflow/ReadAvailableEnterpriseProjectTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Workflow">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Workflow web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="WorkflowSoap" binding="tns:WorkflowSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Workflow.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WorkflowSoap12" binding="tns:WorkflowSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Workflow.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

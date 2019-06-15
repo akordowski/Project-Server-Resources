@@ -1,0 +1,3234 @@
+{
+	"info": {
+		"_postman_id": "97f05f9e-66fc-48aa-a743-fdfc4463e63b",
+		"name": "Project Server REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Calendars",
+			"item": [
+				{
+					"name": "Calendars",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Calendars",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Calendars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calendars(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Calendars('{{calendarUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Calendars('{{calendarUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calendars(uid)/BaseCalendarExceptions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Calendars('{{calendarUid}}')/BaseCalendarExceptions",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Calendars('{{calendarUid}}')",
+								"BaseCalendarExceptions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CustomFields",
+			"item": [
+				{
+					"name": "CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomFields(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/CustomFields('{{customFieldUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"CustomFields('{{customFieldUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomFields(uid)/EntityType",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/CustomFields('{{customFieldUid}}')/EntityType",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"CustomFields('{{customFieldUid}}')",
+								"EntityType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomFields(uid)/LookupEntries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/CustomFields('{{customFieldUid}}')/LookupEntries",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"CustomFields('{{customFieldUid}}')",
+								"LookupEntries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomFields(uid)/LookupTable",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/CustomFields('{{customFieldUid}}')/LookupTable",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"CustomFields('{{customFieldUid}}')",
+								"LookupTable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EnterpriseProjectTypes",
+			"item": [
+				{
+					"name": "EnterpriseProjectTypes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseProjectTypes",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseProjectTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseProjectTypes(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseProjectTypes('{{enterpriseProjectTypeUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseProjectTypes('{{enterpriseProjectTypeUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseProjectTypes(uid)/ProjectDetailPages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseProjectTypes('{{enterpriseProjectTypeUid}}')/ProjectDetailPages",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseProjectTypes('{{enterpriseProjectTypeUid}}')",
+								"ProjectDetailPages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EnterpriseResources",
+			"item": [
+				{
+					"name": "EnterpriseResources",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/BaseCalendar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/BaseCalendar",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"BaseCalendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/DefaultAssignmentOwner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/DefaultAssignmentOwner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"DefaultAssignmentOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/ResourceCalendarExceptions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/ResourceCalendarExceptions",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"ResourceCalendarExceptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/TimesheetManager",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/TimesheetManager",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"TimesheetManager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/User",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"User"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EnterpriseResources/Assignments",
+			"item": [
+				{
+					"name": "EnterpriseResources(uid)/Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/Assignments(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments('{{assignmentUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments('{{assignmentUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/Assignments(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments('{{assignmentUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/Assignments(uid)/Project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments('{{assignmentUid}}')/Project",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/Assignments(uid)/Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments('{{assignmentUid}}')/Resource",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseResources(uid)/Assignments(uid)/Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EnterpriseResources('{{enterpriseResourceUid}}')/Assignments('{{assignmentUid}}')/Task",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EnterpriseResources('{{enterpriseResourceUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EntityTypes",
+			"item": [
+				{
+					"name": "EntityTypes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EntityTypes",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EntityTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityTypes/AssignmentEntity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EntityTypes/AssignmentEntity",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EntityTypes",
+								"AssignmentEntity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityTypes/ProjectEntity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EntityTypes/ProjectEntity",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EntityTypes",
+								"ProjectEntity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityTypes/ResourceEntity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EntityTypes/ResourceEntity",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EntityTypes",
+								"ResourceEntity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityTypes/TaskEntity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EntityTypes/TaskEntity",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EntityTypes",
+								"TaskEntity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EventHandlers",
+			"item": [
+				{
+					"name": "EventHandlers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/EventHandlers",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"EventHandlers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Events",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LookupTables",
+			"item": [
+				{
+					"name": "LookupTables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/LookupTables",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"LookupTables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LookupTables(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/LookupTables('{{lookupTableUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"LookupTables('{{lookupTableUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LookupTables(uid)/Entries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/LookupTables('{{lookupTableUid}}')/Entries",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"LookupTables('{{lookupTableUid}}')",
+								"Entries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Phases",
+			"item": [
+				{
+					"name": "Phases",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Phases",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Phases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Phases(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Phases('{{phaseUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Phases('{{phaseUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Phases(uid)/Stages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Phases('{{phaseUid}}')/Stages",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Phases('{{phaseUid}}')",
+								"Stages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata=verbose",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Calendar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Calendar",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/CheckedOutBy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/CheckedOutBy",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"CheckedOutBy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/EnterpriseProjectType",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/EnterpriseProjectType",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"EnterpriseProjectType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/IncludeCustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/IncludeCustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"IncludeCustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Owner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Phase",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Phase",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Phase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/QueueJobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/QueueJobs",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"QueueJobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Stage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Stage",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/TaskLinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/TaskLinks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"TaskLinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects/Assignments",
+			"item": [
+				{
+					"name": "Projects(uid)/Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)/Owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')/Owner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)/Parent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')/Parent",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Parent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)/Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')/Resource",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Assignments(uid)/Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Assignments('{{assignmentUid}}')/Task",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Assignments('{{assignmentUid}}')",
+								"Task"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects/Draft",
+			"item": [
+				{
+					"name": "Projects(uid)/Draft",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Assignments",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Calendar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Calendar",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/CheckedOutBy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/CheckedOutBy",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"CheckedOutBy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/EnterpriseProjectType",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/EnterpriseProjectType",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"EnterpriseProjectType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/IncludeCustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/IncludeCustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"IncludeCustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Owner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Phase",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Phase",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Phase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/ProjectResources",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/ProjectResources",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"ProjectResources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/QueueJobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/QueueJobs",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"QueueJobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Stage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Stage",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Stage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/TaskLinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/TaskLinks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"TaskLinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Draft/Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Draft/Tasks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Draft",
+								"Tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects/ProjectResources",
+			"item": [
+				{
+					"name": "Projects(uid)/ProjectResources",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/ProjectResources(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources('{{projectResourceUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources('{{projectResourceUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/ProjectResources(uid)/Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources('{{projectResourceUid}}')/Assignments",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources('{{projectResourceUid}}')",
+								"Assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/ProjectResources(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources('{{projectResourceUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources('{{projectResourceUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/ProjectResources(uid)/DefaultAssignmentOwner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources('{{projectResourceUid}}')/DefaultAssignmentOwner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources('{{projectResourceUid}}')",
+								"DefaultAssignmentOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/ProjectResources(uid)/EnterpriseResource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/ProjectResources('{{projectResourceUid}}')/EnterpriseResource",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"ProjectResources('{{projectResourceUid}}')",
+								"EnterpriseResource"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects/TaskLinks",
+			"item": [
+				{
+					"name": "Projects(uid)/TaskLinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/TaskLinks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"TaskLinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/TaskLinks(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/TaskLinks('{{taskLinkUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"TaskLinks('{{taskLinkUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/TaskLinks(uid)/End",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/TaskLinks('{{taskLinkUid}}')/End",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"TaskLinks('{{taskLinkUid}}')",
+								"End"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/TaskLinks(uid)/Start",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/TaskLinks('{{taskLinkUid}}')/Start",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"TaskLinks('{{taskLinkUid}}')",
+								"Start"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects/Tasks",
+			"item": [
+				{
+					"name": "Projects(uid)/Tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/Assignments",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"Assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/Calendar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/Calendar",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"Calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/CustomFields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/CustomFields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"CustomFields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/Parent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/Parent",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"Parent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/Predecessors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/Predecessors",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"Predecessors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/SubProject",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/SubProject",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"SubProject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects(uid)/Tasks(uid)/Successors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Projects('{{projectUid}}')/Tasks('{{taskUid}}')/Successors",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Projects('{{projectUid}}')",
+								"Tasks('{{taskUid}}')",
+								"Successors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stages",
+			"item": [
+				{
+					"name": "Stages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/Stages",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"Stages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TimeSheetPeriods",
+			"item": [
+				{
+					"name": "TimeSheetPeriods",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/TimeSheetPeriods",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"TimeSheetPeriods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheetPeriods(uid)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/TimeSheetPeriods('{{timeSheetPeriodUid}}')",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"TimeSheetPeriods('{{timeSheetPeriodUid}}')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheetPeriods(uid)/TimeSheet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/TimeSheetPeriods('{{timeSheetPeriodUid}}')/TimeSheet",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"TimeSheetPeriods('{{timeSheetPeriodUid}}')",
+								"TimeSheet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WorkflowActivities",
+			"item": [
+				{
+					"name": "WorkflowActivities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/WorkflowActivities",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"WorkflowActivities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WorkflowDesigner",
+			"item": [
+				{
+					"name": "WorkflowDesigner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/WorkflowDesigner",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"WorkflowDesigner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WorkflowDesigner/Fields",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/WorkflowDesigner/Fields",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"WorkflowDesigner",
+								"Fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WorkflowDesigner/Fields(uid)/LookupEntries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json;odata=verbose"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ProjectServerUrl}}/PWA/_api/ProjectServer/WorkflowDesigner/Fields('{{fieldUid}}')/LookupEntries",
+							"host": [
+								"{{ProjectServerUrl}}"
+							],
+							"path": [
+								"PWA",
+								"_api",
+								"ProjectServer",
+								"WorkflowDesigner",
+								"Fields('{{fieldUid}}')",
+								"LookupEntries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "ntlm",
+		"ntlm": [
+			{
+				"key": "domain",
+				"value": "{{Domain}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{Password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cf3463d4-64fd-415e-bab6-b7d2f27458dd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8e8f68b7-f99d-44f9-b65d-28598e200de4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

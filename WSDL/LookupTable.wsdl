@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the LookupTable web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" />
+      <s:element name="CheckOutLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOutLookupTablesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckInLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="force" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInLookupTablesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadLookupTablesMultiLang">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesMultiLangResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLookupTablesMultiLangResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLookupTablesMultiLang">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLookupTablesMultiLangResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltGuids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLookupTablesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateLookupTablesMultiLang">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLookupTablesMultiLangResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLookupTablesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesByUids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltUidList" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesByUidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLookupTablesByUidsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesMultiLangByUids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltUidList" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLookupTablesMultiLangByUidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLookupTablesMultiLangByUidsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLookupTablesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateLookupTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ltds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLookupTablesResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableMultiLangDataSet/" id="LookupTableMultiLangDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="LookupTableMultiLangDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LookupTables">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element name="LT_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_SORT_ORDER_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="LT_PRIMARY_LCID" type="xs:int" />
+                  <xs:element minOccurs="0" default="false" name="LT_FILL_ALL_LEVELS" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="LT_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LT_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="APP_ENTITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableMaskStructures">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element name="LT_MASK_STRUCT_LEVEL" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_MASK_STRUCT_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" default="0" name="LT_MASK_STRUCT_LENGTH" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableMaskValues">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="LT_MASK_VALUE_SEPARATOR" type="xs:string" />
+                  <xs:element name="LT_MASK_STRUCT_LEVEL" type="xs:int" />
+                  <xs:element name="LCID" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableStructures">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LT_PARENT_STRUCT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_STRUCT_COOKIE" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="APP_ENTITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableValues">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element name="LCID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DUR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_NUM" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="LT_VALUE_TEXT" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_WEIGHT" type="xs:double" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_BACK_COLOR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_FORE_COLOR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_PHONETIC" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LT_VALUE_FULL" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DESC" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_SORT_INDEX" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="LT_VALUE_LOCALIZED_COOKIE" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableLanguages">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element name="LCID" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTables" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey2">
+          <xs:selector xpath=".//mstns:LookupTableMaskStructures" />
+          <xs:field xpath="mstns:LT_UID" />
+          <xs:field xpath="mstns:LT_MASK_STRUCT_LEVEL" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey3">
+          <xs:selector xpath=".//mstns:LookupTableMaskValues" />
+          <xs:field xpath="mstns:LT_UID" />
+          <xs:field xpath="mstns:LT_MASK_STRUCT_LEVEL" />
+          <xs:field xpath="mstns:LCID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey4">
+          <xs:selector xpath=".//mstns:LookupTableStructures" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey5">
+          <xs:selector xpath=".//mstns:LookupTableValues" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+          <xs:field xpath="mstns:LCID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableMultiLangDataSetKey6">
+          <xs:selector xpath=".//mstns:LookupTableLanguages" />
+          <xs:field xpath="mstns:LT_UID" />
+          <xs:field xpath="mstns:LCID" />
+        </xs:unique>
+        <xs:keyref name="LookupTablesLookupTableLanguages" refer="mstns:LookupTableMultiLangDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTableLanguages" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTableStructuresLookupTableValues" refer="mstns:LookupTableMultiLangDataSetKey4">
+          <xs:selector xpath=".//mstns:LookupTableValues" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTableStructuresLookupTableStructures" refer="mstns:LookupTableMultiLangDataSetKey4">
+          <xs:selector xpath=".//mstns:LookupTableStructures" />
+          <xs:field xpath="mstns:LT_PARENT_STRUCT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTablesLookupTableStructures" refer="mstns:LookupTableMultiLangDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTableStructures" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTableMaskStructuresLookupTableMaskValues" refer="mstns:LookupTableMultiLangDataSetKey2">
+          <xs:selector xpath=".//mstns:LookupTableMaskValues" />
+          <xs:field xpath="mstns:LT_UID" />
+          <xs:field xpath="mstns:LT_MASK_STRUCT_LEVEL" />
+        </xs:keyref>
+        <xs:keyref name="LookupTablesLookupTableMaskStructures" refer="mstns:LookupTableMultiLangDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTableMaskStructures" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/LookupTableDataSet/" id="LookupTableDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="LookupTableDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LookupTables">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element name="LT_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" default="0" name="LT_SORT_ORDER_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="LT_PRIMARY_LCID" type="xs:int" />
+                  <xs:element minOccurs="0" default="false" name="LT_FILL_ALL_LEVELS" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="LT_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LT_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="APP_ENTITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableMasks">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element name="LT_MASK_STRUCT_LEVEL" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_MASK_STRUCT_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" default="0" name="LT_MASK_STRUCT_LENGTH" type="xs:int" />
+                  <xs:element minOccurs="0" default="" name="LT_MASK_VALUE_SEPARATOR" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="LookupTableTrees">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LT_PARENT_STRUCT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DUR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_NUM" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="LT_VALUE_TEXT" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_WEIGHT" type="xs:double" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_BACK_COLOR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DEFAULT_FORE_COLOR" type="xs:int" />
+                  <xs:element minOccurs="0" name="LT_VALUE_PHONETIC" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_DESC" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_VALUE_SORT_INDEX" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="LT_VALUE_LOCALIZED_COOKIE" type="xs:string" />
+                  <xs:element minOccurs="0" name="LT_STRUCT_COOKIE" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LT_VALUE_FULL" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="APP_ENTITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTables" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="LookupTableDataSetKey2">
+          <xs:selector xpath=".//mstns:LookupTableMasks" />
+          <xs:field xpath="mstns:LT_UID" />
+          <xs:field xpath="mstns:LT_MASK_STRUCT_LEVEL" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="key1">
+          <xs:selector xpath=".//mstns:LookupTableTrees" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+        </xs:unique>
+        <xs:keyref name="LookupTableTreesLookupTableTrees" refer="mstns:key1">
+          <xs:selector xpath=".//mstns:LookupTableTrees" />
+          <xs:field xpath="mstns:LT_PARENT_STRUCT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTablesLookupTableTrees" refer="mstns:LookupTableDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTableTrees" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:keyref>
+        <xs:keyref name="LookupTablesLookupTableMasks" refer="mstns:LookupTableDataSetKey1">
+          <xs:selector xpath=".//mstns:LookupTableMasks" />
+          <xs:field xpath="mstns:LT_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckOutLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOutLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="CheckInLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesMultiLangSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesMultiLang" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesMultiLangSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesMultiLangResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateLookupTablesMultiLangSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateLookupTablesMultiLang" />
+  </wsdl:message>
+  <wsdl:message name="CreateLookupTablesMultiLangSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateLookupTablesMultiLangResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLookupTablesMultiLangSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLookupTablesMultiLang" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLookupTablesMultiLangSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLookupTablesMultiLangResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesByUidsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesByUids" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesByUidsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesByUidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesMultiLangByUidsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesMultiLangByUids" />
+  </wsdl:message>
+  <wsdl:message name="ReadLookupTablesMultiLangByUidsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLookupTablesMultiLangByUidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="CreateLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLookupTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLookupTables" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLookupTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLookupTablesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LookupTableSoap">
+    <wsdl:operation name="CheckOutLookupTables">
+      <wsdl:input message="tns:CheckOutLookupTablesSoapIn" />
+      <wsdl:output message="tns:CheckOutLookupTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInLookupTables">
+      <wsdl:input message="tns:CheckInLookupTablesSoapIn" />
+      <wsdl:output message="tns:CheckInLookupTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLang">
+      <wsdl:input message="tns:ReadLookupTablesMultiLangSoapIn" />
+      <wsdl:output message="tns:ReadLookupTablesMultiLangSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTablesMultiLang">
+      <wsdl:input message="tns:CreateLookupTablesMultiLangSoapIn" />
+      <wsdl:output message="tns:CreateLookupTablesMultiLangSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupTables">
+      <wsdl:input message="tns:DeleteLookupTablesSoapIn" />
+      <wsdl:output message="tns:DeleteLookupTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTablesMultiLang">
+      <wsdl:input message="tns:UpdateLookupTablesMultiLangSoapIn" />
+      <wsdl:output message="tns:UpdateLookupTablesMultiLangSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTables">
+      <wsdl:input message="tns:ReadLookupTablesSoapIn" />
+      <wsdl:output message="tns:ReadLookupTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesByUids">
+      <wsdl:input message="tns:ReadLookupTablesByUidsSoapIn" />
+      <wsdl:output message="tns:ReadLookupTablesByUidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLangByUids">
+      <wsdl:input message="tns:ReadLookupTablesMultiLangByUidsSoapIn" />
+      <wsdl:output message="tns:ReadLookupTablesMultiLangByUidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTables">
+      <wsdl:input message="tns:CreateLookupTablesSoapIn" />
+      <wsdl:output message="tns:CreateLookupTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTables">
+      <wsdl:input message="tns:UpdateLookupTablesSoapIn" />
+      <wsdl:output message="tns:UpdateLookupTablesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LookupTableSoap" type="tns:LookupTableSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CheckOutLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CheckInLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLang">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTablesMultiLang">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CreateLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/DeleteLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTablesMultiLang">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/UpdateLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesByUids">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesByUids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLangByUids">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesMultiLangByUids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CreateLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTables">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/UpdateLookupTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LookupTableSoap12" type="tns:LookupTableSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CheckOutLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CheckInLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLang">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTablesMultiLang">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CreateLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/DeleteLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTablesMultiLang">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/UpdateLookupTablesMultiLang" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesByUids">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesByUids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLookupTablesMultiLangByUids">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/ReadLookupTablesMultiLangByUids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/CreateLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLookupTables">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/LookupTable/UpdateLookupTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LookupTable">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the LookupTable web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="LookupTableSoap" binding="tns:LookupTableSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/LookupTable.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LookupTableSoap12" binding="tns:LookupTableSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/LookupTable.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

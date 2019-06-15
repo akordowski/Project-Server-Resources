@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Events/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Events/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Events web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Events/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ReadEventsList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadEventsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEventsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEventHandlerAssociations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eventHandlers">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEventHandlerAssociationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateEventHandlerAssociations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eventHandlers">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEventHandlerAssociationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadEventHandlerAssociationsForEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="tns:PSEventID" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PSEventID">
+        <s:restriction base="s:string">
+          <s:enumeration value="AdminReportingPeriodUpdated" />
+          <s:enumeration value="AdminReportingPeriodUpdating" />
+          <s:enumeration value="AdminLineClassUpdated" />
+          <s:enumeration value="AdminLineClassUpdating" />
+          <s:enumeration value="AdminStatusReportsDeleted" />
+          <s:enumeration value="AdminStatusReportsDeleting" />
+          <s:enumeration value="WssInteropWssWorkspaceCreated" />
+          <s:enumeration value="WssInteropWssWorkspaceCreating" />
+          <s:enumeration value="Deprecated8" />
+          <s:enumeration value="Deprecated9" />
+          <s:enumeration value="AdminAdSyncERPSynchronized" />
+          <s:enumeration value="AdminAdSyncERPSynchronizing" />
+          <s:enumeration value="AdminAdSyncGroupSynchronized" />
+          <s:enumeration value="AdminAdSyncGroupSynchronizing" />
+          <s:enumeration value="AdminAdSyncGroupsSynchronized" />
+          <s:enumeration value="AdminAdSyncGroupsSynchronizing" />
+          <s:enumeration value="CalendarCreated" />
+          <s:enumeration value="CalendarCreating" />
+          <s:enumeration value="CalendarDeleted" />
+          <s:enumeration value="CalendarDeleting" />
+          <s:enumeration value="CalendarChanged" />
+          <s:enumeration value="CalendarChanging" />
+          <s:enumeration value="CalendarCheckedOut" />
+          <s:enumeration value="CalendarCheckingOut" />
+          <s:enumeration value="CalendarCheckedIn" />
+          <s:enumeration value="CalendarCheckingIn" />
+          <s:enumeration value="CustomFieldsCreated" />
+          <s:enumeration value="CustomFieldsCreating" />
+          <s:enumeration value="CustomFieldsDeleted" />
+          <s:enumeration value="CustomFieldsDeleting" />
+          <s:enumeration value="CustomFieldsUpdated" />
+          <s:enumeration value="CustomFieldsUpdating" />
+          <s:enumeration value="CustomFieldsCheckedOut" />
+          <s:enumeration value="CustomFieldsCheckingOut" />
+          <s:enumeration value="CustomFieldsCheckedIn" />
+          <s:enumeration value="CustomFieldsCheckingIn" />
+          <s:enumeration value="LookupTableCreated" />
+          <s:enumeration value="LookupTableCreating" />
+          <s:enumeration value="LookupTableDeleted" />
+          <s:enumeration value="LookupTableDeleting" />
+          <s:enumeration value="LookupTableUpdated" />
+          <s:enumeration value="LookupTableUpdating" />
+          <s:enumeration value="LookupTableCheckedOut" />
+          <s:enumeration value="LookupTableCheckingOut" />
+          <s:enumeration value="LookupTableCheckedIn" />
+          <s:enumeration value="LookupTableCheckingIn" />
+          <s:enumeration value="ProjectCreated" />
+          <s:enumeration value="ProjectCreating" />
+          <s:enumeration value="ProjectDeleted" />
+          <s:enumeration value="ProjectDeleting" />
+          <s:enumeration value="ProjectSaved" />
+          <s:enumeration value="ProjectCheckIn" />
+          <s:enumeration value="ProjectSaveFailed" />
+          <s:enumeration value="ProjectPublished" />
+          <s:enumeration value="ProjectPublishing" />
+          <s:enumeration value="ProjectWssWorkspaceAddressUpdated" />
+          <s:enumeration value="ProjectWssWorkspaceAddressUpdating" />
+          <s:enumeration value="ProjectWssWorkspaceAddressDeleted" />
+          <s:enumeration value="ProjectWssWorkspaceAddressDeleting" />
+          <s:enumeration value="ProjectActivityUpgraded" />
+          <s:enumeration value="ProjectActivityUpgrading" />
+          <s:enumeration value="ReportingResourceCapacitiesChanged" />
+          <s:enumeration value="ReportingCustomFieldCreated" />
+          <s:enumeration value="ReportingCustomFieldChanged" />
+          <s:enumeration value="ReportingCustomFieldDeleted" />
+          <s:enumeration value="ReportingUserViewChanged" />
+          <s:enumeration value="ReportingFiscalPeriodChanged" />
+          <s:enumeration value="ReportingFiscalPeriodDeleted" />
+          <s:enumeration value="ReportingLookupTableCreated" />
+          <s:enumeration value="ReportingLookupTableChanged" />
+          <s:enumeration value="ReportingLookupTableDeleted" />
+          <s:enumeration value="ReportingProjectCreated" />
+          <s:enumeration value="ReportingProjectChanged" />
+          <s:enumeration value="ReportingProjectDeleted" />
+          <s:enumeration value="ReportingResourceCapacityTimeRangeChanged" />
+          <s:enumeration value="ReportingResourceCreated" />
+          <s:enumeration value="ReportingResourceChanged" />
+          <s:enumeration value="ReportingResourceDeleted" />
+          <s:enumeration value="ReportingTimesheetSaved" />
+          <s:enumeration value="ReportingTimesheetAdjusted" />
+          <s:enumeration value="ReportingTimesheetDeleted" />
+          <s:enumeration value="ReportingTimesheetClassChanged" />
+          <s:enumeration value="ReportingTimesheetPeriodCreated" />
+          <s:enumeration value="ReportingTimesheetPeriodChanged" />
+          <s:enumeration value="ReportingTimesheetPeriodDeleted" />
+          <s:enumeration value="ReportingTimesheetStatusChanged" />
+          <s:enumeration value="ReportingProjectWorkspaceCreated" />
+          <s:enumeration value="ReportingProjectWorkspaceChanged" />
+          <s:enumeration value="ReportingProjectWorkspaceDeleted" />
+          <s:enumeration value="ResourceCreated" />
+          <s:enumeration value="ResourceCreating" />
+          <s:enumeration value="ResourceDeleted" />
+          <s:enumeration value="ResourceDeleting" />
+          <s:enumeration value="ResourceDeactivated" />
+          <s:enumeration value="ResourceDeactivating" />
+          <s:enumeration value="ResourceChanged" />
+          <s:enumeration value="ResourceChanging" />
+          <s:enumeration value="ResourceActivated" />
+          <s:enumeration value="ResourceActivating" />
+          <s:enumeration value="ResourceCheckedOut" />
+          <s:enumeration value="ResourceCheckingOut" />
+          <s:enumeration value="ResourceCheckedIn" />
+          <s:enumeration value="ResourceCheckingIn" />
+          <s:enumeration value="ResourceSetAuthorization" />
+          <s:enumeration value="ResourceSettingAuthorization" />
+          <s:enumeration value="SecurityOrganizationalPermissionsUpdated" />
+          <s:enumeration value="SecurityOrganizationalPermissionsUpdating" />
+          <s:enumeration value="SecurityGroupDeleted" />
+          <s:enumeration value="SecurityGroupDeleting" />
+          <s:enumeration value="SecurityGroupCreated" />
+          <s:enumeration value="SecurityGroupCreating" />
+          <s:enumeration value="SecurityGroupUpdated" />
+          <s:enumeration value="SecurityGroupUpdating" />
+          <s:enumeration value="SecurityCategoryDeleted" />
+          <s:enumeration value="SecurityCategoryDeleting" />
+          <s:enumeration value="SecurityCategoryCreated" />
+          <s:enumeration value="SecurityCategoryCreating" />
+          <s:enumeration value="SecurityCategoryUpdated" />
+          <s:enumeration value="SecurityCategoryUpdating" />
+          <s:enumeration value="SecurityTemplateCreated" />
+          <s:enumeration value="SecurityTemplateCreating" />
+          <s:enumeration value="SecurityTemplateUpdated" />
+          <s:enumeration value="SecurityTemplateUpdating" />
+          <s:enumeration value="SecurityTemplateDeleted" />
+          <s:enumeration value="SecurityTemplateDeleting" />
+          <s:enumeration value="StatusReportsRequestCreated" />
+          <s:enumeration value="StatusReportsRequestCreating" />
+          <s:enumeration value="StatusReportsRequestUpdated" />
+          <s:enumeration value="StatusReportsRequestUpdating" />
+          <s:enumeration value="StatusReportsResponseCreated" />
+          <s:enumeration value="StatusReportsResponseCreating" />
+          <s:enumeration value="StatusReportsResponseUpdated" />
+          <s:enumeration value="StatusReportsResponseUpdating" />
+          <s:enumeration value="StatusingApplied" />
+          <s:enumeration value="StatusingApplying" />
+          <s:enumeration value="StatusingHistoryDeleted" />
+          <s:enumeration value="StatusingHistoryDeleting" />
+          <s:enumeration value="StatusingStatusUpdated" />
+          <s:enumeration value="StatusingStatusUpdating" />
+          <s:enumeration value="StatusingStatusSubmitted" />
+          <s:enumeration value="StatusingStatusSubmiting" />
+          <s:enumeration value="StatusingAssignmentDeleted" />
+          <s:enumeration value="StatusingAssignmentDeleting" />
+          <s:enumeration value="StatusingAssignmentDelegated" />
+          <s:enumeration value="StatusingAssignmentDelegating" />
+          <s:enumeration value="StatusingTaskCreated" />
+          <s:enumeration value="StatusingTaskCreating" />
+          <s:enumeration value="StatusingAssignmentWorkDataSet" />
+          <s:enumeration value="StatusingAssignmentWorkDataSetting" />
+          <s:enumeration value="StatusingApprovalsUpdated" />
+          <s:enumeration value="StatusingApprovalsUpdating" />
+          <s:enumeration value="NotificationsSent" />
+          <s:enumeration value="NotificationsSending" />
+          <s:enumeration value="RulesCreated" />
+          <s:enumeration value="RulesCreating" />
+          <s:enumeration value="RulesDeleted" />
+          <s:enumeration value="RulesDeleting" />
+          <s:enumeration value="RulesCopied" />
+          <s:enumeration value="RulesCopying" />
+          <s:enumeration value="RulesProcessed" />
+          <s:enumeration value="RulesProcessing" />
+          <s:enumeration value="TimesheetCreated" />
+          <s:enumeration value="TimesheetCreating" />
+          <s:enumeration value="TimesheetDeleted" />
+          <s:enumeration value="TimesheetDeleting" />
+          <s:enumeration value="TimesheetUpdated" />
+          <s:enumeration value="TimesheetUpdating" />
+          <s:enumeration value="TimesheetSubmitted" />
+          <s:enumeration value="TimesheetSubmitting" />
+          <s:enumeration value="TimesheetRecalled" />
+          <s:enumeration value="TimesheetRecalling" />
+          <s:enumeration value="TimesheetReviewed" />
+          <s:enumeration value="TimesheetReviewing" />
+          <s:enumeration value="TimesheetLineApproved" />
+          <s:enumeration value="TimesheetLineApproving" />
+          <s:enumeration value="CubeAdminCubeBuilt" />
+          <s:enumeration value="CubeAdminCubeBuilding" />
+          <s:enumeration value="ProjectUpdated" />
+          <s:enumeration value="ProjectUpdating" />
+          <s:enumeration value="ProjectAdded" />
+          <s:enumeration value="ProjectAdding" />
+          <s:enumeration value="ProjectEntitiesDeleted" />
+          <s:enumeration value="ProjectEntitiesDeleting" />
+          <s:enumeration value="CubeAdminCubeProcessed" />
+          <s:enumeration value="SecurityProjectCategoryCreated" />
+          <s:enumeration value="SecurityProjectCategoryCreating" />
+          <s:enumeration value="SecurityProjectCategoryUpdated" />
+          <s:enumeration value="SecurityProjectCategoryUpdating" />
+          <s:enumeration value="SecurityProjectCategoryDeleted" />
+          <s:enumeration value="SecurityProjectCategoryDeleting" />
+          <s:enumeration value="ProjectUpdatedScheduledProject" />
+          <s:enumeration value="ProjectUpdatingScheduledProject" />
+          <s:enumeration value="OptimizerPlannerSolutionCommitted" />
+          <s:enumeration value="OptimizerOptimizerSolutionCommitted" />
+          <s:enumeration value="ReportingTimesheetProjectAggregated" />
+          <s:enumeration value="WorkflowRunning" />
+          <s:enumeration value="UserDelegationActivated" />
+          <s:enumeration value="UserDelegationActivating" />
+          <s:enumeration value="UserDelegationChanged" />
+          <s:enumeration value="UserDelegationChanging" />
+          <s:enumeration value="UserDelegationDeactivated" />
+          <s:enumeration value="UserDelegationDeactivating" />
+          <s:enumeration value="UserDelegationCreated" />
+          <s:enumeration value="UserDelegationCreating" />
+          <s:enumeration value="UserDelegationDeleted" />
+          <s:enumeration value="UserDelegationDeleting" />
+          <s:enumeration value="ProjectSummaryPublished" />
+          <s:enumeration value="ProjectSummaryPublishing" />
+          <s:enumeration value="ReportingWorkflowPhaseUpdated" />
+          <s:enumeration value="ReportingWorkflowPhaseDeleted" />
+          <s:enumeration value="ReportingWorkflowStageUpdated" />
+          <s:enumeration value="ReportingWorkflowStageDeleted" />
+          <s:enumeration value="ReportingEnterpriseProjectTypeUpdated" />
+          <s:enumeration value="ReportingEnterpriseProjectTypeDeleted" />
+          <s:enumeration value="ReportingProjectWorkflowInformationChanged" />
+          <s:enumeration value="ReportingProjectSummaryChanged" />
+          <s:enumeration value="ReportingCommittedSolutionDecisionChanged" />
+          <s:enumeration value="WorkflowProjectTypeChanging" />
+          <s:enumeration value="WorkflowProjectTypeChanged" />
+          <s:enumeration value="WorkflowStageEntered" />
+          <s:enumeration value="WorkflowStarted" />
+          <s:enumeration value="WorkflowCompleted" />
+          <s:enumeration value="ResourcePlanResourcePlanPublished" />
+          <s:enumeration value="ResourcePlanResourcePlanPublishing" />
+          <s:enumeration value="ProjectSyncedProjectEnterpriseEntities" />
+          <s:enumeration value="ProjectSyncingProjectEnterpriseEntities" />
+          <s:enumeration value="ProjectUpdatedPwaProject" />
+          <s:enumeration value="ProjectUpdatingPwaProject" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadEventHandlerAssociationsForEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEventHandlerAssociationsForEventResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEventHandlerAssociation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventHandlerUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEventHandlerAssociationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEventHandlerAssociationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEventHandlerAssociations">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadEventHandlerAssociationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEventHandlerAssociationsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEventHandlerAssociations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eventHandlerUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteEventHandlerAssociationsResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/EventHandlersDataSet/" id="EventHandlersDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="EventHandlersDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="EventHandlers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="EventHandlerUid" type="xs:string" />
+                  <xs:element default="" name="Name" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="AssemblyName" type="xs:string" />
+                  <xs:element minOccurs="0" name="ClassName" type="xs:string" />
+                  <xs:element name="EventId" type="xs:int" />
+                  <xs:element minOccurs="0" name="Description" type="xs:string" />
+                  <xs:element minOccurs="0" name="Order" type="xs:int" />
+                  <xs:element minOccurs="0" name="EndpointUrl" type="xs:string" />
+                  <xs:element minOccurs="0" name="AppId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="EventHandlerKey">
+          <xs:selector xpath=".//mstns:EventHandlers" />
+          <xs:field xpath="mstns:EventHandlerUid" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/EventsDataSet/" id="EventsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="EventsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Event">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="EventId" type="xs:int" />
+                  <xs:element name="SourceName" type="xs:string" />
+                  <xs:element name="EventName" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="EventKey">
+          <xs:selector xpath=".//mstns:Event" />
+          <xs:field xpath="mstns:EventId" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadEventsListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEventsList" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventsListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEventsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventHandlerAssociationsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEventHandlerAssociations" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventHandlerAssociationsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEventHandlerAssociationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEventHandlerAssociationsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEventHandlerAssociations" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEventHandlerAssociationsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEventHandlerAssociationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationsForEventSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociationsForEvent" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationsForEventSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociationsForEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociation" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociations" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventHandlerAssociationsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEventHandlerAssociationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEventHandlerAssociationsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEventHandlerAssociations" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEventHandlerAssociationsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEventHandlerAssociationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EventsSoap">
+    <wsdl:operation name="ReadEventsList">
+      <wsdl:input message="tns:ReadEventsListSoapIn" />
+      <wsdl:output message="tns:ReadEventsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventHandlerAssociations">
+      <wsdl:input message="tns:CreateEventHandlerAssociationsSoapIn" />
+      <wsdl:output message="tns:CreateEventHandlerAssociationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEventHandlerAssociations">
+      <wsdl:input message="tns:UpdateEventHandlerAssociationsSoapIn" />
+      <wsdl:output message="tns:UpdateEventHandlerAssociationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociationsForEvent">
+      <wsdl:input message="tns:ReadEventHandlerAssociationsForEventSoapIn" />
+      <wsdl:output message="tns:ReadEventHandlerAssociationsForEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociation">
+      <wsdl:input message="tns:ReadEventHandlerAssociationSoapIn" />
+      <wsdl:output message="tns:ReadEventHandlerAssociationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociations">
+      <wsdl:input message="tns:ReadEventHandlerAssociationsSoapIn" />
+      <wsdl:output message="tns:ReadEventHandlerAssociationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventHandlerAssociations">
+      <wsdl:input message="tns:DeleteEventHandlerAssociationsSoapIn" />
+      <wsdl:output message="tns:DeleteEventHandlerAssociationsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventsSoap" type="tns:EventsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadEventsList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventHandlerAssociations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/CreateEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEventHandlerAssociations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/UpdateEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociationsForEvent">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociationsForEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventHandlerAssociations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/DeleteEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EventsSoap12" type="tns:EventsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadEventsList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventHandlerAssociations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/CreateEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEventHandlerAssociations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/UpdateEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociationsForEvent">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociationsForEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEventHandlerAssociations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/ReadEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventHandlerAssociations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Events/DeleteEventHandlerAssociations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Events">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Events web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="EventsSoap" binding="tns:EventsSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Events.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EventsSoap12" binding="tns:EventsSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Events.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

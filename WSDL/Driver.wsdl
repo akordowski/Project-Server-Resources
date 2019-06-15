@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Driver/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Driver/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Driver web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Driver/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+      <s:element name="CreateDriver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDriver">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDriverResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadDriverList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadDriverListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDriverListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDriver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="driverUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDriverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDriverResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDrivers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="driverUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteDriversResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateDriver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDriver">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDriverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDriverResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPrioritization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="prioritizationUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPrioritizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPrioritizationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePrioritization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="driverPrioritizationDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePrioritizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreatePrioritizationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePrioritizations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prioritizationUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePrioritizationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePrioritization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="driverPrioritizationDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePrioritizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePrioritizationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPrioritizationList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadPrioritizationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPrioritizationListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/DriverPrioritizationDataSet/" id="DriverPrioritizationDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="DriverPrioritizationDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Prioritization">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIORITIZATION_UID" type="xs:string" />
+                  <xs:element name="PRIORITIZATION_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PRIORITIZATION_DESCRIPTION" type="xs:string" />
+                  <xs:element default="false" name="PRIORITIZATION_IS_MANUAL" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PRIORITIZATION_IS_COMPLETE" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="DEPARTMENT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DEPARTMENT_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RELATIVE_IMPORTANCE_CF_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RELATIVE_IMPORTANCE_CF_NAME" type="xs:string" />
+                  <xs:element default="1" name="CONSISTENCY_RATIO" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PRIORITIZATION_IS_USED_IN_ANALYSIS" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="PrioritizationEntries">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIORITIZATION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="DRIVER_PRIORITY" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_DESCRIPTION" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_IS_ACTIVE" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DriverRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIORITIZATION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER1_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER2_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LT_STRUCT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Prioritization_Key">
+          <xs:selector xpath=".//mstns:Prioritization" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PrioritizationEntries_Key">
+          <xs:selector xpath=".//mstns:PrioritizationEntries" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="DriverRelations_Key">
+          <xs:selector xpath=".//mstns:DriverRelations" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+          <xs:field xpath="mstns:DRIVER1_UID" />
+          <xs:field xpath="mstns:DRIVER2_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_PrioritizationEntries_DriverRelations2" refer="mstns:PrioritizationEntries_Key">
+          <xs:selector xpath=".//mstns:DriverRelations" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+          <xs:field xpath="mstns:DRIVER2_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_PrioritizationEntries_DriverRelations1" refer="mstns:PrioritizationEntries_Key">
+          <xs:selector xpath=".//mstns:DriverRelations" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+          <xs:field xpath="mstns:DRIVER1_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Prioritization_PrioritizationEntries" refer="mstns:Prioritization_Key">
+          <xs:selector xpath=".//mstns:PrioritizationEntries" />
+          <xs:field xpath="mstns:PRIORITIZATION_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/DriverDataSet/" id="DriverDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="DriverDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Driver">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER_UID" type="xs:string" />
+                  <xs:element name="DRIVER_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="DRIVER_DESCRIPTION" type="xs:string" />
+                  <xs:element minOccurs="0" name="DRIVER_IS_ACTIVE" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_IS_USED_IN_PRIORITIZATION" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DRIVER_IS_USED_IN_ANALYSIS" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="LAST_UPDATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="LAST_UPDATED_BY_RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CREATED_BY_RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_BY_RES_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DriverImpactStatements">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJECT_IMPACT_CF_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="PROJECT_IMPACT_CF_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="LT_STRUCT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="DESCRIPTION" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DriverDepartments">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DRIVER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DEPARTMENT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DEPARTMENT_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Driver_Key">
+          <xs:selector xpath=".//mstns:Driver" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="DriverImpactStatements_Key">
+          <xs:selector xpath=".//mstns:DriverImpactStatements" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+          <xs:field xpath="mstns:PROJECT_IMPACT_CF_UID" />
+          <xs:field xpath="mstns:LT_STRUCT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="DriverDepartments_Key">
+          <xs:selector xpath=".//mstns:DriverDepartments" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+          <xs:field xpath="mstns:DEPARTMENT_UID" />
+        </xs:unique>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Driver_DriverDepartments" refer="mstns:Driver_Key">
+          <xs:selector xpath=".//mstns:DriverDepartments" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:keyref>
+        <xs:keyref msdata:UpdateRule="None" msdata:DeleteRule="None" name="FK_Driver_DriverImpactStatements" refer="mstns:Driver_Key">
+          <xs:selector xpath=".//mstns:DriverImpactStatements" />
+          <xs:field xpath="mstns:DRIVER_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateDriverSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDriver" />
+  </wsdl:message>
+  <wsdl:message name="CreateDriverSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDriverListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDriverList" />
+  </wsdl:message>
+  <wsdl:message name="ReadDriverListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDriverListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDriverSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDriver" />
+  </wsdl:message>
+  <wsdl:message name="ReadDriverSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDriversSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDrivers" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDriversSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDriverSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDriver" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDriverSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPrioritizationSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPrioritization" />
+  </wsdl:message>
+  <wsdl:message name="ReadPrioritizationSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPrioritizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrioritizationSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePrioritization" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrioritizationSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePrioritizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePrioritizationsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePrioritizations" />
+  </wsdl:message>
+  <wsdl:message name="DeletePrioritizationsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePrioritizationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePrioritizationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePrioritization" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePrioritizationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePrioritizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPrioritizationListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPrioritizationList" />
+  </wsdl:message>
+  <wsdl:message name="ReadPrioritizationListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPrioritizationListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DriverSoap">
+    <wsdl:operation name="CreateDriver">
+      <wsdl:input message="tns:CreateDriverSoapIn" />
+      <wsdl:output message="tns:CreateDriverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriverList">
+      <wsdl:input message="tns:ReadDriverListSoapIn" />
+      <wsdl:output message="tns:ReadDriverListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriver">
+      <wsdl:input message="tns:ReadDriverSoapIn" />
+      <wsdl:output message="tns:ReadDriverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrivers">
+      <wsdl:input message="tns:DeleteDriversSoapIn" />
+      <wsdl:output message="tns:DeleteDriversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDriver">
+      <wsdl:input message="tns:UpdateDriverSoapIn" />
+      <wsdl:output message="tns:UpdateDriverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritization">
+      <wsdl:input message="tns:ReadPrioritizationSoapIn" />
+      <wsdl:output message="tns:ReadPrioritizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrioritization">
+      <wsdl:input message="tns:CreatePrioritizationSoapIn" />
+      <wsdl:output message="tns:CreatePrioritizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrioritizations">
+      <wsdl:input message="tns:DeletePrioritizationsSoapIn" />
+      <wsdl:output message="tns:DeletePrioritizationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrioritization">
+      <wsdl:input message="tns:UpdatePrioritizationSoapIn" />
+      <wsdl:output message="tns:UpdatePrioritizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritizationList">
+      <wsdl:input message="tns:ReadPrioritizationListSoapIn" />
+      <wsdl:output message="tns:ReadPrioritizationListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DriverSoap" type="tns:DriverSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateDriver">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/CreateDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriverList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadDriverList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriver">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrivers">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/DeleteDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDriver">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/UpdateDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritization">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadPrioritization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrioritization">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/CreatePrioritization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrioritizations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/DeletePrioritizations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrioritization">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/UpdatePrioritization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritizationList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadPrioritizationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DriverSoap12" type="tns:DriverSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateDriver">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/CreateDriver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriverList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadDriverList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDriver">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadDriver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrivers">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/DeleteDrivers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDriver">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/UpdateDriver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritization">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadPrioritization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrioritization">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/CreatePrioritization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrioritizations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/DeletePrioritizations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrioritization">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/UpdatePrioritization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrioritizationList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Driver/ReadPrioritizationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Driver">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Driver web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="DriverSoap" binding="tns:DriverSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Driver.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DriverSoap12" binding="tns:DriverSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Driver.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

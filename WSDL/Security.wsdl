@@ -1,0 +1,1869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Security/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s6="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s7="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Security/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Security web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Security/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" />
+      <s:element name="ReadTemplateList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadTemplateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTemplateListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="templates">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTemplatesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="templates">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTemplatesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="templateUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteTemplatesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadPermissionMode">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadPermissionModeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadPermissionModeResult" type="tns:PermissionMode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PermissionMode">
+        <s:restriction base="s:string">
+          <s:enumeration value="SharePoint" />
+          <s:enumeration value="ProjectServer" />
+          <s:enumeration value="UninitializedSharePoint" />
+          <s:enumeration value="UninitializedProjectServer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CheckUserGlobalPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="globalPermissionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserGlobalPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUserGlobalPermissionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserGlobalPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="globalPermissionUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserGlobalPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserGlobalPermissionsResult" type="tns:ArrayOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBoolean">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="boolean" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckUserObjectPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="objectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="objectTypeUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="categoryPermissionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserObjectPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUserObjectPermissionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserObjectPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="objectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="objectTypeUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryPermissionUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserObjectPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserObjectPermissionsResult" type="tns:ArrayOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserProjectPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="categoryPermissionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserProjectPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUserProjectPermissionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserProjectPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryPermissionUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserProjectPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserProjectPermissionsResult" type="tns:ArrayOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResourcePermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resourceUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="categoryPermissionUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResourcePermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUserResourcePermissionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResourcePermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resourceUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="categoryPermissionUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResourcePermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserResourcePermissionsResult" type="tns:ArrayOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="group">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetGroupsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groups">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateGroupsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadGroupResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadGroupList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadGroupListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGroupsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categories">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categories">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="categoryUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCategoryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCategoryList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCategoryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCategoryListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadGlobalPermissions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadGlobalPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadGlobalPermissionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCategoryPermissions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCategoryPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCategoryPermissionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoryUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateProjectCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categories">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateProjectCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateProjectCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categories">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteProjectCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectCategoryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectCategoryPermissionsAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectCategoryPermissionsAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectCategoryPermissionsAllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOrganizationalPermissions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadOrganizationalPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadOrganizationalPermissionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrganizationalPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permissions">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrganizationalPermissionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTemplateResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityCategoriesDataSet/" id="SecurityCategoriesDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="SecurityCategoriesDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityCategories">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element default="" name="WSEC_CAT_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSEC_CAT_DESC" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="UserRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="UserPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SecurityCategoryObjects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_OBJ_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_OBJ_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SecurityCategoryRules">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_OBJ_TYPE_UID" type="xs:string" />
+                  <xs:element name="WSEC_OBJ_RULE_TYPE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityCategoriesPrimaryKey">
+          <xs:selector xpath=".//mstns:SecurityCategories" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="UserRelationsPrimaryKey">
+          <xs:selector xpath=".//mstns:UserRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupRelationsPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="UserPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:UserPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityCategoryObjectsPrimaryKey">
+          <xs:selector xpath=".//mstns:SecurityCategoryObjects" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_OBJ_UID" />
+          <xs:field xpath="mstns:WSEC_OBJ_TYPE_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityCategoryRulesPrimaryKey">
+          <xs:selector xpath=".//mstns:SecurityCategoryRules" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_OBJ_TYPE_UID" />
+          <xs:field xpath="mstns:WSEC_OBJ_RULE_TYPE" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/PermissionDataSet/" id="PermissionDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="PermissionDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Features">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element name="WSEC_FEA_ACT_NAME" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Actions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element name="WSEC_FEA_ACT_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_PARENT" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="FeaturesDataSetKey">
+          <xs:selector xpath=".//mstns:Features" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="ActionsDataSetKey">
+          <xs:selector xpath=".//mstns:Actions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+      </xs:element>
+      <xs:annotation>
+        <xs:appinfo>
+          <msdata:Relationship name="Features_Actions" msdata:parent="Features" msdata:child="Actions" msdata:parentkey="WSEC_FEA_ACT_UID" msdata:childkey="WSEC_FEA_ACT_PARENT" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityGroupsDataSet/" id="SecurityGroupsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="SecurityGroupsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityGroups">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element name="WSEC_GRP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSEC_GRP_DESC" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSEC_GRP_AD_GROUP" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WSEC_GRP_AD_GUID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSEC_GRP_AD_LOG" type="xs:short" />
+                  <xs:element minOccurs="0" name="WSEC_GRP_AD_LASTSYNC" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SecurityPrincipleCategoryRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CategoryPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GlobalPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupMembers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityGroupsDataSetKey1">
+          <xs:selector xpath=".//mstns:SecurityGroups" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityGroupsDataSetKey2">
+          <xs:selector xpath=".//mstns:SecurityPrincipleCategoryRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="CategoryPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:CategoryPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GlobalPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:GlobalPermissions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupMembersPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupMembers" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityOrganizationalPermissionsDataSet/" id="SecurityOrganizationalPermissionsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="SecurityOrganizationalPermissionsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityOrganizationalPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WSEC_ACTION_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="WSEC_FEA_ACT_PARENT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WSEC_FEATURE_NAME" type="xs:string" />
+                  <xs:element name="WSEC_ALLOW" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityOrganizationalPermissionsDataSetKey1">
+          <xs:selector xpath=".//mstns:SecurityOrganizationalPermissions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityTemplatesDataSet/" id="SecurityTemplatesDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="SecurityTemplatesDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SecurityTemplates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_TMPL_UID" type="xs:string" />
+                  <xs:element name="WSEC_TMPL_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSEC_TMPL_DESC" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CategoryPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_TMPL_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GlobalPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_TMPL_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityTemplatesPrimaryKey">
+          <xs:selector xpath=".//mstns:SecurityTemplates" />
+          <xs:field xpath="mstns:WSEC_TMPL_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="CategoryPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:CategoryPermissions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:WSEC_TMPL_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GlobalPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:GlobalPermissions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:WSEC_TMPL_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/SecurityProjectCategoriesDataSet/" id="SecurityProjectCategoriesDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="SecurityProjectCategoriesDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ProjectCategories">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="UserRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="UserPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ProjectCategoriesPrimaryKey">
+          <xs:selector xpath=".//mstns:ProjectCategories" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="UserRelationsPrimaryKey">
+          <xs:selector xpath=".//mstns:UserRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupRelationsPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="UserPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:UserPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadTemplateListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTemplateList" />
+  </wsdl:message>
+  <wsdl:message name="ReadTemplateListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTemplateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:SetTemplates" />
+  </wsdl:message>
+  <wsdl:message name="SetTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:SetTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTemplates" />
+  </wsdl:message>
+  <wsdl:message name="CreateTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTemplates" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPermissionModeSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPermissionMode" />
+  </wsdl:message>
+  <wsdl:message name="ReadPermissionModeSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPermissionModeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserGlobalPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserGlobalPermission" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserGlobalPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserGlobalPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserGlobalPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserGlobalPermissions" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserGlobalPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserGlobalPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserObjectPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserObjectPermission" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserObjectPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserObjectPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserObjectPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserObjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserObjectPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserObjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserProjectPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserProjectPermission" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserProjectPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserProjectPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserProjectPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserProjectPermissions" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserProjectPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserProjectPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserResourcePermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserResourcePermission" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserResourcePermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserResourcePermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserResourcePermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserResourcePermissions" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserResourcePermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserResourcePermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetGroups" />
+  </wsdl:message>
+  <wsdl:message name="SetGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateGroups" />
+  </wsdl:message>
+  <wsdl:message name="CreateGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadGroup" />
+  </wsdl:message>
+  <wsdl:message name="ReadGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadGroupList" />
+  </wsdl:message>
+  <wsdl:message name="ReadGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGroups" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCategories" />
+  </wsdl:message>
+  <wsdl:message name="CreateCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCategories" />
+  </wsdl:message>
+  <wsdl:message name="SetCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCategory" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategoryListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCategoryList" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategoryListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCategoryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadGlobalPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadGlobalPermissions" />
+  </wsdl:message>
+  <wsdl:message name="ReadGlobalPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadGlobalPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategoryPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCategoryPermissions" />
+  </wsdl:message>
+  <wsdl:message name="ReadCategoryPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCategoryPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCategories" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateProjectCategories" />
+  </wsdl:message>
+  <wsdl:message name="CreateProjectCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateProjectCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProjectCategories" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProjectCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProjectCategories" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectCategory" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectCategoryPermissionsAllSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectCategoryPermissionsAll" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectCategoryPermissionsAllSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectCategoryPermissionsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOrganizationalPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOrganizationalPermissions" />
+  </wsdl:message>
+  <wsdl:message name="ReadOrganizationalPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOrganizationalPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrganizationalPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOrganizationalPermissions" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrganizationalPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOrganizationalPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ReadTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTemplateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SecuritySoap">
+    <wsdl:operation name="ReadTemplateList">
+      <wsdl:input message="tns:ReadTemplateListSoapIn" />
+      <wsdl:output message="tns:ReadTemplateListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTemplates">
+      <wsdl:input message="tns:SetTemplatesSoapIn" />
+      <wsdl:output message="tns:SetTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTemplates">
+      <wsdl:input message="tns:CreateTemplatesSoapIn" />
+      <wsdl:output message="tns:CreateTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTemplates">
+      <wsdl:input message="tns:DeleteTemplatesSoapIn" />
+      <wsdl:output message="tns:DeleteTemplatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPermissionMode">
+      <wsdl:input message="tns:ReadPermissionModeSoapIn" />
+      <wsdl:output message="tns:ReadPermissionModeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermission">
+      <wsdl:input message="tns:CheckUserGlobalPermissionSoapIn" />
+      <wsdl:output message="tns:CheckUserGlobalPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermissions">
+      <wsdl:input message="tns:CheckUserGlobalPermissionsSoapIn" />
+      <wsdl:output message="tns:CheckUserGlobalPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermission">
+      <wsdl:input message="tns:CheckUserObjectPermissionSoapIn" />
+      <wsdl:output message="tns:CheckUserObjectPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermissions">
+      <wsdl:input message="tns:CheckUserObjectPermissionsSoapIn" />
+      <wsdl:output message="tns:CheckUserObjectPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermission">
+      <wsdl:input message="tns:CheckUserProjectPermissionSoapIn" />
+      <wsdl:output message="tns:CheckUserProjectPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermissions">
+      <wsdl:input message="tns:CheckUserProjectPermissionsSoapIn" />
+      <wsdl:output message="tns:CheckUserProjectPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermission">
+      <wsdl:input message="tns:CheckUserResourcePermissionSoapIn" />
+      <wsdl:output message="tns:CheckUserResourcePermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermissions">
+      <wsdl:input message="tns:CheckUserResourcePermissionsSoapIn" />
+      <wsdl:output message="tns:CheckUserResourcePermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetGroups">
+      <wsdl:input message="tns:SetGroupsSoapIn" />
+      <wsdl:output message="tns:SetGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGroups">
+      <wsdl:input message="tns:CreateGroupsSoapIn" />
+      <wsdl:output message="tns:CreateGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroup">
+      <wsdl:input message="tns:ReadGroupSoapIn" />
+      <wsdl:output message="tns:ReadGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroupList">
+      <wsdl:input message="tns:ReadGroupListSoapIn" />
+      <wsdl:output message="tns:ReadGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroups">
+      <wsdl:input message="tns:DeleteGroupsSoapIn" />
+      <wsdl:output message="tns:DeleteGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategories">
+      <wsdl:input message="tns:CreateCategoriesSoapIn" />
+      <wsdl:output message="tns:CreateCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCategories">
+      <wsdl:input message="tns:SetCategoriesSoapIn" />
+      <wsdl:output message="tns:SetCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategory">
+      <wsdl:input message="tns:ReadCategorySoapIn" />
+      <wsdl:output message="tns:ReadCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryList">
+      <wsdl:input message="tns:ReadCategoryListSoapIn" />
+      <wsdl:output message="tns:ReadCategoryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadGlobalPermissions">
+      <wsdl:input message="tns:ReadGlobalPermissionsSoapIn" />
+      <wsdl:output message="tns:ReadGlobalPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryPermissions">
+      <wsdl:input message="tns:ReadCategoryPermissionsSoapIn" />
+      <wsdl:output message="tns:ReadCategoryPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategories">
+      <wsdl:input message="tns:DeleteCategoriesSoapIn" />
+      <wsdl:output message="tns:DeleteCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProjectCategories">
+      <wsdl:input message="tns:CreateProjectCategoriesSoapIn" />
+      <wsdl:output message="tns:CreateProjectCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectCategories">
+      <wsdl:input message="tns:UpdateProjectCategoriesSoapIn" />
+      <wsdl:output message="tns:UpdateProjectCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectCategories">
+      <wsdl:input message="tns:DeleteProjectCategoriesSoapIn" />
+      <wsdl:output message="tns:DeleteProjectCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategory">
+      <wsdl:input message="tns:ReadProjectCategorySoapIn" />
+      <wsdl:output message="tns:ReadProjectCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategoryPermissionsAll">
+      <wsdl:input message="tns:ReadProjectCategoryPermissionsAllSoapIn" />
+      <wsdl:output message="tns:ReadProjectCategoryPermissionsAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrganizationalPermissions">
+      <wsdl:input message="tns:ReadOrganizationalPermissionsSoapIn" />
+      <wsdl:output message="tns:ReadOrganizationalPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrganizationalPermissions">
+      <wsdl:input message="tns:UpdateOrganizationalPermissionsSoapIn" />
+      <wsdl:output message="tns:UpdateOrganizationalPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTemplate">
+      <wsdl:input message="tns:ReadTemplateSoapIn" />
+      <wsdl:output message="tns:ReadTemplateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecuritySoap" type="tns:SecuritySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadTemplateList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadTemplateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTemplates">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTemplates">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTemplates">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPermissionMode">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadPermissionMode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermission">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserGlobalPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserGlobalPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermission">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserObjectPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserObjectPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermission">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserProjectPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermission">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserResourcePermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserResourcePermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGroups">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGroups">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroup">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroupList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroups">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategory">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategoryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGlobalPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGlobalPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategoryPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProjectCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateProjectCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/UpdateProjectCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteProjectCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategory">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadProjectCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategoryPermissionsAll">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadProjectCategoryPermissionsAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrganizationalPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadOrganizationalPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrganizationalPermissions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/UpdateOrganizationalPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTemplate">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecuritySoap12" type="tns:SecuritySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadTemplateList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadTemplateList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTemplates">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTemplates">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTemplates">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteTemplates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPermissionMode">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadPermissionMode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermission">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserGlobalPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserGlobalPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserGlobalPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermission">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserObjectPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserObjectPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserObjectPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermission">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserProjectPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserProjectPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserProjectPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermission">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserResourcePermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserResourcePermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CheckUserResourcePermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGroups">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGroups">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroup">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGroupList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroups">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/SetCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategory">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategoryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGlobalPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadGlobalPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCategoryPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadCategoryPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProjectCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/CreateProjectCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/UpdateProjectCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/DeleteProjectCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategory">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadProjectCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectCategoryPermissionsAll">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadProjectCategoryPermissionsAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrganizationalPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadOrganizationalPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrganizationalPermissions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/UpdateOrganizationalPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTemplate">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Security/ReadTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Security">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Security web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="SecuritySoap" binding="tns:SecuritySoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Security.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecuritySoap12" binding="tns:SecuritySoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Security.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the TimeSheet web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" />
+      <s:element name="ReadTimesheetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="finishDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="select" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetByPeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="periodUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="select" type="tns:Navigation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Navigation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Current" />
+          <s:enumeration value="Previous" />
+          <s:enumeration value="Next" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadTimesheetByPeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetByPeriodResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetApprovers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetApproversResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetApproversResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceLateTimesheets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceLateTimesheetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceLateTimesheetsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLateTimesheets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLateTimesheetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLateTimesheetsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueSubmitTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="approverUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueSubmitTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueReviewTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextApproverUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="action" type="tns:Action" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Action">
+        <s:restriction base="s:string">
+          <s:enumeration value="Submit" />
+          <s:enumeration value="PendingApproval" />
+          <s:enumeration value="Approve" />
+          <s:enumeration value="Reject" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="QueueReviewTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRecallTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRecallTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueUpdateTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ApproveNonProjectTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="approvedTimesheetLines" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="rejectedTimesheetLines" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ApproveNonProjectTimeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PrepareTimesheetLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tsUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="tlsNeedFill" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrepareTimesheetLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitTimesheetLines">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="timesheetLines" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitTimesheetLinesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="preloadType" type="tns:PreloadType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PreloadType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="AdminTimes" />
+          <s:enumeration value="Projects" />
+          <s:enumeration value="AdminTimesAndProjects" />
+          <s:enumeration value="Assignments" />
+          <s:enumeration value="AdminTimesAndAssignments" />
+          <s:enumeration value="ProjectsAndAssignments" />
+          <s:enumeration value="All" />
+          <s:enumeration value="Default" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateTimesheetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadTimesheetsPendingApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="finish" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="resUIDs" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetsPendingApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetsPendingApprovalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadReviewedTimesheets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="finish" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="resUIDs" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadReviewedTimesheetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadReviewedTimesheetsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetsToAdjust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="finish" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="resUIDs" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTimesheetsToAdjustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetsToAdjustResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCleanUpTimesheets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="start" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="finish" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCleanUpTimesheetsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectTimesheetLines">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="periodUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="qryType" type="tns:ProjectTimesheetLineQueryType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ProjectTimesheetLineQueryType">
+        <s:restriction base="s:string">
+          <s:enumeration value="StatusManagerLineItems" />
+          <s:enumeration value="ApprovedLineItems" />
+          <s:enumeration value="AllApprovedLineItems" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadProjectTimesheetLinesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectTimesheetLinesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveProjectTimesheetLines">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="approvedTimesheetLines" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="rejectedTimesheetLines" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveProjectTimesheetLinesResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" id="ResourceDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ResourceDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Resources">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="-1" name="RES_ID" type="xs:int" />
+                  <xs:element default="2" name="RES_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" default="false" name="RES_HAS_NOTES" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="true" name="RES_CAN_LEVEL" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_ACCRUE_AT" type="xs:short" />
+                  <xs:element minOccurs="0" name="RES_BOOKING_TYPE" type="xs:int" />
+                  <xs:element name="RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_INITIALS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_PHONETICS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_MATERIAL_LABEL" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_RTF_NOTES" type="xs:base64Binary" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WRES_ACCOUNT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_IS_WINDOWS_USER" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL" type="xs:string" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL_LANGUAGE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_FRIENDLY_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_SUB_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_CODE" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_GROUP" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_EXTERNAL_ID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_DEF_ASSN_OWNER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HIRE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_TERMINATION_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="false" name="RES_IS_TEAM" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="RES_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_EXCHANGE_EWS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="RES_CAL_OOF_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_COST_CENTER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NOTES" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="BaseCalendarUniqueId" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CalendarExceptions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element name="Name" type="xs:string" />
+                  <xs:element name="Start" type="xs:dateTime" />
+                  <xs:element name="Finish" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="Shift1Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift1Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Finish" type="xs:int" />
+                  <xs:element name="RecurrenceType" type="xs:int" />
+                  <xs:element name="RecurrenceFrequency" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceDays" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonthDay" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonth" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrencePosition" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceRates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="0" name="RES_RATE_TABLE" type="xs:int" />
+                  <xs:element minOccurs="0" name="RES_RATE_EFFECTIVE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="0" name="RES_STD_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_OVT_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_COST_PER_USE" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceAvailabilities">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_FROM" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_TO" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_UNITS" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:Resources" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey3">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+        </xs:unique>
+        <xs:keyref name="ResourcesResourceAvailabilities" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceAvailabilities" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceRates" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceRates" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesCalendarExceptions" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:CalendarExceptions" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceCustomFields" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectTimesheetLinesDataSet/" id="ProjectTimesheetLinesDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ProjectTimesheetLinesDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ProjectTimesheetLines">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MGR_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MGR_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TASK_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TS_CREATOR_RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WPRD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TASK_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_CLASS_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="TS_LINE_COMMENT" type="xs:string" />
+                  <xs:element name="TS_LINE_VALIDATION_TYPE" type="xs:unsignedByte" />
+                  <xs:element default="" name="TS_LINE_CACHED_ASSIGN_NAME" type="xs:string" />
+                  <xs:element default="" name="TS_LINE_CACHED_PROJ_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_PROJ_REVISION_COUNTER" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_PROJ_REVISION_RANK" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_IS_CACHED" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_ACT_SUM_VALUE" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TS_LINE_APPROVER_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="TS_LINE_CACHED_APPROVER_RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_STATUS" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_ASSN_LAST_WORK" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_TASK_HIERARCHY" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Actuals">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element name="TS_ACT_START_DATE" type="xs:dateTime" />
+                  <xs:element name="TS_ACT_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TS_ACT_COMMENT" type="xs:string" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_PLAN_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_OVT_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_NON_BILLABLE_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_NON_BILLABLE_OVT_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="CODE_TEXT_VALUE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="CODE_NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="CODE_DATE_VALUE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="CODE_DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="CODE_DUR_FMT" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:ProjectTimesheetLines" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Actuals_Constraint1">
+          <xs:selector xpath=".//mstns:Actuals" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+          <xs:field xpath="mstns:TS_ACT_START_DATE" />
+        </xs:unique>
+        <xs:keyref name="Lines_Actuals" refer="mstns:Constraint1">
+          <xs:selector xpath=".//mstns:Actuals" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+        </xs:keyref>
+      </xs:element>
+      <xs:annotation>
+        <xs:appinfo>
+          <msdata:Relationship name="Lines_CustomFields" msdata:parent="ProjectTimesheetLines" msdata:child="CustomFields" msdata:parentkey="TS_LINE_UID" msdata:childkey="TS_LINE_UID" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetDataSet/" id="TimesheetDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="TimesheetDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Headers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WPRD_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="TS_COMMENTS" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TS_CREATOR_RES_UID" type="xs:string" />
+                  <xs:element name="TS_ENTRY_MODE_ENUM" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_STATUS_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="TS_WEEK_STARTS_ON" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_CACHED_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_CACHED_CREATOR_RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_IS_PROCESSED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TS_IS_CONTROLLED_BY_OWNER" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_OVT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_NON_BILLABLE_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_NON_BILLABLE_OVT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_GRAND_TOTAL_ACT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_PRELOAD_TYPE" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Lines">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TASK_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_CLASS_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="" name="TS_LINE_COMMENT" type="xs:string" />
+                  <xs:element name="TS_LINE_VALIDATION_TYPE" type="xs:unsignedByte" />
+                  <xs:element default="" name="TS_LINE_CACHED_ASSIGN_NAME" type="xs:string" />
+                  <xs:element default="" name="TS_LINE_CACHED_PROJ_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_PROJ_REVISION_COUNTER" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_PROJ_REVISION_RANK" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_IS_CACHED" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_ACT_SUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_LINE_STATUS" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_ASSN_LAST_WORK" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_LINE_TASK_HIERARCHY" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ASSN_TRANS_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Actuals">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element name="TS_ACT_START_DATE" type="xs:dateTime" />
+                  <xs:element name="TS_ACT_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TS_ACT_COMMENT" type="xs:string" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_PLAN_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_OVT_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_NON_BILLABLE_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" default="0" name="TS_ACT_NON_BILLABLE_OVT_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Actions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_ACTION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element name="TS_ACTION_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="TS_ACTION_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TS_ACTION_COMMENT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_ACTION_CACHED_RES_NAME" type="xs:string" />
+                  <xs:element name="TS_ACTION_IS_HISTORY" type="xs:boolean" />
+                  <xs:element name="TS_ACTION_LEVEL" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Audits">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_ACT_AUD_UID" type="xs:string" />
+                  <xs:element name="TS_ACT_AUD_OPERATION_ENUM" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element name="TS_ACT_START_DATE" type="xs:dateTime" />
+                  <xs:element name="TS_ACT_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_SEQUENCE" type="xs:long" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_OVT_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_NONBILL_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_NONBILL_OVT_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_ACT_AUD_CACHED_RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_IS_PROCESSED" type="xs:boolean" />
+                  <xs:element name="TS_ACT_AUD_RES_ROLE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_PLAN_DELTA_VALUE" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="StatusingChangeLog">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="ENTITY_TYPE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENTITY_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PID" type="xs:int" />
+                  <xs:element minOccurs="0" name="VALUE" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:Headers" />
+          <xs:field xpath="mstns:TS_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Lines_Constraint1">
+          <xs:selector xpath=".//mstns:Lines" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Actuals_Constraint1">
+          <xs:selector xpath=".//mstns:Actuals" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+          <xs:field xpath="mstns:TS_ACT_START_DATE" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="Actions_Constraint1">
+          <xs:selector xpath=".//mstns:Actions" />
+          <xs:field xpath="mstns:TS_ACTION_UID" />
+        </xs:unique>
+        <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Audits_Constraint1">
+          <xs:selector xpath=".//mstns:Audits" />
+          <xs:field xpath="mstns:TS_ACT_AUD_UID" />
+          <xs:field xpath="mstns:TS_ACT_AUD_OPERATION_ENUM" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+          <xs:field xpath="mstns:TS_ACT_START_DATE" />
+        </xs:unique>
+        <xs:keyref name="Lines_Actuals" refer="mstns:Lines_Constraint1">
+          <xs:selector xpath=".//mstns:Actuals" />
+          <xs:field xpath="mstns:TS_LINE_UID" />
+        </xs:keyref>
+      </xs:element>
+      <xs:annotation>
+        <xs:appinfo>
+          <msdata:Relationship name="Headers_Lines" msdata:parent="Headers" msdata:child="Lines" msdata:parentkey="TS_UID" msdata:childkey="TS_UID" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" />
+          <msdata:Relationship name="Headers_Actions" msdata:parent="Headers" msdata:child="Actions" msdata:parentkey="TS_UID" msdata:childkey="TS_UID" />
+          <msdata:Relationship name="Lines_Audits" msdata:parent="Lines" msdata:child="Audits" msdata:parentkey="TS_LINE_UID" msdata:childkey="TS_LINE_UID" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetListDataSet/" id="TimesheetListDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="TimesheetListDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Timesheets">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TS_CREATOR_RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TLastActionComment" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TLastActionCachedResName" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WPRD_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WPRD_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WPRD_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WPRD_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_CACHED_RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_STATUS_ENUM" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_OVT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_NON_BILLABLE_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_TOTAL_ACT_NON_BILLABLE_OVT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_GRAND_TOTAL_ACT_VALUE" type="xs:decimal" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_QUEUE_COUNTER" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_AUX_STATUS" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="TS_JOB_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="TimesheetsKey1">
+          <xs:selector xpath=".//mstns:Timesheets" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:WPRD_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadTimesheetListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetList" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetByPeriodSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetByPeriod" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetByPeriodSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetByPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetApproversSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetApprovers" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetApproversSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetApproversResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceLateTimesheetsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceLateTimesheets" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceLateTimesheetsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceLateTimesheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLateTimesheetsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLateTimesheets" />
+  </wsdl:message>
+  <wsdl:message name="ReadLateTimesheetsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLateTimesheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeleteTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeleteTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueSubmitTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueSubmitTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="QueueSubmitTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueSubmitTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueReviewTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueReviewTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="QueueReviewTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueReviewTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRecallTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRecallTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="QueueRecallTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRecallTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueUpdateTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueUpdateTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveNonProjectTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveNonProjectTime" />
+  </wsdl:message>
+  <wsdl:message name="ApproveNonProjectTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveNonProjectTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrepareTimesheetLineSoapIn">
+    <wsdl:part name="parameters" element="tns:PrepareTimesheetLine" />
+  </wsdl:message>
+  <wsdl:message name="PrepareTimesheetLineSoapOut">
+    <wsdl:part name="parameters" element="tns:PrepareTimesheetLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTimesheetLinesSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitTimesheetLines" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTimesheetLinesSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitTimesheetLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="CreateTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetsPendingApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetsPendingApproval" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetsPendingApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetsPendingApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadReviewedTimesheetsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadReviewedTimesheets" />
+  </wsdl:message>
+  <wsdl:message name="ReadReviewedTimesheetsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadReviewedTimesheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetsToAdjustSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetsToAdjust" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetsToAdjustSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetsToAdjustResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCleanUpTimesheetsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCleanUpTimesheets" />
+  </wsdl:message>
+  <wsdl:message name="QueueCleanUpTimesheetsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCleanUpTimesheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectTimesheetLinesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectTimesheetLines" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectTimesheetLinesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectTimesheetLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveProjectTimesheetLinesSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveProjectTimesheetLines" />
+  </wsdl:message>
+  <wsdl:message name="ApproveProjectTimesheetLinesSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveProjectTimesheetLinesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TimeSheetSoap">
+    <wsdl:operation name="ReadTimesheetList">
+      <wsdl:input message="tns:ReadTimesheetListSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetByPeriod">
+      <wsdl:input message="tns:ReadTimesheetByPeriodSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetByPeriodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheet">
+      <wsdl:input message="tns:ReadTimesheetSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetApprovers">
+      <wsdl:input message="tns:ReadTimesheetApproversSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetApproversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceLateTimesheets">
+      <wsdl:input message="tns:ReadResourceLateTimesheetsSoapIn" />
+      <wsdl:output message="tns:ReadResourceLateTimesheetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLateTimesheets">
+      <wsdl:input message="tns:ReadLateTimesheetsSoapIn" />
+      <wsdl:output message="tns:ReadLateTimesheetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteTimesheet">
+      <wsdl:input message="tns:QueueDeleteTimesheetSoapIn" />
+      <wsdl:output message="tns:QueueDeleteTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueSubmitTimesheet">
+      <wsdl:input message="tns:QueueSubmitTimesheetSoapIn" />
+      <wsdl:output message="tns:QueueSubmitTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueReviewTimesheet">
+      <wsdl:input message="tns:QueueReviewTimesheetSoapIn" />
+      <wsdl:output message="tns:QueueReviewTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRecallTimesheet">
+      <wsdl:input message="tns:QueueRecallTimesheetSoapIn" />
+      <wsdl:output message="tns:QueueRecallTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateTimesheet">
+      <wsdl:input message="tns:QueueUpdateTimesheetSoapIn" />
+      <wsdl:output message="tns:QueueUpdateTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveNonProjectTime">
+      <wsdl:input message="tns:ApproveNonProjectTimeSoapIn" />
+      <wsdl:output message="tns:ApproveNonProjectTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTimesheetLine">
+      <wsdl:input message="tns:PrepareTimesheetLineSoapIn" />
+      <wsdl:output message="tns:PrepareTimesheetLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTimesheetLines">
+      <wsdl:input message="tns:SubmitTimesheetLinesSoapIn" />
+      <wsdl:output message="tns:SubmitTimesheetLinesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTimesheet">
+      <wsdl:input message="tns:CreateTimesheetSoapIn" />
+      <wsdl:output message="tns:CreateTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsPendingApproval">
+      <wsdl:input message="tns:ReadTimesheetsPendingApprovalSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetsPendingApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReviewedTimesheets">
+      <wsdl:input message="tns:ReadReviewedTimesheetsSoapIn" />
+      <wsdl:output message="tns:ReadReviewedTimesheetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsToAdjust">
+      <wsdl:input message="tns:ReadTimesheetsToAdjustSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetsToAdjustSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCleanUpTimesheets">
+      <wsdl:input message="tns:QueueCleanUpTimesheetsSoapIn" />
+      <wsdl:output message="tns:QueueCleanUpTimesheetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectTimesheetLines">
+      <wsdl:input message="tns:ReadProjectTimesheetLinesSoapIn" />
+      <wsdl:output message="tns:ReadProjectTimesheetLinesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveProjectTimesheetLines">
+      <wsdl:input message="tns:ApproveProjectTimesheetLinesSoapIn" />
+      <wsdl:output message="tns:ApproveProjectTimesheetLinesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TimeSheetSoap" type="tns:TimeSheetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadTimesheetList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetByPeriod">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetByPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetApprovers">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetApprovers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceLateTimesheets">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadResourceLateTimesheets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLateTimesheets">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadLateTimesheets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueDeleteTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueSubmitTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueSubmitTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueReviewTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueReviewTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRecallTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueRecallTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueUpdateTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveNonProjectTime">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ApproveNonProjectTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTimesheetLine">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/PrepareTimesheetLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTimesheetLines">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/SubmitTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/CreateTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsPendingApproval">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetsPendingApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReviewedTimesheets">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadReviewedTimesheets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsToAdjust">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetsToAdjust" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCleanUpTimesheets">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueCleanUpTimesheets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectTimesheetLines">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadProjectTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveProjectTimesheetLines">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ApproveProjectTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TimeSheetSoap12" type="tns:TimeSheetSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadTimesheetList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetByPeriod">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetByPeriod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetApprovers">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetApprovers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceLateTimesheets">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadResourceLateTimesheets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLateTimesheets">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadLateTimesheets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueDeleteTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueSubmitTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueSubmitTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueReviewTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueReviewTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRecallTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueRecallTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueUpdateTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveNonProjectTime">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ApproveNonProjectTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTimesheetLine">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/PrepareTimesheetLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTimesheetLines">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/SubmitTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/CreateTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsPendingApproval">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetsPendingApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReviewedTimesheets">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadReviewedTimesheets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetsToAdjust">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadTimesheetsToAdjust" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCleanUpTimesheets">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/QueueCleanUpTimesheets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectTimesheetLines">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ReadProjectTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveProjectTimesheetLines">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/TimeSheet/ApproveProjectTimesheetLines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TimeSheet">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the TimeSheet web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="TimeSheetSoap" binding="tns:TimeSheetSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/TimeSheet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TimeSheetSoap12" binding="tns:TimeSheetSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/TimeSheet.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

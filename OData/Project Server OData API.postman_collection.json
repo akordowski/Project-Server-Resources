@@ -1,0 +1,1376 @@
+{
+	"info": {
+		"_postman_id": "2bb48ae0-d511-4531-b30e-9381a3966630",
+		"name": "Project Server OData API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/projectdata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignmentBaselines",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata=verbose",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/AssignmentBaselines()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"AssignmentBaselines()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignmentBaselineTimephasedDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata=verbose",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/AssignmentBaselineTimephasedDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"AssignmentBaselineTimephasedDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assignments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;odata=verbose",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Assignments()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Assignments()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignmentTimephasedDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/AssignmentTimephasedDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"AssignmentTimephasedDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BusinessDriverDepartments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/BusinessDriverDepartments()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"BusinessDriverDepartments()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BusinessDrivers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/BusinessDrivers()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"BusinessDrivers()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostConstraintScenarios",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/CostConstraintScenarios()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"CostConstraintScenarios()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostScenarioProjects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/CostScenarioProjects()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"CostScenarioProjects()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deliverables",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Deliverables()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Deliverables()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Issues",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Issues()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Issues()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IssueTaskAssociations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/IssueTaskAssociations()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"IssueTaskAssociations()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PortfolioAnalyses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/PortfolioAnalyses()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"PortfolioAnalyses()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PortfolioAnalysisProjects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/PortfolioAnalysisProjects()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"PortfolioAnalysisProjects()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PrioritizationDriverRelations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/PrioritizationDriverRelations()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"PrioritizationDriverRelations()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PrioritizationDrivers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/PrioritizationDrivers()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"PrioritizationDrivers()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Prioritizations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Prioritizations()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Prioritizations()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProjectBaselines",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/ProjectBaselines()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"ProjectBaselines()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Projects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Projects()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Projects()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProjectWorkflowStageDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/ProjectWorkflowStageDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"ProjectWorkflowStageDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResourceConstraintScenarios",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/ResourceConstraintScenarios()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"ResourceConstraintScenarios()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resources",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Resources()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Resources()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResourceScenarioProjects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/ResourceScenarioProjects()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"ResourceScenarioProjects()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResourceTimephasedDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/ResourceTimephasedDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"ResourceTimephasedDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Risks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Risks()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Risks()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RiskTaskAssociations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/RiskTaskAssociations()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"RiskTaskAssociations()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskBaselines",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TaskBaselines()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TaskBaselines()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskBaselineTimephasedDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TaskBaselineTimephasedDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TaskBaselineTimephasedDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Tasks()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Tasks()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskTimephasedDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TaskTimephasedDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TaskTimephasedDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimeSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TimeSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TimeSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimesheetClasses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TimesheetClasses()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TimesheetClasses()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimesheetLineActualDataSet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TimesheetLineActualDataSet()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TimesheetLineActualDataSet()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimesheetLines",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TimesheetLines()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TimesheetLines()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimesheetPeriods",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/TimesheetPeriods()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"TimesheetPeriods()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Timesheets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;odata=verbose"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProjectServerUrl}}/PWA/_api/projectdata/[en-us]/Timesheets()?$top=5",
+					"host": [
+						"{{ProjectServerUrl}}"
+					],
+					"path": [
+						"PWA",
+						"_api",
+						"projectdata",
+						"[en-us]",
+						"Timesheets()"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "ntlm",
+		"ntlm": [
+			{
+				"key": "password",
+				"value": "{{Password}}",
+				"type": "string"
+			},
+			{
+				"key": "domain",
+				"value": "{{Domain}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "56dcdf96-9de4-4162-95ce-4e5e01552511",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6d722f7b-aa47-429a-b467-4e6acb9a419f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

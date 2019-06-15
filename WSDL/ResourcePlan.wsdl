@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the ResourcePlan web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" />
+      <s:element name="CheckOutResourcePlans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOutResourcePlansResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueCheckInResourcePlans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectUids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="force" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCheckInResourcePlansResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueCreateResourcePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="rpds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="timephasedFTE" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCreateResourcePlanResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadResourcePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeScale" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="timephasedFTE" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourcePlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourcePlanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateResourcePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="rpds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="timephasedFTE" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueUpdateResourcePlanResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueDeleteResourcePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectUids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="jobUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteResourcePlanResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueuePublishResourcePlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueuePublishResourcePlanResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadResourcePlanStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourcePlanStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadResourcePlanStatusResult" type="tns:ResPlanStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ResPlanStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Absent" />
+          <s:enumeration value="Working" />
+          <s:enumeration value="Published" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlanDataSet/" id="ResourcePlanDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ResourcePlanDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Utilization">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element default="0" name="RESPLAN_UTILIZATION_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" name="RESPLAN_UTILIZATION_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RESPLAN_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RESPLAN_FINISH_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="PlanResources">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" default="1" name="RES_TYPE" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" default="true" name="RES_CAN_LEVEL" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_DEF_ASSN_OWNER" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_INITIALS" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_PHONETICS" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_MATERIAL_LABEL" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_GROUP" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_CODE" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_COST_CENTER" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_HYPERLINK_FRIENDLY_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_HYPERLINK_ADDRESS" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_HYPERLINK_SUB_ADDRESS" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WRES_EMAIL" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WRES_EMAIL_LANGUAGE" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" default="-1" name="RES_ID" type="xs:int" />
+                  <xs:element name="ASSN_BOOKING_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_HIRE_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_TERMINATION_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" default="false" name="RES_IS_TEAM" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_START_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_WORK" type="xs:decimal" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="PlanAssignmentCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" default="false" name="IS_ROLLED_DOWN" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Dates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="StartDate" type="xs:dateTime" />
+                  <xs:element name="EndDate" type="xs:dateTime" />
+                  <xs:element name="IntervalName" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="UtilizationKey">
+          <xs:selector xpath=".//mstns:Utilization" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PlanResourcesKey">
+          <xs:selector xpath=".//mstns:PlanResources" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="PlanAssignmentCustomFields">
+          <xs:selector xpath=".//mstns:PlanAssignmentCustomFields" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+          <xs:field xpath="mstns:ASSN_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="DatesKey">
+          <xs:selector xpath=".//mstns:Dates" />
+          <xs:field xpath="mstns:IntervalName" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckOutResourcePlansSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOutResourcePlans" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutResourcePlansSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutResourcePlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCheckInResourcePlansSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCheckInResourcePlans" />
+  </wsdl:message>
+  <wsdl:message name="QueueCheckInResourcePlansSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCheckInResourcePlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateResourcePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCreateResourcePlan" />
+  </wsdl:message>
+  <wsdl:message name="QueueCreateResourcePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCreateResourcePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourcePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourcePlan" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourcePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourcePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateResourcePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueUpdateResourcePlan" />
+  </wsdl:message>
+  <wsdl:message name="QueueUpdateResourcePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueUpdateResourcePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteResourcePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeleteResourcePlan" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteResourcePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeleteResourcePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueuePublishResourcePlanSoapIn">
+    <wsdl:part name="parameters" element="tns:QueuePublishResourcePlan" />
+  </wsdl:message>
+  <wsdl:message name="QueuePublishResourcePlanSoapOut">
+    <wsdl:part name="parameters" element="tns:QueuePublishResourcePlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourcePlanStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourcePlanStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourcePlanStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourcePlanStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ResourcePlanSoap">
+    <wsdl:operation name="CheckOutResourcePlans">
+      <wsdl:input message="tns:CheckOutResourcePlansSoapIn" />
+      <wsdl:output message="tns:CheckOutResourcePlansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCheckInResourcePlans">
+      <wsdl:input message="tns:QueueCheckInResourcePlansSoapIn" />
+      <wsdl:output message="tns:QueueCheckInResourcePlansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateResourcePlan">
+      <wsdl:input message="tns:QueueCreateResourcePlanSoapIn" />
+      <wsdl:output message="tns:QueueCreateResourcePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlan">
+      <wsdl:input message="tns:ReadResourcePlanSoapIn" />
+      <wsdl:output message="tns:ReadResourcePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateResourcePlan">
+      <wsdl:input message="tns:QueueUpdateResourcePlanSoapIn" />
+      <wsdl:output message="tns:QueueUpdateResourcePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteResourcePlan">
+      <wsdl:input message="tns:QueueDeleteResourcePlanSoapIn" />
+      <wsdl:output message="tns:QueueDeleteResourcePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueuePublishResourcePlan">
+      <wsdl:input message="tns:QueuePublishResourcePlanSoapIn" />
+      <wsdl:output message="tns:QueuePublishResourcePlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlanStatus">
+      <wsdl:input message="tns:ReadResourcePlanStatusSoapIn" />
+      <wsdl:output message="tns:ReadResourcePlanStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourcePlanSoap" type="tns:ResourcePlanSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutResourcePlans">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/CheckOutResourcePlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCheckInResourcePlans">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueCheckInResourcePlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateResourcePlan">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueCreateResourcePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlan">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/ReadResourcePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateResourcePlan">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueUpdateResourcePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteResourcePlan">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueDeleteResourcePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueuePublishResourcePlan">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueuePublishResourcePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlanStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/ReadResourcePlanStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ResourcePlanSoap12" type="tns:ResourcePlanSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutResourcePlans">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/CheckOutResourcePlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCheckInResourcePlans">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueCheckInResourcePlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCreateResourcePlan">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueCreateResourcePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlan">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/ReadResourcePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueUpdateResourcePlan">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueUpdateResourcePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteResourcePlan">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueueDeleteResourcePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueuePublishResourcePlan">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/QueuePublishResourcePlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourcePlanStatus">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ResourcePlan/ReadResourcePlanStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResourcePlan">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the ResourcePlan web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="ResourcePlanSoap" binding="tns:ResourcePlanSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/ResourcePlan.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ResourcePlanSoap12" binding="tns:ResourcePlanSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/ResourcePlan.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

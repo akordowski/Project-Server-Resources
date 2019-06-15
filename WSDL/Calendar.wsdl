@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Calendar/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Calendar/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Calendar web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Calendar/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" />
+      <s:element name="CheckOutCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOutCalendarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckInCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="force" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInCalendarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calendarDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCalendarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calendarGuids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCalendarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListCalendars">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListCalendarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListCalendarsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCalendarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCalendarsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCalendars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calendarDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCalendarsResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CalendarExceptionDataSet/" id="CalendarDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="CalendarDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Calendars">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CAL_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="CAL_NAME" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" default="false" name="CAL_IS_STANDARD_CAL" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="CAL_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CAL_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CalendarUniqueIdToDuplicate" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CalendarExceptions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CAL_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="Name" type="xs:string" />
+                  <xs:element minOccurs="0" name="Start" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="Finish" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="Shift1Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift1Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceType" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceFrequency" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceDays" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonthDay" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonth" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrencePosition" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="CalendarDataSetKey1">
+          <xs:selector xpath=".//mstns:Calendars" />
+          <xs:field xpath="mstns:CAL_UID" />
+        </xs:unique>
+        <xs:keyref name="CalendarCalendarExceptions" refer="mstns:CalendarDataSetKey1">
+          <xs:selector xpath=".//mstns:CalendarExceptions" />
+          <xs:field xpath="mstns:CAL_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckOutCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOutCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CheckInCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="CreateCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCalendars" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListCalendars" />
+  </wsdl:message>
+  <wsdl:message name="ListCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCalendars" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendarsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCalendars" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCalendarsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCalendarsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CalendarSoap">
+    <wsdl:operation name="CheckOutCalendars">
+      <wsdl:input message="tns:CheckOutCalendarsSoapIn" />
+      <wsdl:output message="tns:CheckOutCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCalendars">
+      <wsdl:input message="tns:CheckInCalendarsSoapIn" />
+      <wsdl:output message="tns:CheckInCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCalendars">
+      <wsdl:input message="tns:CreateCalendarsSoapIn" />
+      <wsdl:output message="tns:CreateCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <wsdl:input message="tns:DeleteCalendarsSoapIn" />
+      <wsdl:output message="tns:DeleteCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCalendars">
+      <wsdl:input message="tns:ListCalendarsSoapIn" />
+      <wsdl:output message="tns:ListCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <wsdl:input message="tns:ReadCalendarsSoapIn" />
+      <wsdl:output message="tns:ReadCalendarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <wsdl:input message="tns:UpdateCalendarsSoapIn" />
+      <wsdl:output message="tns:UpdateCalendarsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalendarSoap" type="tns:CalendarSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CheckOutCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CheckInCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CreateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/DeleteCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/ListCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/ReadCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/UpdateCalendars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalendarSoap12" type="tns:CalendarSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CheckOutCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CheckInCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/CreateCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/DeleteCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/ListCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/ReadCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCalendars">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Calendar/UpdateCalendars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Calendar">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Calendar web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="CalendarSoap" binding="tns:CalendarSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Calendar.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CalendarSoap12" binding="tns:CalendarSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Calendar.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

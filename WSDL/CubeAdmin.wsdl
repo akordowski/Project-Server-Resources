@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the CubeAdmin web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" />
+      <s:element name="SetCubeBuildingSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="asCubeUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="ASServerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ASDBName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ASDatabaseDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ASExtraNetAddress" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateRangeChoice" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pastNum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pastUnit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextNum" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextUnit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ToDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="updateFreqChoice" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="freqNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="freqUnit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="startTime" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCubeBuildingSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCubeBuildingSettingsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueCBSRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="settingcbsMsg" type="tns:CBSRequestMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CBSRequestMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cbsSettingUid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASServerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASDBName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASDatabaseDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASExtraNetAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="iRangeChoice" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iPastNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iPastUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iNextNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iNextUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dtFromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="dtToDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="bHighPriority" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueueCBSRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QueueCBSRequestResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCubeFieldSettings">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCubeFieldSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCubeFieldSettingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCubeCalculatedMemberDefintion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calculatedMembersDataset">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCubeCalculatedMemberDefintionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateCubeFieldSettingForDimension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Project_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Project_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Resource_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Resource_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Task_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Task_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Assignment_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dim_Assignment_PropUID_Del" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateCubeFieldSettingForDimensionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateCubeFieldSettingForMeasure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Project_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Project_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Resource_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Resource_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Task_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Task_PropUID_Del" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Assignment_PropUID_Add" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="Measure_Assignment_PropUID_Del" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCubeFieldSettingForMeasureResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCalculatedMemberDefinitions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCalculatedMemberDefinitionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCalculatedMemberDefinitionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOlapDatabaseSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuidCube" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="cubeSettings">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOlapDatabaseSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateOlapDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuidCube" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="cubeSettings">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOlapDatabaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadOlapDatabaseSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOlapDatabaseSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadOlapDatabaseSettingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOlapDatabaseSettingList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadOlapDatabaseSettingListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadOlapDatabaseSettingListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOlapDatabaseSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOlapDatabaseSettingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDefaultOlapDatabase">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDefaultOlapDatabaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDefaultOlapDatabaseResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetDefaultOlapDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetDefaultOlapDatabaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetOlapDatabaseEnabled">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="isEnabled" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetOlapDatabaseEnabledResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuildOlapDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="olapDatabaseGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildOlapDatabaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuildOlapDatabaseResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCubeCalculatedMemberDefinition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calculatedMembersDataset">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCubeCalculatedMemberDefinitionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CubeFieldSettingDataSet/" id="CubeFieldSettingDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="CubeFieldSettingDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ProjectDimension">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceDimension">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="TaskDimension">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignmentDimension">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ProjectMeasure">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceMeasure">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="TaskMeasure">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignmentMeasure">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CubeSettingsDataSet/" id="CubeSettingsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="CubeSettingsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CubeSettings">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WADMIN_AS_DATABASE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_CUBE_BUILD" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_CUBE_OLAP_SERVER" type="xs:string" />
+                  <xs:element name="WADMIN_CUBE_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WADMIN_CUBE_DESCRIPTION" type="xs:string" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE" type="xs:int" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_NEXT_NUM" type="xs:int" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_NEXT_UNIT" type="xs:int" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_PAST_NUM" type="xs:int" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_PAST_UNIT" type="xs:int" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_FROM" type="xs:dateTime" />
+                  <xs:element name="WADMIN_CUBE_DATE_RANGE_TO" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WADMIN_CUBE_LOG_STATUS_TIMESTAMP" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WADMIN_CUBE_LOG_STATUS" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WADMIN_CUBE_LOG_STATUS_TEXT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_NEXT_NUM" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_NEXT_UNIT" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_PAST_NUM" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_PAST_UNIT" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_FROM" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_RES_DATE_RANGE_TO" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_AUTO_LAST_RUN" type="xs:dateTime" />
+                  <xs:element name="WADMIN_UPDATE_RECUR" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_UPDATE_FREQ_EVERY" type="xs:int" />
+                  <xs:element name="WADMIN_UPDATE_FREQ_UNIT" type="xs:int" />
+                  <xs:element name="WADMIN_UPDATE_FREQ_START_DATE" type="xs:dateTime" />
+                  <xs:element name="WADMIN_UPDATE_FREQ_START_TIME" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_UPDATE_RES" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" name="WADMIN_UPDATE_CUBE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="WADMIN_CUBE_EXTRANET_OLAP_SERVER" type="xs:string" />
+                  <xs:element minOccurs="0" name="WADMIN_IS_DATABASE_ENABLED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WADMIN_IS_DATABASE_DEFAULT" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WADMIN_IS_INACTIVETASKS_ENABLED" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element name="AS_DATABASE_STATUS" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CubeFieldSettings">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ENT_TYPE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ENT_NAME" type="xs:string" />
+                  <xs:element name="PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="InCube" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="PROP_TYPE" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsIntrinsic" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="IsLookUp" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="EntityType" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="OlapRole" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PRIMARY_ENT_TYPE_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CalculatedMembers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="UID" type="xs:string" />
+                  <xs:element name="CubeID" type="xs:int" />
+                  <xs:element name="MemberName" type="xs:string" />
+                  <xs:element name="MemberDefinition" type="xs:string" />
+                  <xs:element name="IsEnabled" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Departments">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_PROP_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DEPARTMENT_CF_UID" type="xs:string" />
+                  <xs:element name="IsSelected" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ASCubeSettingDataSetKey1">
+          <xs:selector xpath=".//mstns:CubeSettings" />
+          <xs:field xpath="mstns:WADMIN_AS_DATABASE_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="CubeCalculatedMemberDataSetKey1">
+          <xs:selector xpath=".//mstns:CalculatedMembers" />
+          <xs:field xpath="mstns:UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CubeCalculatedMemberDataSet/" id="CubeCalculatedMemberDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="CubeCalculatedMemberDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CalculatedMembers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="UID" type="xs:string" />
+                  <xs:element name="CubeID" type="xs:int" />
+                  <xs:element name="MemberName" type="xs:string" />
+                  <xs:element name="MemberDefinition" type="xs:string" />
+                  <xs:element name="IsEnabled" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="CubeCalculatedMemberDataSetKey1">
+          <xs:selector xpath=".//mstns:CalculatedMembers" />
+          <xs:field xpath="mstns:UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SetCubeBuildingSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCubeBuildingSettings" />
+  </wsdl:message>
+  <wsdl:message name="SetCubeBuildingSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCubeBuildingSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueCBSRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueCBSRequest" />
+  </wsdl:message>
+  <wsdl:message name="QueueCBSRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueCBSRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCubeFieldSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCubeFieldSettings" />
+  </wsdl:message>
+  <wsdl:message name="ReadCubeFieldSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCubeFieldSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeCalculatedMemberDefintionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCubeCalculatedMemberDefintion" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeCalculatedMemberDefintionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCubeCalculatedMemberDefintionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeFieldSettingForDimensionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCubeFieldSettingForDimension" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeFieldSettingForDimensionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCubeFieldSettingForDimensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeFieldSettingForMeasureSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCubeFieldSettingForMeasure" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeFieldSettingForMeasureSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCubeFieldSettingForMeasureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalculatedMemberDefinitionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCalculatedMemberDefinitions" />
+  </wsdl:message>
+  <wsdl:message name="ReadCalculatedMemberDefinitionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCalculatedMemberDefinitionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOlapDatabaseSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOlapDatabaseSettings" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOlapDatabaseSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOlapDatabaseSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOlapDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOlapDatabase" />
+  </wsdl:message>
+  <wsdl:message name="CreateOlapDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOlapDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOlapDatabaseSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOlapDatabaseSetting" />
+  </wsdl:message>
+  <wsdl:message name="ReadOlapDatabaseSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOlapDatabaseSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOlapDatabaseSettingListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOlapDatabaseSettingList" />
+  </wsdl:message>
+  <wsdl:message name="ReadOlapDatabaseSettingListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOlapDatabaseSettingListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOlapDatabaseSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteOlapDatabaseSetting" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOlapDatabaseSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteOlapDatabaseSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultOlapDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDefaultOlapDatabase" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultOlapDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDefaultOlapDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetDefaultOlapDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:SetDefaultOlapDatabase" />
+  </wsdl:message>
+  <wsdl:message name="SetDefaultOlapDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:SetDefaultOlapDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetOlapDatabaseEnabledSoapIn">
+    <wsdl:part name="parameters" element="tns:SetOlapDatabaseEnabled" />
+  </wsdl:message>
+  <wsdl:message name="SetOlapDatabaseEnabledSoapOut">
+    <wsdl:part name="parameters" element="tns:SetOlapDatabaseEnabledResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildOlapDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildOlapDatabase" />
+  </wsdl:message>
+  <wsdl:message name="BuildOlapDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildOlapDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeCalculatedMemberDefinitionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCubeCalculatedMemberDefinition" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCubeCalculatedMemberDefinitionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCubeCalculatedMemberDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CubeAdminSoap">
+    <wsdl:operation name="SetCubeBuildingSettings">
+      <wsdl:input message="tns:SetCubeBuildingSettingsSoapIn" />
+      <wsdl:output message="tns:SetCubeBuildingSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueCBSRequest">
+      <wsdl:input message="tns:QueueCBSRequestSoapIn" />
+      <wsdl:output message="tns:QueueCBSRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCubeFieldSettings">
+      <wsdl:input message="tns:ReadCubeFieldSettingsSoapIn" />
+      <wsdl:output message="tns:ReadCubeFieldSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefintion">
+      <wsdl:input message="tns:UpdateCubeCalculatedMemberDefintionSoapIn" />
+      <wsdl:output message="tns:UpdateCubeCalculatedMemberDefintionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForDimension">
+      <wsdl:input message="tns:UpdateCubeFieldSettingForDimensionSoapIn" />
+      <wsdl:output message="tns:UpdateCubeFieldSettingForDimensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForMeasure">
+      <wsdl:input message="tns:UpdateCubeFieldSettingForMeasureSoapIn" />
+      <wsdl:output message="tns:UpdateCubeFieldSettingForMeasureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalculatedMemberDefinitions">
+      <wsdl:input message="tns:ReadCalculatedMemberDefinitionsSoapIn" />
+      <wsdl:output message="tns:ReadCalculatedMemberDefinitionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOlapDatabaseSettings">
+      <wsdl:input message="tns:UpdateOlapDatabaseSettingsSoapIn" />
+      <wsdl:output message="tns:UpdateOlapDatabaseSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOlapDatabase">
+      <wsdl:input message="tns:CreateOlapDatabaseSoapIn" />
+      <wsdl:output message="tns:CreateOlapDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSetting">
+      <wsdl:input message="tns:ReadOlapDatabaseSettingSoapIn" />
+      <wsdl:output message="tns:ReadOlapDatabaseSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSettingList">
+      <wsdl:input message="tns:ReadOlapDatabaseSettingListSoapIn" />
+      <wsdl:output message="tns:ReadOlapDatabaseSettingListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOlapDatabaseSetting">
+      <wsdl:input message="tns:DeleteOlapDatabaseSettingSoapIn" />
+      <wsdl:output message="tns:DeleteOlapDatabaseSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultOlapDatabase">
+      <wsdl:input message="tns:GetDefaultOlapDatabaseSoapIn" />
+      <wsdl:output message="tns:GetDefaultOlapDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDefaultOlapDatabase">
+      <wsdl:input message="tns:SetDefaultOlapDatabaseSoapIn" />
+      <wsdl:output message="tns:SetDefaultOlapDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOlapDatabaseEnabled">
+      <wsdl:input message="tns:SetOlapDatabaseEnabledSoapIn" />
+      <wsdl:output message="tns:SetOlapDatabaseEnabledSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildOlapDatabase">
+      <wsdl:input message="tns:BuildOlapDatabaseSoapIn" />
+      <wsdl:output message="tns:BuildOlapDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefinition">
+      <wsdl:input message="tns:UpdateCubeCalculatedMemberDefinitionSoapIn" />
+      <wsdl:output message="tns:UpdateCubeCalculatedMemberDefinitionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CubeAdminSoap" type="tns:CubeAdminSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetCubeBuildingSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetCubeBuildingSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCBSRequest">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/QueueCBSRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCubeFieldSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadCubeFieldSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefintion">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeCalculatedMemberDefintion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForDimension">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeFieldSettingForDimension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForMeasure">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeFieldSettingForMeasure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalculatedMemberDefinitions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadCalculatedMemberDefinitions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOlapDatabaseSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateOlapDatabaseSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOlapDatabase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/CreateOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSetting">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadOlapDatabaseSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSettingList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadOlapDatabaseSettingList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOlapDatabaseSetting">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/DeleteOlapDatabaseSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultOlapDatabase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/GetDefaultOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDefaultOlapDatabase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetDefaultOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOlapDatabaseEnabled">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetOlapDatabaseEnabled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildOlapDatabase">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/BuildOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefinition">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeCalculatedMemberDefinition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CubeAdminSoap12" type="tns:CubeAdminSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetCubeBuildingSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetCubeBuildingSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueCBSRequest">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/QueueCBSRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCubeFieldSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadCubeFieldSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefintion">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeCalculatedMemberDefintion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForDimension">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeFieldSettingForDimension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeFieldSettingForMeasure">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeFieldSettingForMeasure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCalculatedMemberDefinitions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadCalculatedMemberDefinitions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOlapDatabaseSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateOlapDatabaseSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOlapDatabase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/CreateOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSetting">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadOlapDatabaseSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOlapDatabaseSettingList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/ReadOlapDatabaseSettingList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOlapDatabaseSetting">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/DeleteOlapDatabaseSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultOlapDatabase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/GetDefaultOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDefaultOlapDatabase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetDefaultOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOlapDatabaseEnabled">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/SetOlapDatabaseEnabled" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildOlapDatabase">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/BuildOlapDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCubeCalculatedMemberDefinition">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CubeAdmin/UpdateCubeCalculatedMemberDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CubeAdmin">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the CubeAdmin web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="CubeAdminSoap" binding="tns:CubeAdminSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/CubeAdmin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CubeAdminSoap12" binding="tns:CubeAdminSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/CubeAdmin.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

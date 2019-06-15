@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the CustomFields web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+      <s:element name="CheckOutCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOutCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckInCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="force" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFieldsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByMdPropUids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="md_prop_uids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByMdPropUidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFieldsByMdPropUidsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="entityUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFieldsByEntityResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cfds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cfds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomFieldIDs" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateCustomFields2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cfds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCustomFields2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateCustomFields2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cfds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCustomFields2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCustomFields2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFields2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFields2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByMdPropUids2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="md_prop_uids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByMdPropUids2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFieldsByMdPropUids2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByEntity2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="entityUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadCustomFieldsByEntity2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCustomFieldsByEntity2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/CustomFieldDataSet/" id="CustomFieldDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="CustomFieldDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="CustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID_SECONDARY" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID_SECONDARY" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="MD_ENT_TYPE_UID" type="xs:string" />
+                  <xs:element name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_LOOKUP_TABLE_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="MD_PROP_IS_WORKFLOW_CONTROLLED" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="MD_PROP_IS_EDITABLE_IN_VISIBILITY" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="MD_PROP_IS_REQUIRED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_AGGREGATION_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="MD_PROP_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_DEFAULT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_IS_LEAF_NODE_ONLY" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="MD_PROP_IS_MULTILINE_TEXT" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_DESCRIPTION" type="xs:string" />
+                  <xs:element minOccurs="0" default="1" name="MD_PROP_MAX_VALUES" type="xs:int" />
+                  <xs:element minOccurs="0" name="MD_PROP_USE_FOR_MATCHING" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_FORMULA" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_GRAPHICAL_INDICATOR" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_SUMM_GRAPHICAL_INDICATOR" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_PROJ_SUMM_GRAPHICAL_INDICATOR" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_GRAPHICAL_INDICATOR_TOOLTIP" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_ROLLDOWN_TO_ASSN" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_DEPARTMENT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="MD_PROP_COPY_ON_REASSIGNMENT" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="MD_PROP_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MD_PROP_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="APP_ENTITY_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="CustomFieldDataSetKey1">
+          <xs:selector xpath=".//mstns:CustomFields" />
+          <xs:field xpath="mstns:MD_PROP_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckOutCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOutCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="CheckInCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByMdPropUidsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByMdPropUids" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByMdPropUidsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByMdPropUidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByEntity" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomFields2SoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCustomFields2" />
+  </wsdl:message>
+  <wsdl:message name="CreateCustomFields2SoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCustomFields2Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFields2SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFields2" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCustomFields2SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCustomFields2Response" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFields2SoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFields2" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFields2SoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFields2Response" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByMdPropUids2SoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByMdPropUids2" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByMdPropUids2SoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByMdPropUids2Response" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByEntity2SoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByEntity2" />
+  </wsdl:message>
+  <wsdl:message name="ReadCustomFieldsByEntity2SoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCustomFieldsByEntity2Response" />
+  </wsdl:message>
+  <wsdl:portType name="CustomFieldsSoap">
+    <wsdl:operation name="CheckOutCustomFields">
+      <wsdl:input message="tns:CheckOutCustomFieldsSoapIn" />
+      <wsdl:output message="tns:CheckOutCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCustomFields">
+      <wsdl:input message="tns:CheckInCustomFieldsSoapIn" />
+      <wsdl:output message="tns:CheckInCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields">
+      <wsdl:input message="tns:ReadCustomFieldsSoapIn" />
+      <wsdl:output message="tns:ReadCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids">
+      <wsdl:input message="tns:ReadCustomFieldsByMdPropUidsSoapIn" />
+      <wsdl:output message="tns:ReadCustomFieldsByMdPropUidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity">
+      <wsdl:input message="tns:ReadCustomFieldsByEntitySoapIn" />
+      <wsdl:output message="tns:ReadCustomFieldsByEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields">
+      <wsdl:input message="tns:CreateCustomFieldsSoapIn" />
+      <wsdl:output message="tns:CreateCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <wsdl:input message="tns:UpdateCustomFieldsSoapIn" />
+      <wsdl:output message="tns:UpdateCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomFields">
+      <wsdl:input message="tns:DeleteCustomFieldsSoapIn" />
+      <wsdl:output message="tns:DeleteCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields2">
+      <wsdl:input message="tns:CreateCustomFields2SoapIn" />
+      <wsdl:output message="tns:CreateCustomFields2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields2">
+      <wsdl:input message="tns:UpdateCustomFields2SoapIn" />
+      <wsdl:output message="tns:UpdateCustomFields2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields2">
+      <wsdl:input message="tns:ReadCustomFields2SoapIn" />
+      <wsdl:output message="tns:ReadCustomFields2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids2">
+      <wsdl:input message="tns:ReadCustomFieldsByMdPropUids2SoapIn" />
+      <wsdl:output message="tns:ReadCustomFieldsByMdPropUids2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity2">
+      <wsdl:input message="tns:ReadCustomFieldsByEntity2SoapIn" />
+      <wsdl:output message="tns:ReadCustomFieldsByEntity2SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomFieldsSoap" type="tns:CustomFieldsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CheckOutCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CheckInCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByMdPropUids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CreateCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/UpdateCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/DeleteCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields2">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CreateCustomFields2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields2">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/UpdateCustomFields2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields2">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFields2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids2">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByMdPropUids2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity2">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByEntity2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CustomFieldsSoap12" type="tns:CustomFieldsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckOutCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CheckOutCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CheckInCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByMdPropUids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CreateCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/UpdateCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/DeleteCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomFields2">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/CreateCustomFields2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomFields2">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/UpdateCustomFields2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFields2">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFields2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByMdPropUids2">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByMdPropUids2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCustomFieldsByEntity2">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/CustomFields/ReadCustomFieldsByEntity2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomFields">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the CustomFields web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="CustomFieldsSoap" binding="tns:CustomFieldsSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/CustomFields.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CustomFieldsSoap12" binding="tns:CustomFieldsSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/CustomFields.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

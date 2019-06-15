@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the WssInterop web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" />
+      <s:element name="ReadWssServerInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWssServerInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWssServerInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWssSettings">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWssSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWssSettingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWssSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wssSettingsDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWssSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadWssData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWssDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWssDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSSVServerURLs">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetWSSVServerURLsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWSSVServerURLsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWSSVServerURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="wssServerUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSSVServerURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWSSVServerURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WSSWebExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wssWebFullUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WSSWebExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="WSSWebExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWssSite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="wssServerUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="wssWebFullUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="webTemplateLcid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="webTemplateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWssSiteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteWSSSite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWSSSiteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueSynchronizeMembershipForWssSite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueSynchronizeMembershipForWssSiteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateMembershipForWssSite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastRevCounter" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMembershipForWssSiteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SynchronizeMembershipForPwaAppRootSite">
+        <s:complexType />
+      </s:element>
+      <s:element name="SynchronizeMembershipForPwaAppRootSiteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectSiteBaseUrls">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectSiteBaseUrlsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectSiteBaseUrlsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectSitePaths">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="oldWebAppUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldSitePath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="newWebAppUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="newSitePath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="updateContentTypes" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="synchronizeSitePermissions" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectSitePathsResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/WssSettingsDataSet/" id="WssSettingsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="WssSettingsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="WssAdmin">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WADMIN_UIDFAKE" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WADMIN_CURRENT_STS_SERVER_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WADMIN_DEFAULT_SITE_COLLECTION" type="xs:string" />
+                  <xs:element name="WADMIN_WSS_RESTRICT_WORKSPACE_CREATION" type="xs:int" />
+                  <xs:element name="WADMIN_STS_TEMPLATE_ID" type="xs:string" />
+                  <xs:element name="WADMIN_STS_TEMPLATE_LCID" type="xs:int" />
+                  <xs:element name="WADMIN_AUTO_CREATE_SUBWEBS" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_AUTO_ADD_USER_TO_SUBWEB" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="WADMIN_WSS_PWA_ADMIN_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WADMIN_WSS_PWA_PROJECT_MANAGER_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WADMIN_WSS_PWA_TEAM_MEMBER_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WADMIN_WSS_PWA_READER_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WADMIN_USER_SYNC_SETTING" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:WssAdmin" />
+          <xs:field xpath="mstns:WADMIN_UIDFAKE" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectWSSInfoDataSet/" id="ProjectWSSInfoDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ProjectWSSInfoDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ProjWssInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSS_SERVER_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROJECT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_WORKSPACE_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_ISSUES_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_RISKS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_DOCUMENTS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_WORKSPACE_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_WORKSPACE_VSERVER_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJECT_COMMITMENTS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSS_PWA_ADMIN_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WSS_PWA_PROJECT_MANAGER_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WSS_PWA_TEAM_MEMBER_ROLE_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="WSS_PWA_READER_ROLE_ID" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/WssServersDataSet/" id="WssServersDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="WssServersDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="WssServers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSTS_SERVER_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSTS_SERVER_NAME" type="xs:string" />
+                  <xs:element name="WSTS_SERVER_WEB_PORT" type="xs:int" />
+                  <xs:element name="WSTS_SERVER_ADMIN_PORT" type="xs:int" />
+                  <xs:element name="WSTS_WEB_PORT_IS_SSL" type="xs:unsignedByte" />
+                  <xs:element name="WSTS_ADMIN_PORT_IS_SSL" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="WSTS_MANAGED_PATH" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSTS_EXTRANET_SERVER_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSTS_ADMIN_SERVER_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSTS_NETBIOS_SERVER_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WSS_SERVER_URL" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:WssServers" />
+          <xs:field xpath="mstns:WSTS_SERVER_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadWssServerInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWssServerInfo" />
+  </wsdl:message>
+  <wsdl:message name="ReadWssServerInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWssServerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWssSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWssSettings" />
+  </wsdl:message>
+  <wsdl:message name="ReadWssSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWssSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWssSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWssSettings" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWssSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWssSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWssDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWssData" />
+  </wsdl:message>
+  <wsdl:message name="ReadWssDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWssDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWSSVServerURLsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWSSVServerURLs" />
+  </wsdl:message>
+  <wsdl:message name="GetWSSVServerURLsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWSSVServerURLsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWSSVServerURLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWSSVServerURL" />
+  </wsdl:message>
+  <wsdl:message name="GetWSSVServerURLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWSSVServerURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSSWebExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:WSSWebExists" />
+  </wsdl:message>
+  <wsdl:message name="WSSWebExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:WSSWebExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWssSiteSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWssSite" />
+  </wsdl:message>
+  <wsdl:message name="CreateWssSiteSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWssSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWSSSiteSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWSSSite" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWSSSiteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWSSSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueSynchronizeMembershipForWssSiteSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueSynchronizeMembershipForWssSite" />
+  </wsdl:message>
+  <wsdl:message name="QueueSynchronizeMembershipForWssSiteSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueSynchronizeMembershipForWssSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMembershipForWssSiteSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMembershipForWssSite" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMembershipForWssSiteSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMembershipForWssSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeMembershipForPwaAppRootSiteSoapIn">
+    <wsdl:part name="parameters" element="tns:SynchronizeMembershipForPwaAppRootSite" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeMembershipForPwaAppRootSiteSoapOut">
+    <wsdl:part name="parameters" element="tns:SynchronizeMembershipForPwaAppRootSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectSiteBaseUrlsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectSiteBaseUrls" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectSiteBaseUrlsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectSiteBaseUrlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSitePathsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProjectSitePaths" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProjectSitePathsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProjectSitePathsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WssInteropSoap">
+    <wsdl:operation name="ReadWssServerInfo">
+      <wsdl:input message="tns:ReadWssServerInfoSoapIn" />
+      <wsdl:output message="tns:ReadWssServerInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssSettings">
+      <wsdl:input message="tns:ReadWssSettingsSoapIn" />
+      <wsdl:output message="tns:ReadWssSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWssSettings">
+      <wsdl:input message="tns:UpdateWssSettingsSoapIn" />
+      <wsdl:output message="tns:UpdateWssSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssData">
+      <wsdl:input message="tns:ReadWssDataSoapIn" />
+      <wsdl:output message="tns:ReadWssDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURLs">
+      <wsdl:input message="tns:GetWSSVServerURLsSoapIn" />
+      <wsdl:output message="tns:GetWSSVServerURLsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURL">
+      <wsdl:input message="tns:GetWSSVServerURLSoapIn" />
+      <wsdl:output message="tns:GetWSSVServerURLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSSWebExists">
+      <wsdl:input message="tns:WSSWebExistsSoapIn" />
+      <wsdl:output message="tns:WSSWebExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWssSite">
+      <wsdl:input message="tns:CreateWssSiteSoapIn" />
+      <wsdl:output message="tns:CreateWssSiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWSSSite">
+      <wsdl:input message="tns:DeleteWSSSiteSoapIn" />
+      <wsdl:output message="tns:DeleteWSSSiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueSynchronizeMembershipForWssSite">
+      <wsdl:input message="tns:QueueSynchronizeMembershipForWssSiteSoapIn" />
+      <wsdl:output message="tns:QueueSynchronizeMembershipForWssSiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembershipForWssSite">
+      <wsdl:input message="tns:UpdateMembershipForWssSiteSoapIn" />
+      <wsdl:output message="tns:UpdateMembershipForWssSiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeMembershipForPwaAppRootSite">
+      <wsdl:input message="tns:SynchronizeMembershipForPwaAppRootSiteSoapIn" />
+      <wsdl:output message="tns:SynchronizeMembershipForPwaAppRootSiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectSiteBaseUrls">
+      <wsdl:input message="tns:ReadProjectSiteBaseUrlsSoapIn" />
+      <wsdl:output message="tns:ReadProjectSiteBaseUrlsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectSitePaths">
+      <wsdl:input message="tns:UpdateProjectSitePathsSoapIn" />
+      <wsdl:output message="tns:UpdateProjectSitePathsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WssInteropSoap" type="tns:WssInteropSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadWssServerInfo">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssServerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWssSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateWssSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssData">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURLs">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/GetWSSVServerURLs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURL">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/GetWSSVServerURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSWebExists">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/WSSWebExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWssSite">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/CreateWssSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWSSSite">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/DeleteWSSSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueSynchronizeMembershipForWssSite">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/QueueSynchronizeMembershipForWssSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembershipForWssSite">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateMembershipForWssSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeMembershipForPwaAppRootSite">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/SynchronizeMembershipForPwaAppRootSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectSiteBaseUrls">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadProjectSiteBaseUrls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectSitePaths">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateProjectSitePaths" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WssInteropSoap12" type="tns:WssInteropSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadWssServerInfo">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssServerInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWssSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateWssSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWssData">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadWssData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURLs">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/GetWSSVServerURLs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWSSVServerURL">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/GetWSSVServerURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSWebExists">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/WSSWebExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWssSite">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/CreateWssSite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWSSSite">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/DeleteWSSSite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueSynchronizeMembershipForWssSite">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/QueueSynchronizeMembershipForWssSite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMembershipForWssSite">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateMembershipForWssSite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeMembershipForPwaAppRootSite">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/SynchronizeMembershipForPwaAppRootSite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectSiteBaseUrls">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/ReadProjectSiteBaseUrls" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectSitePaths">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/WssInterop/UpdateProjectSitePaths" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WssInterop">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the WssInterop web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="WssInteropSoap" binding="tns:WssInteropSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/WssInterop.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WssInteropSoap12" binding="tns:WssInteropSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/WssInterop.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

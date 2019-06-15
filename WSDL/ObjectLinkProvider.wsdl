@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the ObjectLinkProvider web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+      <s:element name="ReadLinkedWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="objectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="filterWebObjectTypes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadLinkedWebObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLinkedWebObjectsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectLinkedWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="filterWebObjectTypes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTaskLinkedObjects" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectLinkedWebObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectLinkedWebObjectsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTaskLinkedWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="taskUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="filterWebObjectTypes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTaskLinkedWebObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTaskLinkedWebObjectsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadSharePointItemLinkedWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tpId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sharePointListName" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="filterWebObjectTypes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadSharePointItemLinkedWebObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadSharePointItemLinkedWebObjectsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWebObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webObjectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadWebObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadWebObjectResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectWebObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTaskObjects" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectWebObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectWebObjectResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTaskWebObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="taskUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTaskWebObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTaskWebObjectResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadSharePointWebObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tpId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sharePointListName" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadSharePointWebObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadSharePointWebObjectResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadObjectByDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadObjectByDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadObjectByDescriptionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWebObjectLinksByGuid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webObjectUid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="webObjectUidsToLinkTo" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="linkTypes" type="tns:ArrayOfWebObjectLinkType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWebObjectLinkType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebObjectLinkType" type="tns:WebObjectLinkType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="WebObjectLinkType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoLink" />
+          <s:enumeration value="General" />
+          <s:enumeration value="Affected" />
+          <s:enumeration value="Action" />
+          <s:enumeration value="Impact" />
+          <s:enumeration value="Trigger" />
+          <s:enumeration value="Mitigation" />
+          <s:enumeration value="Contingency" />
+          <s:enumeration value="DocGeneral" />
+          <s:enumeration value="TaskIsDoc" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateWebObjectLinksByGuidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateWebObjectLinksByGuidResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWebObjectLinks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="primaryDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="linkDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="linkTypes" type="tns:ArrayOfWebObjectLinkType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWebObjectLinksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateWebObjectLinksResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOrCreateWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lookupDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadOrCreateWebObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lookupDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWebObjectLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webObjectUid1" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="webObjectUid2" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWebObjectLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteWebObjectLinkResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectWebObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectWebObjectsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteWebObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="webObjectUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWebObjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadObjectLinkType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="object1" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="object2" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadObjectLinkTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadObjectLinkTypeResult" type="tns:WebObjectLinkType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProviderDataSet/" id="ObjectLinkProviderDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ObjectLinkProviderDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="WebObjectLinks">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WOBJLINK_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WOBJLINK_OBJECT1" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WOBJLINK_OBJECT2" type="xs:string" />
+                  <xs:element name="WOBJLINK_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="WebObjects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WOBJ_UID" type="xs:string" />
+                  <xs:element name="WOBJ_TYPE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WOBJ_PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WOBJ_TASK_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WOBJ_TP_ID" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WOBJ_LIST_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WOBJ_DESC" type="xs:string" />
+                  <xs:element minOccurs="0" name="WOBJ_DOC_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="WOBJ_ISSUE_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="WOBJ_OTHER_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="WOBJ_RISK_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="WOBJ_SHARED_MILESTONE_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="WOBJ_COMMITMENT_REF_CNT" type="xs:int" />
+                  <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Dataset1Key1">
+          <xs:selector xpath=".//mstns:WebObjectLinks" />
+          <xs:field xpath="mstns:WOBJLINK_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="Dataset1Key2">
+          <xs:selector xpath=".//mstns:WebObjects" />
+          <xs:field xpath="mstns:WOBJ_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadLinkedWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLinkedWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadLinkedWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLinkedWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectLinkedWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectLinkedWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectLinkedWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectLinkedWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTaskLinkedWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTaskLinkedWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadTaskLinkedWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTaskLinkedWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadSharePointItemLinkedWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadSharePointItemLinkedWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadSharePointItemLinkedWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadSharePointItemLinkedWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadWebObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadWebObject" />
+  </wsdl:message>
+  <wsdl:message name="ReadWebObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadWebObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectWebObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectWebObject" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectWebObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectWebObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTaskWebObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTaskWebObject" />
+  </wsdl:message>
+  <wsdl:message name="ReadTaskWebObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTaskWebObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadSharePointWebObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadSharePointWebObject" />
+  </wsdl:message>
+  <wsdl:message name="ReadSharePointWebObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadSharePointWebObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadObjectByDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadObjectByDescription" />
+  </wsdl:message>
+  <wsdl:message name="ReadObjectByDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadObjectByDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWebObjectLinksByGuidSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWebObjectLinksByGuid" />
+  </wsdl:message>
+  <wsdl:message name="CreateWebObjectLinksByGuidSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWebObjectLinksByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWebObjectLinksSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWebObjectLinks" />
+  </wsdl:message>
+  <wsdl:message name="CreateWebObjectLinksSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWebObjectLinksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadOrCreateWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadOrCreateWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="ReadOrCreateWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadOrCreateWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWebObjectLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWebObjectLink" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWebObjectLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWebObjectLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectWebObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProjectWebObjects" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectWebObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectWebObjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWebObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWebObject" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWebObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWebObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadObjectLinkTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadObjectLinkType" />
+  </wsdl:message>
+  <wsdl:message name="ReadObjectLinkTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadObjectLinkTypeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ObjectLinkProviderSoap">
+    <wsdl:operation name="ReadLinkedWebObjects">
+      <wsdl:input message="tns:ReadLinkedWebObjectsSoapIn" />
+      <wsdl:output message="tns:ReadLinkedWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectLinkedWebObjects">
+      <wsdl:input message="tns:ReadProjectLinkedWebObjectsSoapIn" />
+      <wsdl:output message="tns:ReadProjectLinkedWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskLinkedWebObjects">
+      <wsdl:input message="tns:ReadTaskLinkedWebObjectsSoapIn" />
+      <wsdl:output message="tns:ReadTaskLinkedWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointItemLinkedWebObjects">
+      <wsdl:input message="tns:ReadSharePointItemLinkedWebObjectsSoapIn" />
+      <wsdl:output message="tns:ReadSharePointItemLinkedWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadWebObject">
+      <wsdl:input message="tns:ReadWebObjectSoapIn" />
+      <wsdl:output message="tns:ReadWebObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectWebObject">
+      <wsdl:input message="tns:ReadProjectWebObjectSoapIn" />
+      <wsdl:output message="tns:ReadProjectWebObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskWebObject">
+      <wsdl:input message="tns:ReadTaskWebObjectSoapIn" />
+      <wsdl:output message="tns:ReadTaskWebObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointWebObject">
+      <wsdl:input message="tns:ReadSharePointWebObjectSoapIn" />
+      <wsdl:output message="tns:ReadSharePointWebObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectByDescription">
+      <wsdl:input message="tns:ReadObjectByDescriptionSoapIn" />
+      <wsdl:output message="tns:ReadObjectByDescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinksByGuid">
+      <wsdl:input message="tns:CreateWebObjectLinksByGuidSoapIn" />
+      <wsdl:output message="tns:CreateWebObjectLinksByGuidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinks">
+      <wsdl:input message="tns:CreateWebObjectLinksSoapIn" />
+      <wsdl:output message="tns:CreateWebObjectLinksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrCreateWebObjects">
+      <wsdl:input message="tns:ReadOrCreateWebObjectsSoapIn" />
+      <wsdl:output message="tns:ReadOrCreateWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObjectLink">
+      <wsdl:input message="tns:DeleteWebObjectLinkSoapIn" />
+      <wsdl:output message="tns:DeleteWebObjectLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectWebObjects">
+      <wsdl:input message="tns:DeleteProjectWebObjectsSoapIn" />
+      <wsdl:output message="tns:DeleteProjectWebObjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObject">
+      <wsdl:input message="tns:DeleteWebObjectSoapIn" />
+      <wsdl:output message="tns:DeleteWebObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectLinkType">
+      <wsdl:input message="tns:ReadObjectLinkTypeSoapIn" />
+      <wsdl:output message="tns:ReadObjectLinkTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ObjectLinkProviderSoap" type="tns:ObjectLinkProviderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadLinkedWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectLinkedWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadProjectLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskLinkedWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadTaskLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointItemLinkedWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadSharePointItemLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWebObject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadWebObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectWebObject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadProjectWebObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskWebObject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadTaskWebObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointWebObject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadSharePointWebObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectByDescription">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadObjectByDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinksByGuid">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/CreateWebObjectLinksByGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinks">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/CreateWebObjectLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrCreateWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadOrCreateWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObjectLink">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteWebObjectLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectWebObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteProjectWebObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteWebObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectLinkType">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadObjectLinkType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ObjectLinkProviderSoap12" type="tns:ObjectLinkProviderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadLinkedWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectLinkedWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadProjectLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskLinkedWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadTaskLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointItemLinkedWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadSharePointItemLinkedWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadWebObject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadWebObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectWebObject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadProjectWebObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTaskWebObject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadTaskWebObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSharePointWebObject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadSharePointWebObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectByDescription">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadObjectByDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinksByGuid">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/CreateWebObjectLinksByGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebObjectLinks">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/CreateWebObjectLinks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrCreateWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadOrCreateWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObjectLink">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteWebObjectLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectWebObjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteProjectWebObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWebObject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/DeleteWebObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadObjectLinkType">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/ObjectLinkProvider/ReadObjectLinkType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ObjectLinkProvider">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the ObjectLinkProvider web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="ObjectLinkProviderSoap" binding="tns:ObjectLinkProviderSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/ObjectLinkProvider.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ObjectLinkProviderSoap12" binding="tns:ObjectLinkProviderSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/ObjectLinkProvider.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

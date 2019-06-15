@@ -1,0 +1,1458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Resource/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s5="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Resource/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Resource web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Resource/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" />
+      <s:element name="ReadResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourcesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAvailabilityForGrid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeScale" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeProposedBookings" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadResourceAvailabilityForGridResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceAvailabilityForGridResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAssignments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAssignmentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceAssignmentsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResourceUids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resIDs" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetResourceUidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResourceUidsResult" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateResourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateResourcesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="autoCheckIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateResourcesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="arrayRes" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="deletionComment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckOutResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOutResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckInResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="array" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="force" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadUserList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="filter" type="tns:ResourceActiveFilter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ResourceActiveFilter">
+        <s:restriction base="s:string">
+          <s:enumeration value="All" />
+          <s:enumeration value="Active" />
+          <s:enumeration value="Inactive" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadUserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadUserListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceListByDepartment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="departmentUid" nillable="true" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceListByDepartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceListByDepartmentResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentUserUid">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentUserUidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCurrentUserUidResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAuthorization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resourceUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAuthorizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceAuthorizationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="resourceUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetResourceAuthorization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="users">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetResourceAuthorizationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ActivateResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resourceGuids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeactivateResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resourceGuids" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="validateOnly" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadResourceAvailability">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resUIDs" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeScale" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeProposedBookings" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadResourceAvailabilityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResourceAvailabilityResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDelegation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="delegationUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDelegationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDelegationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadDelegations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="filter" type="tns:DelegationFilter" />
+            <s:element minOccurs="1" maxOccurs="1" name="resUid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="DelegationFilter">
+        <s:restriction base="s:string">
+          <s:enumeration value="ActingAsUser" />
+          <s:enumeration value="ForUser" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadDelegationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadDelegationsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDelegations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delegationsUids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDelegationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateDelegations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDelegationsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateDelegations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateDelegationsResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/UserDelegationDataSet/" id="UserDelegationDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="UserDelegationDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ResourceDelegations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DELEGATION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="DELEGATE_UID" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="DELEGATE_NAME" type="xs:string" />
+                  <xs:element name="DELEGATION_START" type="xs:dateTime" />
+                  <xs:element name="DELEGATION_FINISH" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceDataSet/" id="ResourceDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ResourceDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Resources">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="-1" name="RES_ID" type="xs:int" />
+                  <xs:element default="2" name="RES_TYPE" type="xs:int" />
+                  <xs:element minOccurs="0" default="false" name="RES_HAS_NOTES" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="true" name="RES_CAN_LEVEL" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_ACCRUE_AT" type="xs:short" />
+                  <xs:element minOccurs="0" name="RES_BOOKING_TYPE" type="xs:int" />
+                  <xs:element name="RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_INITIALS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_PHONETICS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_MATERIAL_LABEL" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_RTF_NOTES" type="xs:base64Binary" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="WRES_ACCOUNT" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_IS_WINDOWS_USER" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL" type="xs:string" />
+                  <xs:element minOccurs="0" name="WRES_EMAIL_LANGUAGE" type="xs:int" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTBY" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="RES_CHECKOUTDATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_FRIENDLY_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HYPERLINK_SUB_ADDRESS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_CODE" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_GROUP" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_EXTERNAL_ID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_TIMESHEET_MGR_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="RES_DEF_ASSN_OWNER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_HIRE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_TERMINATION_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="false" name="RES_IS_TEAM" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="RES_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_EXCHANGE_EWS_URL" type="xs:string" />
+                  <xs:element minOccurs="0" default="false" name="RES_CAL_OOF_EXCHANGE_SYNC" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RES_COST_CENTER" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NOTES" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="BaseCalendarUniqueId" type="xs:string" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="MD_PROP_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CalendarExceptions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element name="Name" type="xs:string" />
+                  <xs:element name="Start" type="xs:dateTime" />
+                  <xs:element name="Finish" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="Shift1Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift1Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift2Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift3Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift4Finish" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Start" type="xs:int" />
+                  <xs:element minOccurs="0" name="Shift5Finish" type="xs:int" />
+                  <xs:element name="RecurrenceType" type="xs:int" />
+                  <xs:element name="RecurrenceFrequency" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceDays" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonthDay" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrenceMonth" type="xs:int" />
+                  <xs:element minOccurs="0" name="RecurrencePosition" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceRates">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element default="0" name="RES_RATE_TABLE" type="xs:int" />
+                  <xs:element minOccurs="0" name="RES_RATE_EFFECTIVE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" default="0" name="RES_STD_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_OVT_RATE" type="xs:double" />
+                  <xs:element minOccurs="0" default="0" name="RES_COST_PER_USE" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceAvailabilities">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_FROM" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_TO" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RES_AVAIL_UNITS" type="xs:double" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:Resources" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceDataSetKey3">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+        </xs:unique>
+        <xs:keyref name="ResourcesResourceAvailabilities" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceAvailabilities" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceRates" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceRates" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesCalendarExceptions" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:CalendarExceptions" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+        <xs:keyref name="ResourcesResourceCustomFields" refer="mstns:ResourceDataSetKey1">
+          <xs:selector xpath=".//mstns:ResourceCustomFields" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAssignmentDataSet/" id="ResourceAssignmentDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ResourceAssignmentDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ResourceAssignment">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TASK_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" minOccurs="0" name="ASSN_PARENT_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_START" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_FINISH" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ASSN_WORK_CONTOUR" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_DELAY" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_LEVELING_DELAY" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_COST_RATE_TABLE" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_UNITS" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_BASE_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_REG_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_OVT_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_REM_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_OVT_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_REM_OVT_WORK" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ASSN_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ASSN_BASE_START" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ASSN_BASE_FINISH" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_RESUME_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_STOP_DATE" type="xs:dateTime" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_BASE_COST_PER_USE" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_ENTSUMPROJID" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_ACT_OVT_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_BASE_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_REM_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_REM_OVT_COST" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_OVT_COST" type="xs:double" />
+                  <xs:element minOccurs="0" name="TASK_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASSN_PCT_WORK_COMPLETE" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_ACWP" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_BCWP" type="xs:double" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_BCWS" type="xs:double" />
+                  <xs:element minOccurs="0" name="ASSN_BOOKING_TYPE" type="xs:short" />
+                  <xs:element minOccurs="0" name="ASSN_DEMAND_REQ" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="ASSN_MATERIAL_RATE_FMT" type="xs:short" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_DELAY_FMT" type="xs:short" />
+                  <xs:element minOccurs="0" name="ASSN_START_VAR" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_FINISH_VAR" type="xs:int" />
+                  <xs:element minOccurs="0" name="ASSN_HAS_LINKED_FIELDS" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_IS_CONFIRMED" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TASK_IS_SUMMARY" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="ASSN_IS_OVERALLOCATED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="ASSN_RES_TYPE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="ASSN_RESPONSE_PENDING" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WASSN_SEND_UPDATE_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WASSN_NOTE_STATUS" type="xs:int" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="ASSN_UPDATE_NEEDED" type="xs:boolean" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WASSN_COMMENTS" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ResourceAssignmentCustomFields">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="CUSTOM_FIELD_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="MD_PROP_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="MD_PROP_ID" type="xs:int" />
+                  <xs:element minOccurs="0" name="FIELD_TYPE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="FLAG_VALUE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TEXT_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DATE_VALUE" type="xs:dateTime" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="CODE_VALUE" type="xs:string" />
+                  <xs:element minOccurs="0" name="DUR_VALUE" type="xs:int" />
+                  <xs:element minOccurs="0" name="NUM_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="DUR_FMT" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="INDICATOR_VALUE" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceAssignmentKey">
+          <xs:selector xpath=".//mstns:ResourceAssignment" />
+          <xs:field xpath="mstns:ASSN_UID" />
+          <xs:field xpath="mstns:PROJ_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="ResourceAssignmentCustomFieldsKey">
+          <xs:selector xpath=".//mstns:ResourceAssignmentCustomFields" />
+          <xs:field xpath="mstns:CUSTOM_FIELD_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ResourceAuthorizationDataSet/" id="ResourceAuthorizationDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" name="ResourceAuthorizationDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Resources">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WRES_ACCOUNT" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_IS_WINDOWS_USER" type="xs:boolean" />
+                  <xs:element minOccurs="0" default="false" name="RES_PREVENT_ADSYNC" type="xs:boolean" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="WRES_AD_GUID" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_EXCHANGE_SYNC" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SecurityPrincipleCategoryRelations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="CategoryPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_CAT_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GlobalPermissions">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_FEA_ACT_UID" type="xs:string" />
+                  <xs:element default="false" name="WSEC_ALLOW" type="xs:boolean" />
+                  <xs:element default="false" name="WSEC_DENY" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="GroupMemberships">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WSEC_GRP_UID" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ResourcesPrimaryKey">
+          <xs:selector xpath=".//mstns:Resources" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="SecurityPrincipleCategoryRelationsPrimaryKey">
+          <xs:selector xpath=".//mstns:SecurityPrincipleCategoryRelations" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="CategoryPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:CategoryPermissions" />
+          <xs:field xpath="mstns:WSEC_CAT_UID" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GlobalPermissionsPrimaryKey">
+          <xs:selector xpath=".//mstns:GlobalPermissions" />
+          <xs:field xpath="mstns:WSEC_FEA_ACT_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+        <xs:unique msdata:PrimaryKey="true" name="GroupMembershipsPrimaryKey">
+          <xs:selector xpath=".//mstns:GroupMemberships" />
+          <xs:field xpath="mstns:RES_UID" />
+          <xs:field xpath="mstns:WSEC_GRP_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ReadResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResources" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAvailabilityForGridSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceAvailabilityForGrid" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAvailabilityForGridSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceAvailabilityForGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAssignmentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceAssignments" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAssignmentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceAssignmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceUidsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResourceUids" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceUidsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResourceUidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateResources" />
+  </wsdl:message>
+  <wsdl:message name="CreateResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateResources" />
+  </wsdl:message>
+  <wsdl:message name="UpdateResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteResources" />
+  </wsdl:message>
+  <wsdl:message name="DeleteResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOutResources" />
+  </wsdl:message>
+  <wsdl:message name="CheckOutResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOutResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInResources" />
+  </wsdl:message>
+  <wsdl:message name="CheckInResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadUserList" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceListByDepartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceListByDepartment" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceListByDepartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceListByDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentUserUidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserUid" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentUserUidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserUidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAuthorizationSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceAuthorization" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAuthorizationSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceAuthorizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResource" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetResourceAuthorizationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetResourceAuthorization" />
+  </wsdl:message>
+  <wsdl:message name="SetResourceAuthorizationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetResourceAuthorizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:ActivateResources" />
+  </wsdl:message>
+  <wsdl:message name="ActivateResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:ActivateResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeactivateResources" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeactivateResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAvailabilitySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResourceAvailability" />
+  </wsdl:message>
+  <wsdl:message name="ReadResourceAvailabilitySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResourceAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDelegationSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDelegation" />
+  </wsdl:message>
+  <wsdl:message name="ReadDelegationSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDelegationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadDelegationsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadDelegations" />
+  </wsdl:message>
+  <wsdl:message name="ReadDelegationsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadDelegationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDelegationsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDelegations" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDelegationsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDelegationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDelegationsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDelegations" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDelegationsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDelegationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateDelegationsSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateDelegations" />
+  </wsdl:message>
+  <wsdl:message name="CreateDelegationsSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateDelegationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ResourceSoap">
+    <wsdl:operation name="ReadResources">
+      <wsdl:input message="tns:ReadResourcesSoapIn" />
+      <wsdl:output message="tns:ReadResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailabilityForGrid">
+      <wsdl:input message="tns:ReadResourceAvailabilityForGridSoapIn" />
+      <wsdl:output message="tns:ReadResourceAvailabilityForGridSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAssignments">
+      <wsdl:input message="tns:ReadResourceAssignmentsSoapIn" />
+      <wsdl:output message="tns:ReadResourceAssignmentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceUids">
+      <wsdl:input message="tns:GetResourceUidsSoapIn" />
+      <wsdl:output message="tns:GetResourceUidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateResources">
+      <wsdl:input message="tns:CreateResourcesSoapIn" />
+      <wsdl:output message="tns:CreateResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResources">
+      <wsdl:input message="tns:UpdateResourcesSoapIn" />
+      <wsdl:output message="tns:UpdateResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteResources">
+      <wsdl:input message="tns:DeleteResourcesSoapIn" />
+      <wsdl:output message="tns:DeleteResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOutResources">
+      <wsdl:input message="tns:CheckOutResourcesSoapIn" />
+      <wsdl:output message="tns:CheckOutResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInResources">
+      <wsdl:input message="tns:CheckInResourcesSoapIn" />
+      <wsdl:output message="tns:CheckInResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserList">
+      <wsdl:input message="tns:ReadUserListSoapIn" />
+      <wsdl:output message="tns:ReadUserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceListByDepartment">
+      <wsdl:input message="tns:ReadResourceListByDepartmentSoapIn" />
+      <wsdl:output message="tns:ReadResourceListByDepartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserUid">
+      <wsdl:input message="tns:GetCurrentUserUidSoapIn" />
+      <wsdl:output message="tns:GetCurrentUserUidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAuthorization">
+      <wsdl:input message="tns:ReadResourceAuthorizationSoapIn" />
+      <wsdl:output message="tns:ReadResourceAuthorizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResource">
+      <wsdl:input message="tns:ReadResourceSoapIn" />
+      <wsdl:output message="tns:ReadResourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetResourceAuthorization">
+      <wsdl:input message="tns:SetResourceAuthorizationSoapIn" />
+      <wsdl:output message="tns:SetResourceAuthorizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateResources">
+      <wsdl:input message="tns:ActivateResourcesSoapIn" />
+      <wsdl:output message="tns:ActivateResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateResources">
+      <wsdl:input message="tns:DeactivateResourcesSoapIn" />
+      <wsdl:output message="tns:DeactivateResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailability">
+      <wsdl:input message="tns:ReadResourceAvailabilitySoapIn" />
+      <wsdl:output message="tns:ReadResourceAvailabilitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegation">
+      <wsdl:input message="tns:ReadDelegationSoapIn" />
+      <wsdl:output message="tns:ReadDelegationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegations">
+      <wsdl:input message="tns:ReadDelegationsSoapIn" />
+      <wsdl:output message="tns:ReadDelegationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDelegations">
+      <wsdl:input message="tns:DeleteDelegationsSoapIn" />
+      <wsdl:output message="tns:DeleteDelegationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDelegations">
+      <wsdl:input message="tns:UpdateDelegationsSoapIn" />
+      <wsdl:output message="tns:UpdateDelegationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDelegations">
+      <wsdl:input message="tns:CreateDelegationsSoapIn" />
+      <wsdl:output message="tns:CreateDelegationsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourceSoap" type="tns:ResourceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailabilityForGrid">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAvailabilityForGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAssignments">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAssignments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceUids">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/GetResourceUids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CreateResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/UpdateResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeleteResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOutResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CheckOutResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CheckInResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceListByDepartment">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceListByDepartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserUid">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/GetCurrentUserUid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAuthorization">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAuthorization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResource">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetResourceAuthorization">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/SetResourceAuthorization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ActivateResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeactivateResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailability">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegation">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadDelegation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadDelegations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDelegations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeleteDelegations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDelegations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/UpdateDelegations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDelegations">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CreateDelegations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ResourceSoap12" type="tns:ResourceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailabilityForGrid">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAvailabilityForGrid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAssignments">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAssignments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceUids">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/GetResourceUids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CreateResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/UpdateResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeleteResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOutResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CheckOutResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CheckInResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadUserList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceListByDepartment">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceListByDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserUid">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/GetCurrentUserUid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAuthorization">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAuthorization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResource">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetResourceAuthorization">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/SetResourceAuthorization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ActivateResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeactivateResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResourceAvailability">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadResourceAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegation">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadDelegation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadDelegations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/ReadDelegations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDelegations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/DeleteDelegations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDelegations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/UpdateDelegations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDelegations">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Resource/CreateDelegations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Resource">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Resource web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="ResourceSoap" binding="tns:ResourceSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Resource.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ResourceSoap12" binding="tns:ResourceSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Resource.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

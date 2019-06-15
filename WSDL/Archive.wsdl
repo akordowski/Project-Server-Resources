@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Archive/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Archive/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Archive web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Archive/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" />
+      <s:element name="QueueArchiveProjects">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveProjectsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="archivedProjectUID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionDescription" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="retentionPolicy" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="permanentArchive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QueueArchiveProjectResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="versionUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueDeleteArchivedProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectUID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="archiveUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueDeleteArchivedProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadArchivedProjectsList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadArchivedProjectsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadArchivedProjectsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadProjectArchiveRetentionSetting">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadProjectArchiveRetentionSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadProjectArchiveRetentionSettingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadArchiveSchedule">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadArchiveScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadArchiveScheduleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateArchiveSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="scheduleDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateArchiveScheduleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreResources">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreResourcesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreCustomFields">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreCustomFieldsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveSystemSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveSystemSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreSystemSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreSystemSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreCategoriesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveViews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveViewsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreViews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreViewsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueArchiveGlobalProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueArchiveGlobalProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueRestoreGlobalProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueRestoreGlobalProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueScheduleArchives">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="opCode" type="tns:ArchiveOpcode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ArchiveOpcode">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Projects" />
+          <s:enumeration value="Resources" />
+          <s:enumeration value="CustomFields" />
+          <s:enumeration value="EnterpriseGlobal" />
+          <s:enumeration value="SystemSettings" />
+          <s:enumeration value="Categories" />
+          <s:enumeration value="ViewDefinitions" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="QueueScheduleArchivesResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ProjectArchiveRetentionDataSet/" id="ProjectArchiveRetentionDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ProjectArchiveRetentionDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Projects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element name="PROJ_ARCHIVE_RETENTION" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ProjectArchiveRetentionDataSetKey1">
+          <xs:selector xpath=".//mstns:Projects" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ArchiveScheduleDataSet/" id="ArchiveScheduleDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ArchiveScheduleDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ArchiveSchedule">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element default="0" name="WADMIN_PROJECTS" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_ENTERPRISE_RESOURCE_POOL" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_ENTERPRISE_CUSTOM_FIELDS" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_ENTERPRISE_GLOBAL" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_SYSTEM_SETTINGS" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_CATEGORY_GROUP" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_VIEW_DEFINITIONS" type="xs:long" />
+                  <xs:element default="0" name="WADMIN_ARCHIVE_RETENTION" type="xs:long" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ArchivedProjectsDataSet/" id="ArchivedProjectsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ArchivedProjectsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Projects">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_VERSION_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="PROJ_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJ_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="PROJ_VERSION_DESCRIPTION" type="xs:string" />
+                  <xs:element name="PROJ_VERSION_DATE" type="xs:dateTime" />
+                  <xs:element name="PROJ_VERSION_IS_PERMANENT" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ArchivedProjectsDataSetKey1">
+          <xs:selector xpath=".//mstns:Projects" />
+          <xs:field xpath="mstns:PROJ_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="QueueArchiveProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveProjects" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveProject" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreProject" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteArchivedProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueDeleteArchivedProject" />
+  </wsdl:message>
+  <wsdl:message name="QueueDeleteArchivedProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueDeleteArchivedProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadArchivedProjectsListSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadArchivedProjectsList" />
+  </wsdl:message>
+  <wsdl:message name="ReadArchivedProjectsListSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadArchivedProjectsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectArchiveRetentionSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadProjectArchiveRetentionSetting" />
+  </wsdl:message>
+  <wsdl:message name="ReadProjectArchiveRetentionSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadProjectArchiveRetentionSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadArchiveScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadArchiveSchedule" />
+  </wsdl:message>
+  <wsdl:message name="ReadArchiveScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadArchiveScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArchiveScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateArchiveSchedule" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArchiveScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateArchiveScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveResources" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreResourcesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreResources" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreResourcesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreCustomFieldsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreCustomFields" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreCustomFieldsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreCustomFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveSystemSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveSystemSettings" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveSystemSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveSystemSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreSystemSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreSystemSettings" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreSystemSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreSystemSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveCategories" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreCategories" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveViewsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveViews" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveViewsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveViewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreViewsSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreViews" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreViewsSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreViewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveGlobalProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueArchiveGlobalProject" />
+  </wsdl:message>
+  <wsdl:message name="QueueArchiveGlobalProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueArchiveGlobalProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreGlobalProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueRestoreGlobalProject" />
+  </wsdl:message>
+  <wsdl:message name="QueueRestoreGlobalProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueRestoreGlobalProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueScheduleArchivesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueScheduleArchives" />
+  </wsdl:message>
+  <wsdl:message name="QueueScheduleArchivesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueScheduleArchivesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ArchiveSoap">
+    <wsdl:operation name="QueueArchiveProjects">
+      <wsdl:input message="tns:QueueArchiveProjectsSoapIn" />
+      <wsdl:output message="tns:QueueArchiveProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveProject">
+      <wsdl:input message="tns:QueueArchiveProjectSoapIn" />
+      <wsdl:output message="tns:QueueArchiveProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreProject">
+      <wsdl:input message="tns:QueueRestoreProjectSoapIn" />
+      <wsdl:output message="tns:QueueRestoreProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteArchivedProject">
+      <wsdl:input message="tns:QueueDeleteArchivedProjectSoapIn" />
+      <wsdl:output message="tns:QueueDeleteArchivedProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchivedProjectsList">
+      <wsdl:input message="tns:ReadArchivedProjectsListSoapIn" />
+      <wsdl:output message="tns:ReadArchivedProjectsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectArchiveRetentionSetting">
+      <wsdl:input message="tns:ReadProjectArchiveRetentionSettingSoapIn" />
+      <wsdl:output message="tns:ReadProjectArchiveRetentionSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchiveSchedule">
+      <wsdl:input message="tns:ReadArchiveScheduleSoapIn" />
+      <wsdl:output message="tns:ReadArchiveScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArchiveSchedule">
+      <wsdl:input message="tns:UpdateArchiveScheduleSoapIn" />
+      <wsdl:output message="tns:UpdateArchiveScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveResources">
+      <wsdl:input message="tns:QueueArchiveResourcesSoapIn" />
+      <wsdl:output message="tns:QueueArchiveResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreResources">
+      <wsdl:input message="tns:QueueRestoreResourcesSoapIn" />
+      <wsdl:output message="tns:QueueRestoreResourcesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCustomFields">
+      <wsdl:input message="tns:QueueArchiveCustomFieldsSoapIn" />
+      <wsdl:output message="tns:QueueArchiveCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCustomFields">
+      <wsdl:input message="tns:QueueRestoreCustomFieldsSoapIn" />
+      <wsdl:output message="tns:QueueRestoreCustomFieldsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveSystemSettings">
+      <wsdl:input message="tns:QueueArchiveSystemSettingsSoapIn" />
+      <wsdl:output message="tns:QueueArchiveSystemSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreSystemSettings">
+      <wsdl:input message="tns:QueueRestoreSystemSettingsSoapIn" />
+      <wsdl:output message="tns:QueueRestoreSystemSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCategories">
+      <wsdl:input message="tns:QueueArchiveCategoriesSoapIn" />
+      <wsdl:output message="tns:QueueArchiveCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCategories">
+      <wsdl:input message="tns:QueueRestoreCategoriesSoapIn" />
+      <wsdl:output message="tns:QueueRestoreCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveViews">
+      <wsdl:input message="tns:QueueArchiveViewsSoapIn" />
+      <wsdl:output message="tns:QueueArchiveViewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreViews">
+      <wsdl:input message="tns:QueueRestoreViewsSoapIn" />
+      <wsdl:output message="tns:QueueRestoreViewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveGlobalProject">
+      <wsdl:input message="tns:QueueArchiveGlobalProjectSoapIn" />
+      <wsdl:output message="tns:QueueArchiveGlobalProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreGlobalProject">
+      <wsdl:input message="tns:QueueRestoreGlobalProjectSoapIn" />
+      <wsdl:output message="tns:QueueRestoreGlobalProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueScheduleArchives">
+      <wsdl:input message="tns:QueueScheduleArchivesSoapIn" />
+      <wsdl:output message="tns:QueueScheduleArchivesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ArchiveSoap" type="tns:ArchiveSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueueArchiveProjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveProject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreProject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteArchivedProject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueDeleteArchivedProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchivedProjectsList">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadArchivedProjectsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectArchiveRetentionSetting">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadProjectArchiveRetentionSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchiveSchedule">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadArchiveSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArchiveSchedule">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/UpdateArchiveSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreResources">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCustomFields">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreCustomFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveSystemSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveSystemSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreSystemSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreSystemSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCategories">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveViews">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveViews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreViews">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreViews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveGlobalProject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveGlobalProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreGlobalProject">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreGlobalProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueScheduleArchives">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueScheduleArchives" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArchiveSoap12" type="tns:ArchiveSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueueArchiveProjects">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveProject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreProject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueDeleteArchivedProject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueDeleteArchivedProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchivedProjectsList">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadArchivedProjectsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadProjectArchiveRetentionSetting">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadProjectArchiveRetentionSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadArchiveSchedule">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/ReadArchiveSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArchiveSchedule">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/UpdateArchiveSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreResources">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreResources" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCustomFields">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreCustomFields" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveSystemSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveSystemSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreSystemSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreSystemSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreCategories">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveViews">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveViews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreViews">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreViews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueArchiveGlobalProject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueArchiveGlobalProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueRestoreGlobalProject">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueRestoreGlobalProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueScheduleArchives">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Archive/QueueScheduleArchives" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Archive">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Archive web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="ArchiveSoap" binding="tns:ArchiveSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Archive.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArchiveSoap12" binding="tns:ArchiveSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Archive.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

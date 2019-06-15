@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Notifications/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Notifications/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Notifications web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Notifications/">
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" />
+      <s:element name="UpdateAlertSubscriptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="subscriptionDataset">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAlertSubscriptionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAlertSubscriptions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadAlertSubscriptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAlertSubscriptionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateReminderSubscriptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="subscriptionDataset">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateReminderSubscriptionsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadReminderSubscriptions">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadReminderSubscriptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadReminderSubscriptionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/ReminderSubscriptionInfoDataSet/" id="ReminderSubscriptionInfoDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ReminderSubscriptionInfoDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="ReminderSubscriptionInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ReminderUID" type="xs:string" />
+                  <xs:element minOccurs="0" name="ReminderName" type="xs:string" />
+                  <xs:element minOccurs="0" name="ReminderIsRepetitive" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="ReminderCategory" type="xs:int" />
+                  <xs:element minOccurs="0" name="IsSubscribed" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="RecipientType" type="xs:int" />
+                  <xs:element minOccurs="0" name="FrequencyPeriod" type="xs:int" />
+                  <xs:element minOccurs="0" name="FrequencyValue" type="xs:int" />
+                  <xs:element minOccurs="0" name="NextRun" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="ReminderSubscriptionInfoDataSetKey1">
+          <xs:selector xpath=".//mstns:ReminderSubscriptionInfo" />
+          <xs:field xpath="mstns:ReminderUID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/AlertSubscriptionInfoDataSet/" id="AlertSubscriptionInfoDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="AlertSubscriptionInfoDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="AlertSubscriptionInfo">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="AlertUID" type="xs:string" />
+                  <xs:element minOccurs="0" name="AlertName" type="xs:string" />
+                  <xs:element minOccurs="0" name="EnabledByDefault" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="IsSubscribed" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="AlertSubscriptionInfoDataSetKey1">
+          <xs:selector xpath=".//mstns:AlertSubscriptionInfo" />
+          <xs:field xpath="mstns:AlertUID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateAlertSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAlertSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlertSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAlertSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAlertSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAlertSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="ReadAlertSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAlertSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReminderSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateReminderSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReminderSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateReminderSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadReminderSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadReminderSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="ReadReminderSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadReminderSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NotificationsSoap">
+    <wsdl:operation name="UpdateAlertSubscriptions">
+      <wsdl:input message="tns:UpdateAlertSubscriptionsSoapIn" />
+      <wsdl:output message="tns:UpdateAlertSubscriptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAlertSubscriptions">
+      <wsdl:input message="tns:ReadAlertSubscriptionsSoapIn" />
+      <wsdl:output message="tns:ReadAlertSubscriptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReminderSubscriptions">
+      <wsdl:input message="tns:UpdateReminderSubscriptionsSoapIn" />
+      <wsdl:output message="tns:UpdateReminderSubscriptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReminderSubscriptions">
+      <wsdl:input message="tns:ReadReminderSubscriptionsSoapIn" />
+      <wsdl:output message="tns:ReadReminderSubscriptionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotificationsSoap" type="tns:NotificationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateAlertSubscriptions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/UpdateAlertSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAlertSubscriptions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/ReadAlertSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReminderSubscriptions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/UpdateReminderSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReminderSubscriptions">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/ReadReminderSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NotificationsSoap12" type="tns:NotificationsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateAlertSubscriptions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/UpdateAlertSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAlertSubscriptions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/ReadAlertSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReminderSubscriptions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/UpdateReminderSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReminderSubscriptions">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Notifications/ReadReminderSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Notifications">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Notifications web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="NotificationsSoap" binding="tns:NotificationsSoap">
+      <soap:address location="https://sitecollection/site/_vti_bin/psi/Notifications.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NotificationsSoap12" binding="tns:NotificationsSoap12">
+      <soap12:address location="https://sitecollection/site/_vti_bin/psi/Notifications.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
